@@ -1,4 +1,4 @@
-package com.example.dictionary;
+package Dictionary;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

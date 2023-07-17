@@ -1,4 +1,4 @@
-package com.example.dictionary;
+package Dictionary;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
