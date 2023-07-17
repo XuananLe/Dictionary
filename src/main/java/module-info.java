@@ -3,4 +3,6 @@ module com.example.dictionary {
     requires javafx.fxml;
     exports Dictionary;
     opens Dictionary to javafx.fxml;
+
+    exports Dictionary.Controllers to javafx.fxml;
 }
