@@ -8,6 +8,7 @@ module dictionary.Dictionary {
     requires java.sql;
     requires java.desktop;
     requires ormlite.jdbc;
-    opens Dictionary.Models;
+    exports Dictionary.Models;
+    exports Dictionary.Controllers;
 
 }
