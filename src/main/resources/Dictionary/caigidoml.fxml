@@ -12,6 +12,29 @@
 
 <AnchorPane prefHeight="523.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.vclcontroller">
    <children>
+      <Pane prefHeight="587.0" prefWidth="775.0">
+         <children>
+            <Pane prefHeight="126.0" prefWidth="775.0">
+               <children>
+                  <Label layoutX="297.0" layoutY="53.0" prefHeight="25.0" prefWidth="258.0" text="Chúc các bạn mọi điều tốt đẹp" textFill="#da4ed3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="297.0" layoutY="24.0" text="Wish you all the best" textFill="#da4ed3">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="122.0" fitWidth="93.0" layoutX="196.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/Images/an.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
       <AnchorPane layoutY="127.0" prefHeight="460.0" prefWidth="775.0">
          <children>
             <Pane layoutY="1.0" prefHeight="46.0" prefWidth="775.0">
@@ -73,28 +96,5 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Pane prefHeight="587.0" prefWidth="775.0">
-         <children>
-            <Pane prefHeight="126.0" prefWidth="775.0">
-               <children>
-                  <Label layoutX="297.0" layoutY="53.0" prefHeight="25.0" prefWidth="258.0" text="Chúc các bạn mọi điều tốt đẹp" textFill="#da4ed3">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="297.0" layoutY="24.0" text="Wish you all the best" textFill="#da4ed3">
-                     <font>
-                        <Font name="System Bold Italic" size="20.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="122.0" fitWidth="93.0" layoutX="196.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Utils/Images/an.jpg" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
    </children>
 </AnchorPane>

@@ -1,29 +1,31 @@
+
 package Dictionary.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.event.ActionEvent;
 
 public class vclcontroller {
-    @FXML
-    public TextField WordInput;
-    @FXML
-    public Button addBtn;
-    @FXML
-    public TextArea explanationInput;
-    @FXML
-    public Label Success;
 
     @FXML
-    public void HandleClickBtn(ActionEvent actionEvent) {
-        String add = WordInput.getText();
+    private TextField WordInput;
+
+    @FXML
+    private Button addBtn;
+
+    @FXML
+    private TextArea explanationInput;
+
+    @FXML
+    protected void HandleClickBtn(ActionEvent event) {
+        String word = WordInput.getText();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Tu tieng anh moi:" + add);
-        alert.showAndWait();
+        alert.setTitle("Dictionary Application");
+        alert.setHeaderText("Word Added");
+        alert.setContentText("Word: " + word);
+        alert.show();
     }
 }
