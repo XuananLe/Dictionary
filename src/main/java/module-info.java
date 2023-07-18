@@ -1,4 +1,4 @@
-module com.example.dictionary {
+module dictionary.Dictionary {
     requires javafx.controls;
     requires javafx.fxml;
     exports Dictionary;
@@ -10,5 +10,4 @@ module com.example.dictionary {
     requires ormlite.jdbc;
     opens Dictionary.Models;
 
-    exports Dictionary.Controllers to javafx.fxml;
 }
