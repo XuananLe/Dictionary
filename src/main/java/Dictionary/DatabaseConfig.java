@@ -20,7 +20,7 @@ public class DatabaseConfig {
 
     // INIT The Database Connection
 
-    private static final String DATABASE_URL = "jdbc:sqlite:test123.db";
+    private static final String DATABASE_URL = "jdbc:sqlite:engData.db";
 
     static ConnectionSource connectionSource;
 
@@ -74,7 +74,7 @@ public class DatabaseConfig {
         LoadData();
     }
     public static void LoadData() throws SQLException{
-        String csvFile = "englishDictionary.csv";
+        String csvFile = "src/main/java/Dictionary/englishDictionary.csv";
         List<English> englishList = parseEnglish(csvFile);
         for (English english : englishList) {
             englishDAO.updateWord(english);
