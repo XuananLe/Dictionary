@@ -8,7 +8,7 @@ module com.example.dictionary {
     requires java.sql;
     requires java.desktop;
     requires ormlite.jdbc;
-    opens Models;
+    opens Dictionary.Models;
 
     exports Dictionary.Controllers to javafx.fxml;
 }

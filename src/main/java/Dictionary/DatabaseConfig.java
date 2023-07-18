@@ -1,5 +1,4 @@
 package Dictionary;
-
 import Dictionary.Models.*;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.stmt.PreparedQuery;
@@ -75,7 +74,7 @@ public class DatabaseConfig {
         LoadData();
     }
     public static void LoadData() throws SQLException{
-        String csvFile = "./englishDictionary.csv";
+        String csvFile = "englishDictionary.csv";
         List<English> englishList = parseEnglish(csvFile);
         for (English english : englishList) {
             englishDAO.updateWord(english);
