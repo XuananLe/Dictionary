@@ -1,4 +1,4 @@
-package Dictionary;
+package Dictionary.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -10,5 +10,7 @@ module dictionary.Dictionary {
     requires ormlite.jdbc;
     exports Dictionary.Models;
     exports Dictionary.Controllers;
+    opens Dictionary.Controllers to javafx.fxml;
+
 
 }
