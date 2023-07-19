@@ -21,25 +21,28 @@ public class vclcontroller {
     @FXML
     private TextField Pos;
     @FXML
-    private TextField Rw;
-    @FXML
     private TextField Mn;
     @FXML
     private TextField Pro;
+    @FXML
+    private TextField Sy;
+    @FXML
+    private TextField An;
 
     @FXML
     protected void HandleClickBtn(ActionEvent event) {
         String word = Nw.getText();
         String ex = Ex.getText();
         String pos = Pos.getText();
-        String rw = Rw.getText();
+        String sy = Sy.getText();
+        String an = An.getText();
         String mn = Mn.getText();
         String pro = Pro.getText();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Dictionary Application");
         alert.setHeaderText("Word Added");
-        alert.setContentText("New Word: " + word + "\n" + "Explaination: " + ex + "\n" + "Part of speech :" + pos + "\n" + "Related word: " + rw + "\n");
+        alert.setContentText("New Word: " + word + "\n" + "Explaination: " + ex + "\n" + "Part of speech: " + pos + "\n" + "Synonym: " + sy + "\n"+"Anonym: "+ an);
 
         alert.show();
     }
