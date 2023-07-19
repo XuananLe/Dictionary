@@ -123,13 +123,12 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
         }
         return true;
     }
-    public boolean getWord(String word) throws SQLException {
-        English english = this.queryBuilder().where().eq("Word", word).queryForFirst();
-        return english != null;
+    // co the tra ra null
+    public English getWord(String word) throws SQLException {
+        return this.queryBuilder().where().eq("Word", word).queryForFirst();
     }
-    public boolean getWord(English word) throws SQLException {
-        English english = this.queryBuilder().where().eq("Word", word.getWord()).queryForFirst();
-        return english != null;
+    public English getWord(English word) throws SQLException {
+        return this.queryBuilder().where().eq("Word", word.getWord()).queryForFirst();
     }
     public boolean updateWord(English x) throws SQLException {
         if(x.getWord().isEmpty() || x.getMeaning().isEmpty()){
