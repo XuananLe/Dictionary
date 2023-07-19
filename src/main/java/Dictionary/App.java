@@ -20,7 +20,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("caigidoml.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("AddWordUI.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
