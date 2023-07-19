@@ -5,10 +5,14 @@ import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +78,7 @@ public class DatabaseConfig {
         LoadData();
     }
     public static void LoadData() throws SQLException{
-        String csvFile = "src/main/java/Dictionary/englishDictionary.csv";
+        String csvFile = "";
         List<English> englishList = parseEnglish(csvFile);
         for (English english : englishList) {
             englishDAO.updateWord(english);
@@ -83,32 +87,30 @@ public class DatabaseConfig {
     public static List<English> parseEnglish(String csvFile) {
         List<English> englishList = new ArrayList<>();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-            String line;
-            boolean isFirstLine = true;
+        try (Reader reader = new FileReader(csvFile);
+             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT)) {
+            for (CSVRecord csvRecord : csvParser) {
+                String word = csvRecord.get(0);
+                String pos = csvRecord.get(1);
+                String def = csvRecord.get(2);
+                String example = csvRecord.size() > 3 ? csvRecord.get(3) : "";
+                String synonyms = csvRecord.size() > 4 ? csvRecord.get(4) : "";
+                String antonyms = csvRecord.size() > 5 ? csvRecord.get(5) : "";
 
-            while ((line = br.readLine()) != null) {
-                if (isFirstLine) {
-                    isFirstLine = false;
-                    continue; // Skip the header line
-                }
+                English english = new English();
+                english.setWord(word);
+                english.setType(pos);
+                english.setMeaning(def);
+                english.setExample(example);
+                english.setSynonym(synonyms);
+                english.setAntonyms(antonyms);
 
-                String[] values = line.split(",", -1);
-                if (values.length >= 3) {
-                    String word = values[0].trim();
-                    String pos = values[1].trim();
-                    String def = values[2].trim();
-                    English english = new English();
-                    english.setWord(word);
-                    english.setType(pos);
-                    english.setMeaning(def);
-                    englishList.add(english);
-                }
+                englishList.add(english);
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return englishList;
     }
 }

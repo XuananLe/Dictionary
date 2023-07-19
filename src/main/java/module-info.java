@@ -8,7 +8,8 @@ module dictionary.Dictionary {
     requires java.sql;
     requires java.desktop;
     requires ormlite.jdbc;
-    exports Dictionary.Models;
+    requires org.apache.commons.csv;
+    opens Dictionary.Models;
     exports Dictionary.Controllers;
     opens Dictionary.Controllers to javafx.fxml;
 
