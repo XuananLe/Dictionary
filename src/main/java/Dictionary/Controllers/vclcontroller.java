@@ -1,4 +1,3 @@
-
 package Dictionary.Controllers;
 
 import javafx.event.ActionEvent;
@@ -11,21 +10,37 @@ import javafx.scene.control.TextField;
 public class vclcontroller {
 
     @FXML
-    private TextField WordInput;
+    private TextArea Ex;
 
     @FXML
     private Button addBtn;
 
     @FXML
-    private TextArea explanationInput;
+    private TextField Nw;
+
+    @FXML
+    private TextField Pos;
+    @FXML
+    private TextField Rw;
+    @FXML
+    private TextField Mn;
+    @FXML
+    private TextField Pro;
 
     @FXML
     protected void HandleClickBtn(ActionEvent event) {
-        String word = WordInput.getText();
+        String word = Nw.getText();
+        String ex = Ex.getText();
+        String pos = Pos.getText();
+        String rw = Rw.getText();
+        String mn = Mn.getText();
+        String pro = Pro.getText();
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Dictionary Application");
         alert.setHeaderText("Word Added");
-        alert.setContentText("Word: " + word);
+        alert.setContentText("New Word: " + word + "\n" + "Explaination: " + ex + "\n" + "Part of speech :" + pos + "\n" + "Related word: " + rw + "\n");
+
         alert.show();
     }
 }
