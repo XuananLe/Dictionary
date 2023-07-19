@@ -26,7 +26,7 @@ public class DatabaseConfig {
 
     private static final String DATABASE_URL = "jdbc:sqlite:engData.db";
 
-    static ConnectionSource connectionSource;
+    public static ConnectionSource connectionSource;
 
     static {
         try {
@@ -39,7 +39,7 @@ public class DatabaseConfig {
 
     
 
-    static EnglishDAO englishDAO;
+    public static EnglishDAO englishDAO;
 
     static {
         try {
