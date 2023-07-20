@@ -29,11 +29,17 @@ public class SearchingController{
     @FXML
     public void handleSearch(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
+        if(searchTerm.isEmpty() || searchTerm.isBlank()){
+            searchResultsListView.getItems().clear();
+            return;
+        }
         try {
             searchTerm = searchTerm.toLowerCase();
             searchTerm = searchTerm.substring(0, 1).toUpperCase() + searchTerm.substring(1);
+            searchResultsListView.getItems().clear();
             for (English english : englishDAO.containWord(searchTerm)) {
                     System.out.println(english.getWord());
+                    searchResultsListView.getItems().add(english.getWord());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -52,6 +58,7 @@ public class SearchingController{
             for (English english : englishDAO.containWord(searchTerm)) {
                 searchResultsListView.getItems().add(english.getWord());
                 System.out.println(english.getWord());
+                searchResultsListView.getItems().add("anh yeu em vcl dit nhau di");
             }
         } catch (SQLException e) {
             e.printStackTrace();

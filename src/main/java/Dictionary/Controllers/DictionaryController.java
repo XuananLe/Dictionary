@@ -44,7 +44,7 @@ public class DictionaryController implements Initializable {
         tooltip3.setShowDelay(Duration.seconds(0.5));
         tooltip4.setShowDelay(Duration.seconds(0.5));
         try {
-            showComponent("/Dictionary/SearchingTest.fxml");
+            showComponent("/Dictionary/SearchingUI.fxml");
         }catch (Exception e){
             System.err.println(e);
         }
