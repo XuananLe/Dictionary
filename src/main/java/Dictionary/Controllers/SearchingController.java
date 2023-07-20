@@ -38,7 +38,7 @@ public class SearchingController {
         try {
             System.err.println(searchTerm);
             ObservableList<English> searchResults = FXCollections.observableArrayList();
-            for (English english : englishDAO.findWord(searchTerm)) {
+            for (English english : englishDAO.containWord(searchTerm)) {
                  if (english.getWord().toLowerCase().contains(searchTerm.toLowerCase())) {
                     searchResults.add(english);
                 }
