@@ -6,9 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Dictionary.Controllers.SearchingController"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="Dictionary.Controllers.SearchingController"
+           minWidth="400" minHeight="300" prefWidth="800" prefHeight="600">
+    <TextField fx:id="searchBox" styleClass="transparent" onKeyReleased="#handleSearch"/>
+    <Button text="Search" StackPane.alignment="CENTER_RIGHT" onAction="#performSearch"/>
+<!--    <ListView fx:id="searchResultsListView" />-->
+</StackPane>
+
+

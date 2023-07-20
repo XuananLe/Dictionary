@@ -122,4 +122,8 @@ public class English {
         Type = type;
         Example = example;
     }
+    @Override
+    public String toString(){
+        return "The word is " + Word + " " + Meaning + " " + Pronunciation + " " + Type + " " + Example + " " + Synonym + " " + Antonyms + "\n";
+    }
 }
