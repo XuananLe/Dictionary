@@ -1,6 +1,7 @@
 package Dictionary.Models;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
+import com.j256.ormlite.stmt.Where;
 import com.j256.ormlite.support.ConnectionSource;
 
 import java.sql.SQLException;
@@ -186,5 +187,29 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
             return true;
         }
         return false;
+    }
+    public boolean deleteWord(String word) throws SQLException {
+        try {
+            Where<English, Long> english = this.queryBuilder().where().eq("Word", word);
+            for (English x : english.query()) {
+                this.delete(x);
+            }
+            return true;
+        }catch (SQLException e){
+            System.err.println(e.getMessage() + " deleteWord " + word);
+            return false;
+        }
+    }
+    public boolean deleteWord(English english) throws SQLException {
+        try {
+            Where<English, Long> english1 = this.queryBuilder().where().eq("Word", english.getWord());
+            for (English x : english1.query()) {
+                this.delete(x);
+            }
+            return true;
+        }catch (SQLException e){
+            System.err.println(e.getMessage() + " deleteWord " + english.getWord());
+            return false;
+        }
     }
 }
