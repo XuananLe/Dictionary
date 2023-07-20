@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -16,16 +17,17 @@
                   <TextField fx:id="searchBox" onKeyReleased="#handleSearch" prefHeight="59.0" prefWidth="275.0" />
                </children>
             </Pane>
+            <Label fx:id="countRes" alignment="CENTER" layoutX="-1.0" layoutY="144.0" prefHeight="29.0" prefWidth="275.0" text="0 kết quả liên quan ">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="wordDefination" layoutX="331.0" layoutY="174.0" prefHeight="429.0" prefWidth="442.0" />
          </children>
       </Pane>
       <AnchorPane layoutY="176.0" prefHeight="429.0" prefWidth="275.0">
          <children>
             <ListView fx:id="searchResultsListView" prefHeight="429.0" prefWidth="275.0" />
-            <Label alignment="CENTER" prefHeight="29.0" prefWidth="275.0" text="15 kết quả liên quan ">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>
