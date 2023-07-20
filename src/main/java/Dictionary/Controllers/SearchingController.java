@@ -42,12 +42,16 @@ public class SearchingController{
     @FXML
     public ListView<String> handleSearchListView(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
+        if(searchTerm.isEmpty() || searchTerm.isBlank()){
+            return null;
+        }
         ListView<String> searchResultsListView = new ListView<>();
         try {
             searchTerm = searchTerm.toLowerCase();
             searchTerm = searchTerm.substring(0, 1).toUpperCase() + searchTerm.substring(1);
             for (English english : englishDAO.containWord(searchTerm)) {
                 searchResultsListView.getItems().add(english.getWord());
+                System.out.println(english.getWord());
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -11,7 +11,7 @@
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="Dictionary.Controllers.SearchingController"
            minWidth="400" minHeight="300" prefWidth="800" prefHeight="600">
-    <TextField fx:id="searchBox" styleClass="transparent" onKeyReleased="#handleSearch"/>
+    <TextField fx:id="searchBox" styleClass="transparent" onKeyReleased="#handleSearchListView"/>
     <Button text="Search" StackPane.alignment="CENTER_RIGHT" onAction="#performSearch"/>
 <!--    <ListView fx:id="searchResultsListView" />-->
 </StackPane>
