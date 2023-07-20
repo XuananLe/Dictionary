@@ -226,7 +226,8 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
         Where<English, Long> english = this.queryBuilder().where().eq("Word", word);
         return new ArrayList<>(english.query());
     }
-    public List<English> findWord(English english){
+
+    public List<English> findWord(English english) {
         try {
             Where<English, Long> english1 = this.queryBuilder().where().eq("Word", english.getWord());
             return new ArrayList<>(english1.query());
@@ -234,5 +235,15 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<English> containWord(String word) throws SQLException {
+        Where<English, Long> english = this.queryBuilder().where().like("Word", word + "%");
+        return new ArrayList<>(english.query());
+    }
+
+    public List<English> containWord(English english) throws SQLException {
+        Where<English, Long> english1 = this.queryBuilder().where().like("Word", english.getWord() + "%");
+        return new ArrayList<>(english1.query());
     }
 }
