@@ -6,11 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 
+import javax.swing.*;
 import java.net.URL;
 import java.security.PublicKey;
 import java.sql.SQLException;
@@ -27,14 +29,25 @@ public class SearchingController{
     public ObservableList<String> observableWord = FXCollections.observableArrayList();
 
     @FXML
+    public Label countRes = new Label("0 kết quả liên quan ");
+
+    @FXML
     public void handleSearch(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
+        if(searchTerm.isEmpty() || searchTerm.isBlank()){
+            searchResultsListView.getItems().clear();
+            countRes.setText(String.valueOf(searchResultsListView.getItems().size()) + " Kết quả liên quan");
+            return;
+        }
         try {
             searchTerm = searchTerm.toLowerCase();
             searchTerm = searchTerm.substring(0, 1).toUpperCase() + searchTerm.substring(1);
+            searchResultsListView.getItems().clear();
             for (English english : englishDAO.containWord(searchTerm)) {
                     System.out.println(english.getWord());
+                    searchResultsListView.getItems().add(english.getWord());
             }
+            countRes.setText(String.valueOf(searchResultsListView.getItems().size()) + " Kết quả liên quan");
         } catch (SQLException e) {
             e.printStackTrace();
         }
