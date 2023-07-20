@@ -5,55 +5,56 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 
+import java.net.URL;
+import java.security.PublicKey;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import static Dictionary.DatabaseConfig.englishDAO;
 
-public class SearchingController {
-    public ListView<English> searchResultsListView;
+public class SearchingController{
+    @FXML
+    public ListView<String> searchResultsListView;
     @FXML
     public TextField searchBox;
-
     @FXML
-    public FilteredList<English> filteredList;
-
-    public void initialize() {
-        filteredList = new FilteredList<>(FXCollections.observableArrayList());
-
-        filteredList.setPredicate(item -> true);
-    }
+    public ObservableList<String> observableWord = FXCollections.observableArrayList();
 
     @FXML
     public void handleSearch(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
-
-        filteredList.setPredicate(english ->
-                english.getWord().toLowerCase().contains(searchTerm.toLowerCase()));
-
         try {
-            System.err.println(searchTerm);
-            ObservableList<English> searchResults = FXCollections.observableArrayList();
+            searchTerm = searchTerm.toLowerCase();
+            searchTerm = searchTerm.substring(0, 1).toUpperCase() + searchTerm.substring(1);
             for (English english : englishDAO.containWord(searchTerm)) {
-                 if (english.getWord().toLowerCase().contains(searchTerm.toLowerCase())) {
-                    searchResults.add(english);
-                }
+                    System.out.println(english.getWord());
             }
-            filteredList.setPredicate(english ->
-                    english.getWord().toLowerCase().contains(searchTerm.toLowerCase()));
-            // Do something with the search results
-            // display the results in a ListView or TableView
-            searchResultsListView.setItems(filteredList);
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle any exceptions that occur during the database query
         }
     }
-
+    @FXML
+    public ListView<String> handleSearchListView(KeyEvent keyEvent) {
+        String searchTerm = searchBox.getText();
+        ListView<String> searchResultsListView = new ListView<>();
+        try {
+            searchTerm = searchTerm.toLowerCase();
+            searchTerm = searchTerm.substring(0, 1).toUpperCase() + searchTerm.substring(1);
+            for (English english : englishDAO.containWord(searchTerm)) {
+                searchResultsListView.getItems().add(english.getWord());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return searchResultsListView;
+        }
+        return searchResultsListView;
+    }
     @FXML
     public void performSearch(ActionEvent actionEvent) {
 //        String searchTerm = searchBox.getText();

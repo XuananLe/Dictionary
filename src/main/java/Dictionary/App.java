@@ -13,7 +13,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Dictionary/DictionaryUI.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Dictionary/SearchingUI.fxml")));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
