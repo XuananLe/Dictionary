@@ -65,7 +65,6 @@ public class SearchingController{
             for (English english : englishDAO.containWord(searchTerm)) {
                 searchResultsListView.getItems().add(english.getWord());
                 System.out.println(english.getWord());
-                searchResultsListView.getItems().add("anh yeu em vcl dit nhau di");
             }
         } catch (SQLException e) {
             e.printStackTrace();

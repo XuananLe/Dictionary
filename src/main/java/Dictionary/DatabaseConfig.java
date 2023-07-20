@@ -16,7 +16,7 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 
 
 public class DatabaseConfig {
@@ -75,37 +75,64 @@ public class DatabaseConfig {
 //        x.setMeaning("C");
 //        x.setExample("D");
 //        englishDAO.updateWord(x);
-        LoadData();
+           LoadData();
+ //       NormalizeType();
     }
+
+
+    public static void NormalizeType() throws SQLException {
+        var EnglishWords = englishDAO.getAllWords();
+        for(var x : EnglishWords){
+            englishDAO.changeType(x.getWord());
+        }
+    }
+
     public static void LoadData() throws SQLException{
-        String csvFile = "";
+        String csvFile = "/home/xuananle/Documents/Dictionary/src/main/java/Dictionary/final_db.csv";
         List<English> englishList = parseEnglish(csvFile);
         for (English english : englishList) {
             englishDAO.updateWord(english);
         }
     }
+
+    public static String ProccessString(String ColumnText){
+        try {
+            String trimmedText = ColumnText.substring(1, ColumnText.length() - 1);
+            String[] sentencesArray = trimmedText.split("', '");
+            String result = "";
+            for (int i = 0; i < sentencesArray.length; i++) {
+                result += sentencesArray[i].trim();
+            }
+            return result;
+        } catch (Exception e) {
+            return ColumnText;
+        }
+    }
+
+
     public static List<English> parseEnglish(String csvFile) {
         List<English> englishList = new ArrayList<>();
 
         try (Reader reader = new FileReader(csvFile);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT)) {
             for (CSVRecord csvRecord : csvParser) {
-                String word = csvRecord.get(0);
-                String pos = csvRecord.get(1);
-                String def = csvRecord.get(2);
-                String example = csvRecord.size() > 3 ? csvRecord.get(3) : "";
-                String synonyms = csvRecord.size() > 4 ? csvRecord.get(4) : "";
-                String antonyms = csvRecord.size() > 5 ? csvRecord.get(5) : "";
-
-                English english = new English();
-                english.setWord(word);
-                english.setType(pos);
-                english.setMeaning(def);
-                english.setExample(example);
-                english.setSynonym(synonyms);
-                english.setAntonyms(antonyms);
-
-                englishList.add(english);
+                try {
+                    String word = csvRecord.get(0);
+                    word = word.substring(0, 1).toUpperCase() + word.substring(1);
+                    String type = csvRecord.get(1);
+                    String Meaning = ProccessString(csvRecord.get(2));
+                    String Pronunciation = csvRecord.get(3);
+                    String Example = ProccessString(csvRecord.get(4));
+                    English english = new English();
+                    english.setWord(word);
+                    english.setType(type);
+                    english.setMeaning(Meaning);
+                    english.setPronunciation(Pronunciation);
+                    english.setExample(Example);
+                    englishList.add(english);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage() + " " + csvRecord.get(0));
+                }
             }
 
         } catch (IOException e) {
