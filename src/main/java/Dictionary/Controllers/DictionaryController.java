@@ -13,6 +13,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DictionaryController implements Initializable {
@@ -63,7 +64,7 @@ public class DictionaryController implements Initializable {
     @FXML
     private void showComponent(String path) {
         try {
-            AnchorPane component = FXMLLoader.load(getClass().getResource(path));
+            AnchorPane component = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
             setNode(component);
         } catch (IOException e) {
             e.printStackTrace();

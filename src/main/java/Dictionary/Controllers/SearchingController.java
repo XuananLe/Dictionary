@@ -145,6 +145,11 @@ public class SearchingController implements Initializable {
     }
 
     public void updateWord() {
+        if(searchBox.getText().isEmpty() || searchBox.getText().isBlank()
+        || currentWord.getWord().equals("") || currentWord.getWord().isBlank() || currentWord.getWord().isEmpty()
+        ){
+            return;
+        }
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Update Word Information");
         dialog.setHeaderText(null);
