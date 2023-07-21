@@ -308,20 +308,43 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
         if (!english.getType().isEmpty()) {
             definitionBuilder.append("Part of Speech: ").append(english.getType()).append("\n").append("\n");
         }
+        else {
+            definitionBuilder.append("Part of Speech: ").append("No part of speech found").append("\n").append("\n");
+        }
         if (!english.getMeaning().isEmpty()) {
             definitionBuilder.append("Definition: ").append(english.getMeaning()).append("\n").append("\n");
         }
+        else {
+            definitionBuilder.append("Definition: ").append("No definition found").append("\n").append("\n");
+        }
         if (!english.getSynonym().isEmpty()) {
             definitionBuilder.append("Synonym: ").append(english.getSynonym()).append("\n").append("\n");
+        }else {
+            definitionBuilder.append("Synonym: ").append("No synonym found").append("\n").append("\n");
         }
         if (!english.getAntonyms().isEmpty()) {
             definitionBuilder.append("Antonym: ").append(english.getAntonyms()).append("\n").append("\n");
+        }else {
+            definitionBuilder.append("Antonym: ").append("No antonym found").append("\n").append("\n");
         }
         if (!english.getExample().isEmpty()) {
             definitionBuilder.append("Example: ").append(english.getExample()).append("\n").append("\n");
+        } else {
+            definitionBuilder.append("Example: ").append("No example found").append("\n").append("\n");
         }
-
         return definitionBuilder.toString().trim();
+    }
+
+   public boolean sortedWord() throws SQLException {
+        var x = this.queryBuilder();
+        try {
+            x.orderBy("Word", true);
+        }
+        catch (Exception e){
+            System.err.println(e.getMessage() + " sortedWord");
+            return false;
+        }
+        return true;
     }
 
 }
