@@ -9,8 +9,11 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Executable;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class VoiceManager {
     public static String getVoice(String word) {
@@ -27,7 +30,7 @@ public class VoiceManager {
             int responseCode = conn.getResponseCode();
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 try (InputStream inputStream = conn.getInputStream();
-                        FileOutputStream outputStream = new FileOutputStream("a.wav")) {
+                     FileOutputStream outputStream = new FileOutputStream("a.wav")) {
                     byte[] buffer = new byte[4096];
                     int bytesRead;
                     while ((bytesRead = inputStream.read(buffer)) != -1) {
@@ -45,25 +48,28 @@ public class VoiceManager {
     }
 
     public static void playVoice(String word) {
-        downloadUrl(word);
-        String audioFilePath = "a.wav";
-        try {
-            FileInputStream fis = new FileInputStream(audioFilePath);
-            AdvancedPlayer player = new AdvancedPlayer(fis, FactoryRegistry.systemRegistry().createAudioDevice());
-            System.out.println("Playing audio...");
-            player.play();
-        } catch (IOException | JavaLayerException e) {
-            e.printStackTrace();
-        } finally {
-            // Delete the file after playing the audio
-            File fileToDelete = new File(audioFilePath);
-            if (fileToDelete.exists()) {
-                if (fileToDelete.delete()) {
-                    System.out.println("File deleted successfully.");
-                } else {
-                    System.err.println("Failed to delete file.");
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.submit(() -> {
+            downloadUrl(word);
+            String audioFilePath = "a.wav";
+            try {
+                FileInputStream fis = new FileInputStream(audioFilePath);
+                AdvancedPlayer player = new AdvancedPlayer(fis, FactoryRegistry.systemRegistry().createAudioDevice());
+                System.out.println("Playing audio...");
+                player.play();
+            } catch (IOException | JavaLayerException e) {
+                e.printStackTrace();
+            } finally {
+                // Delete the file after playing the audio
+                File fileToDelete = new File(audioFilePath);
+                if (fileToDelete.exists()) {
+                    if (fileToDelete.delete()) {
+                        System.out.println("File deleted successfully.");
+                    } else {
+                        System.err.println("Failed to delete file.");
+                    }
                 }
             }
-        }
+        } );
     }
 }
