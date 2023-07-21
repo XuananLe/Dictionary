@@ -40,6 +40,9 @@ public class SearchingController implements Initializable {
     public TextArea wordDefination = new TextArea();
 
     @FXML
+    public English currentWord = new English();
+
+    @FXML
     public void initialize(URL location, ResourceBundle resources) {
         searchResultsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -49,6 +52,7 @@ public class SearchingController implements Initializable {
                     try {
                         English english = englishDAO.getWord(selectedWord);
                         if (english != null) {
+                            currentWord = english;
                             wordDefination.setText(englishDAO.renderDefinition(english));
                         } else {
                             wordDefination.setText("Definition not found for: " + selectedWord);
@@ -86,6 +90,7 @@ public class SearchingController implements Initializable {
                 notAvailableAlert.setText("Rất tiếc từ điển không hỗ trợ từ này");
                 return;
             }
+            currentWord = list.get(0);
             wordDefination.setText(englishDAO.renderDefinition(list.get(0)));
             for (English english : list) {
                 System.out.println(english.getWord());
@@ -98,7 +103,7 @@ public class SearchingController implements Initializable {
     }
     @FXML
     public void speakWord() {
-        VoiceManager.playVoice(searchBox.getText());
+        VoiceManager.playVoice(currentWord.getWord());
     }
     @FXML
     public ListView<String> handleSearchListView(KeyEvent keyEvent) {

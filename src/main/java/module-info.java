@@ -11,6 +11,7 @@ module dictionary.Dictionary {
     requires gson;
     requires org.apache.commons.csv;
     requires java.scripting;
+    requires jlayer;
     exports Dictionary.Utils;
     exports Dictionary.Controllers;
     opens Dictionary.Controllers to javafx.fxml;

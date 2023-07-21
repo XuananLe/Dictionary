@@ -50,6 +50,7 @@ public class VoiceManager {
         try {
             FileInputStream fis = new FileInputStream(audioFilePath);
             AdvancedPlayer player = new AdvancedPlayer(fis, FactoryRegistry.systemRegistry().createAudioDevice());
+            System.out.println("Playing audio...");
             player.play();
         } catch (IOException | JavaLayerException e) {
             e.printStackTrace();
@@ -65,3 +66,4 @@ public class VoiceManager {
             }
         }
     }
+}
