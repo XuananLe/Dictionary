@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="636.0" prefWidth="962.0" styleClass="root" stylesheets="@../Utils/Images/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.DictionaryController">
    <children>
-      <Button fx:id="translateBtn" layoutX="854.0" layoutY="398.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="123.0" styleClass="menu-item" text="Translate">
+      <Button fx:id="translateBtn" layoutX="861.0" layoutY="398.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="123.0" styleClass="menu-item" text="Translate">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -16,7 +16,7 @@
          </tooltip>
       </Button>
       <AnchorPane fx:id="container" layoutX="14.0" layoutY="16.0" prefHeight="605.0" prefWidth="833.0" styleClass="container" />
-      <Button fx:id="searchBtn" layoutX="854.0" layoutY="190.0" mnemonicParsing="false" styleClass="menu-item" text="Search">
+      <Button fx:id="searchBtn" layoutX="882.0" layoutY="206.0" mnemonicParsing="false" styleClass="menu-item" text="Search">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -24,7 +24,7 @@
             <Tooltip fx:id="tooltip1" text="Search" />
          </tooltip>
       </Button>
-      <Button fx:id="addBtn" layoutX="854.0" layoutY="297.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="94.0" styleClass="menu-item" text="Add">
+      <Button fx:id="addBtn" layoutX="882.0" layoutY="297.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="81.0" styleClass="menu-item" text="Add">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -32,7 +32,7 @@
             <Tooltip fx:id="tooltip2" text="Add" />
          </tooltip>
       </Button>
-      <Button fx:id="exitBtn" layoutX="854.0" layoutY="550.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="123.0" styleClass="menu-item" text="Exit">
+      <Button fx:id="exitBtn" layoutX="878.0" layoutY="535.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="90.0" styleClass="menu-item" text="Exit">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
