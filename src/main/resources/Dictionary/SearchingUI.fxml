@@ -22,7 +22,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="wordDefination" layoutX="331.0" layoutY="174.0" prefHeight="429.0" prefWidth="442.0" />
+            <TextArea fx:id="wordDefination" layoutX="331.0" layoutY="174.0" prefHeight="429.0" prefWidth="442.0" wrapText="true"  editable="false"/>
          </children>
       </Pane>
       <AnchorPane layoutY="176.0" prefHeight="429.0" prefWidth="275.0">

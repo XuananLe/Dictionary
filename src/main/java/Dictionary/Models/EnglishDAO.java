@@ -297,4 +297,31 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
     public List<English> getAllWords() throws SQLException {
         return this.queryForAll();
     }
+
+    public String renderDefinition(English english) {
+        if (english == null) {
+            return "";
+        }
+
+        StringBuilder definitionBuilder = new StringBuilder();
+
+        if (!english.getType().isEmpty()) {
+            definitionBuilder.append("Part of Speech: ").append(english.getType()).append("\n").append("\n");
+        }
+        if (!english.getMeaning().isEmpty()) {
+            definitionBuilder.append("Definition: ").append(english.getMeaning()).append("\n").append("\n");
+        }
+        if (!english.getSynonym().isEmpty()) {
+            definitionBuilder.append("Synonym: ").append(english.getSynonym()).append("\n").append("\n");
+        }
+        if (!english.getAntonyms().isEmpty()) {
+            definitionBuilder.append("Antonym: ").append(english.getAntonyms()).append("\n").append("\n");
+        }
+        if (!english.getExample().isEmpty()) {
+            definitionBuilder.append("Example: ").append(english.getExample()).append("\n").append("\n");
+        }
+
+        return definitionBuilder.toString().trim();
+    }
+
 }
