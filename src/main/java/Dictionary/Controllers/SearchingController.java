@@ -19,6 +19,7 @@ import java.net.URL;
 import java.security.PublicKey;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static Dictionary.DatabaseConfig.englishDAO;
@@ -149,16 +150,41 @@ public class SearchingController implements Initializable {
         dialog.setHeaderText(null);
 
         Label nameLabel = new Label("Word:");
-        TextField nameField = new TextField();
+        TextField nameField = new TextField(currentWord.getWord());
 
         Label definitionLabel = new Label("Definition:");
-        TextField definitionField = new TextField();
+        TextField definitionField = new TextField(currentWord.getMeaning());
+
+        Label typeLabel = new Label("Part of speech:");
+        TextField typeField = new TextField(currentWord.getType());
+
+        Label pronunciationLabel = new Label("Pronunciation:");
+        TextField pronunciationField = new TextField(currentWord.getPronunciation());
+
+        Label exampleLabel = new Label("Example:");
+        TextField exampleField = new TextField(currentWord.getExample());
+
+        Label synonymLabel = new Label("Synonym:");
+        TextField synonymField = new TextField(currentWord.getSynonym());
+
+        Label antonymLabel = new Label("Antonym:");
+        TextField antonymField = new TextField(currentWord.getAntonyms());
 
         GridPane gridPane = new GridPane();
         gridPane.add(nameLabel, 1, 1);
         gridPane.add(nameField, 2, 1);
         gridPane.add(definitionLabel, 1, 2);
         gridPane.add(definitionField, 2, 2);
+        gridPane.add(typeLabel, 1, 3);
+        gridPane.add(typeField, 2, 3);
+        gridPane.add(pronunciationLabel, 1, 4);
+        gridPane.add(pronunciationField, 2, 4);
+        gridPane.add(exampleLabel, 1, 5);
+        gridPane.add(exampleField, 2, 5);
+        gridPane.add(synonymLabel, 1, 6);
+        gridPane.add(synonymField, 2, 6);
+        gridPane.add(antonymLabel, 1, 7);
+        gridPane.add(antonymField, 2, 7);
 
         dialog.getDialogPane().setContent(gridPane);
 
@@ -166,20 +192,31 @@ public class SearchingController implements Initializable {
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         dialog.getDialogPane().getButtonTypes().addAll(okButton, cancelButton);
 
-        dialog.showAndWait().ifPresent(result -> {
-            if (result.equals(okButton)) {
-                String word = nameField.getText();
-                String definition = definitionField.getText();
-
-                System.out.println("Word: " + word);
-                System.out.println("Definition: " + definition);
-
+        var result = dialog.showAndWait();
+        if (result.isPresent()) {
+            String word = nameField.getText();
+            String definition = definitionField.getText();
+            String type = typeField.getText();
+            String pronunciation = pronunciationField.getText();
+            String example = exampleField.getText();
+            String synonym = synonymField.getText();
+            String antonym = antonymField.getText();
+            English english = new English(word, definition, pronunciation, type, example, synonym, antonym);
+            try {
+                englishDAO.updateWord(english);
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Update Successful");
                 successAlert.setHeaderText(null);
                 successAlert.setContentText("Word information updated successfully!");
                 successAlert.showAndWait();
+                currentWord = english;
+                wordDefination.setText(englishDAO.renderDefinition(currentWord));
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Update Failed");
+                errorAlert.setHeaderText(null);
             }
-        });
+        }
     }
 }
