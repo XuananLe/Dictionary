@@ -24,7 +24,7 @@
                </children>
             </Pane>
             <ImageView fitHeight="106.0" fitWidth="145.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="notAvailableAlert" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="327.0">
+            <Label fx:id="notAvailableAlert" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="327.0" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -77,12 +77,12 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="448.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="60.0" text="Button" />
-                              <Button layoutX="346.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="60.0" text="Button" />
-                              <Button layoutX="231.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="60.0" text="Button" />
+                              <Button layoutX="448.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="60.0" text="Listen " wrapText="true" />
+                              <Button layoutX="346.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="60.0" text="Button 1" wrapText="true"/>
+                              <Button layoutX="231.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="60.0" text="Button 2" wrapText="true"/>
                            </children>
                         </Pane>
-                        <TextArea fx:id="wordDefination" layoutX="4.0" layoutY="62.0" prefHeight="318.0" prefWidth="506.0" />
+                        <TextArea fx:id="wordDefination" layoutX="4.0" layoutY="62.0" prefHeight="318.0" prefWidth="506.0" wrapText="true" />
                      </children>
                   </Pane>
                </children>

@@ -31,15 +31,11 @@ public class SearchingController implements Initializable {
     @FXML
     public TextField searchBox;
     @FXML
-<<<<<<< HEAD
     public ObservableList<String> observableWord = FXCollections.observableArrayList();
     @FXML
     public Label notAvailableAlert = new Label("");
 
-    @FXML
-=======
->>>>>>> e6943f066d86ed612710c9e29b3e62426e0a79cf
-    public Label countRes = new Label("0 kết quả liên quan ");
+    @FXML public Label countRes = new Label("0 kết quả liên quan ");
     @FXML
     public TextArea wordDefination = new TextArea();
 
@@ -100,7 +96,10 @@ public class SearchingController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    @FXML
+    public void speakWord() {
+        VoiceManager.playVoice(searchBox.getText());
+    }
     @FXML
     public ListView<String> handleSearchListView(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
@@ -120,10 +119,5 @@ public class SearchingController implements Initializable {
             return searchResultsListView;
         }
         return searchResultsListView;
-    }
-
-    @FXML
-    public void speakWord(ActionEvent actionEvent) {
-        VoiceManager.playVoice("Hello");
     }
 }
