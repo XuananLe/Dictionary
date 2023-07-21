@@ -76,7 +76,7 @@ public class DatabaseConfig {
 //        x.setExample("D");
 //        englishDAO.updateWord(x);
 //           LoadData();
- //       NormalizeType();
+            NormalizeType();
     }
 
 

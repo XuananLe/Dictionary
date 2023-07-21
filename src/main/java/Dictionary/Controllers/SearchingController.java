@@ -1,6 +1,7 @@
 package Dictionary.Controllers;
 
 import Dictionary.Models.English;
+import Dictionary.Utils.VoiceManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -88,21 +89,7 @@ public class SearchingController{
         return searchResultsListView;
     }
     @FXML
-    public void performSearch(ActionEvent actionEvent) {
-//        String searchTerm = searchBox.getText();
-//        try {
-//            ObservableList<English> searchResults = FXCollections.observableArrayList();
-//            for (English english : englishDAO.queryForAll()) {
-//                if (english.getWord().toLowerCase().contains(searchTerm.toLowerCase())) {
-//                    searchResults.add(english);
-//                }
-//            }
-//
-//            // Do something with the search results
-//            // For example, display the results in a ListView or TableView
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            // Handle any exceptions that occur during the database query
-//        }
+    public void speakWord(String word) {
+        VoiceManager.playVoice("Hello world");
     }
 }
