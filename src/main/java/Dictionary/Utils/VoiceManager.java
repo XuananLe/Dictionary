@@ -22,6 +22,7 @@ public class VoiceManager {
 
     public static void downloadUrl(String word) {
         try {
+            word = word.replaceAll(" ", "%20");
             String audioUrl = getVoice(word);
             URL url = new URL(audioUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
