@@ -50,25 +50,29 @@ public class VoiceManager {
     public static void playVoice(String word) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(() -> {
-            downloadUrl(word);
-            String audioFilePath = "a.wav";
             try {
-                FileInputStream fis = new FileInputStream(audioFilePath);
-                AdvancedPlayer player = new AdvancedPlayer(fis, FactoryRegistry.systemRegistry().createAudioDevice());
-                System.out.println("Playing audio...");
-                player.play();
-            } catch (IOException | JavaLayerException e) {
-                e.printStackTrace();
-            } finally {
-                // Delete the file after playing the audio
-                File fileToDelete = new File(audioFilePath);
-                if (fileToDelete.exists()) {
-                    if (fileToDelete.delete()) {
-                        System.out.println("File deleted successfully.");
-                    } else {
-                        System.err.println("Failed to delete file.");
+                downloadUrl(word);
+                String audioFilePath = "a.wav";
+                try {
+                    FileInputStream fis = new FileInputStream(audioFilePath);
+                    AdvancedPlayer player = new AdvancedPlayer(fis, FactoryRegistry.systemRegistry().createAudioDevice());
+                    System.out.println("Playing audio...");
+                    player.play();
+                } catch (IOException | JavaLayerException e) {
+                    e.printStackTrace();
+                } finally {
+                    // Delete the file after playing the audio
+                    File fileToDelete = new File(audioFilePath);
+                    if (fileToDelete.exists()) {
+                        if (fileToDelete.delete()) {
+                            System.out.println("File deleted successfully.");
+                        } else {
+                            System.err.println("Failed to delete file.");
+                        }
                     }
                 }
+            }catch (Exception e) {
+                return;
             }
         } );
     }

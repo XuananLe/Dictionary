@@ -77,9 +77,9 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="448.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="60.0" text="Listen " wrapText="true" onAction="#speakWord"/>
-                              <Button layoutX="346.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="60.0" text="Button 1" wrapText="true"/>
-                              <Button layoutX="231.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="60.0" text="Button 2" wrapText="true"/>
+                              <Button layoutX="448.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="73.0" text="Phonetic" wrapText="true" onAction="#speakWord"/>
+                              <Button layoutX="346.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="70.0" text="Delete Word" wrapText="true" onAction="#deleteWord"/>
+                              <Button layoutX="231.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="70.0" text="Update Word" wrapText="true" onAction="#updateWord"/>
                            </children>
                         </Pane>
                         <TextArea fx:id="wordDefination" layoutX="4.0" layoutY="62.0" prefHeight="318.0" prefWidth="506.0" wrapText="true" />

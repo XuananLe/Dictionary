@@ -37,7 +37,7 @@ public class AdditionController {
     private TextField An; // antonym
 
     @FXML
-    protected void HandleClickBtn(ActionEvent event) throws SQLException {
+    protected void HandleClickBtn() throws SQLException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         String word = Nw.getText();
         String ex = Ex.getText();

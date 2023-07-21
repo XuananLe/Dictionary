@@ -8,13 +8,11 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
 import javax.swing.*;
 import java.net.URL;
@@ -35,7 +33,8 @@ public class SearchingController implements Initializable {
     @FXML
     public Label notAvailableAlert = new Label("");
 
-    @FXML public Label countRes = new Label("0 kết quả liên quan ");
+    @FXML
+    public Label countRes = new Label("0 kết quả liên quan ");
     @FXML
     public TextArea wordDefination = new TextArea();
 
@@ -101,10 +100,12 @@ public class SearchingController implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     public void speakWord() {
         VoiceManager.playVoice(currentWord.getWord());
     }
+
     @FXML
     public ListView<String> handleSearchListView(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
@@ -124,5 +125,61 @@ public class SearchingController implements Initializable {
             return searchResultsListView;
         }
         return searchResultsListView;
+    }
+
+    public void deleteWord(ActionEvent actionEvent) throws SQLException {
+        if (currentWord.getWord().equals("")) {
+            return;
+        }
+        if (englishDAO.deleteWord(currentWord.getWord())) {
+            JOptionPane.showMessageDialog(null, "Xóa thành công"); // Thay vào đây 1 cái alert @Quân Nguyễn ơi
+            searchBox.setText("");
+            wordDefination.setText("");
+            searchResultsListView.getItems().remove(currentWord.getWord());
+            countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
+            notAvailableAlert.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "Xóa thất bại");
+        }
+    }
+
+    public void updateWord() {
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setTitle("Update Word Information");
+        dialog.setHeaderText(null);
+
+        Label nameLabel = new Label("Word:");
+        TextField nameField = new TextField();
+
+        Label definitionLabel = new Label("Definition:");
+        TextField definitionField = new TextField();
+
+        GridPane gridPane = new GridPane();
+        gridPane.add(nameLabel, 1, 1);
+        gridPane.add(nameField, 2, 1);
+        gridPane.add(definitionLabel, 1, 2);
+        gridPane.add(definitionField, 2, 2);
+
+        dialog.getDialogPane().setContent(gridPane);
+
+        ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(okButton, cancelButton);
+
+        dialog.showAndWait().ifPresent(result -> {
+            if (result.equals(okButton)) {
+                String word = nameField.getText();
+                String definition = definitionField.getText();
+
+                System.out.println("Word: " + word);
+                System.out.println("Definition: " + definition);
+
+                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                successAlert.setTitle("Update Successful");
+                successAlert.setHeaderText(null);
+                successAlert.setContentText("Word information updated successfully!");
+                successAlert.showAndWait();
+            }
+        });
     }
 }
