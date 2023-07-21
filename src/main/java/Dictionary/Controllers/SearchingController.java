@@ -5,6 +5,7 @@ import Dictionary.Utils.VoiceManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
 
 import javax.swing.*;
 import java.net.URL;
@@ -23,23 +25,42 @@ import java.util.ResourceBundle;
 
 import static Dictionary.DatabaseConfig.englishDAO;
 
-public class SearchingController{
+public class SearchingController implements Initializable {
     @FXML
     public ListView<String> searchResultsListView;
     @FXML
     public TextField searchBox;
     @FXML
-    public ObservableList<String> observableWord = FXCollections.observableArrayList();
-
-
-    @FXML
     public Label countRes = new Label("0 kết quả liên quan ");
     public TextArea wordDefination = new TextArea();
 
     @FXML
+    public void initialize(URL location, ResourceBundle resources) {
+        searchResultsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                String selectedWord = searchResultsListView.getSelectionModel().getSelectedItem();
+                if (selectedWord != null) {
+                    try {
+                        English english = englishDAO.getWord(selectedWord);
+                        if (english != null) {
+                            wordDefination.setText(englishDAO.renderDefinition(english));
+                        } else {
+                            wordDefination.setText("Definition not found for: " + selectedWord);
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        wordDefination.setText("Error fetching definition.");
+                    }
+                }
+            }
+        });
+    }
+
+    @FXML
     public void handleSearch(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
-        if(searchTerm.isEmpty() || searchTerm.isBlank()){
+        if (searchTerm.isEmpty() || searchTerm.isBlank()) {
             wordDefination.setText("");
             searchResultsListView.getItems().clear();
             countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
@@ -52,7 +73,7 @@ public class SearchingController{
             searchTerm = searchTerm.strip();
             searchTerm = searchTerm.trim();
             List<English> list = englishDAO.containWord(searchTerm);
-            if(list.size() == 0){
+            if (list.size() == 0) {
                 searchResultsListView.getItems().clear();
                 countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
                 wordDefination.setText("");
@@ -60,18 +81,19 @@ public class SearchingController{
             }
             wordDefination.setText(englishDAO.renderDefinition(list.get(0)));
             for (English english : list) {
-                    System.out.println(english.getWord());
-                    searchResultsListView.getItems().add(english.getWord());
+                System.out.println(english.getWord());
+                searchResultsListView.getItems().add(english.getWord());
             }
             countRes.setText(String.valueOf(searchResultsListView.getItems().size()) + " Kết quả liên quan");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
     public ListView<String> handleSearchListView(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
-        if(searchTerm.isEmpty() || searchTerm.isBlank()){
+        if (searchTerm.isEmpty() || searchTerm.isBlank()) {
             return null;
         }
         ListView<String> searchResultsListView = new ListView<>();
@@ -88,8 +110,9 @@ public class SearchingController{
         }
         return searchResultsListView;
     }
+
     @FXML
-    public void speakWord(String word) {
-        VoiceManager.playVoice("Hello world");
+    public void speakWord(ActionEvent actionEvent) {
+        VoiceManager.playVoice("Hello");
     }
 }
