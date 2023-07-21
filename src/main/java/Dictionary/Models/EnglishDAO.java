@@ -317,6 +317,14 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
         else {
             definitionBuilder.append("Definition: ").append("No definition found").append("\n").append("\n");
         }
+
+        if(!english.getPronunciation().isEmpty()){
+            definitionBuilder.append("Pronunciation: ").append(english.getPronunciation()).append("\n").append("\n");
+        }
+        else {
+            definitionBuilder.append("Pronunciation: ").append("No pronunciation found").append("\n").append("\n");
+        }
+
         if (!english.getSynonym().isEmpty()) {
             definitionBuilder.append("Synonym: ").append(english.getSynonym()).append("\n").append("\n");
         }else {
