@@ -16,9 +16,6 @@ public class VoiceManager {
     public static void playVoice(String word) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.submit(() -> {
-            for (long i = 0; i < Long.MAX_VALUE; i++) {
-
-            }
             try {
                 String audioUrl = getVoice(word);
                 String command = "curl \"" + audioUrl + "\" > a.wav; mpg123 a.wav";
