@@ -30,10 +30,12 @@ public class SearchingController{
     public TextField searchBox;
     @FXML
     public ObservableList<String> observableWord = FXCollections.observableArrayList();
-
+    @FXML
+    public Label notAvailableAlert = new Label("");
 
     @FXML
     public Label countRes = new Label("0 kết quả liên quan ");
+    @FXML
     public TextArea wordDefination = new TextArea();
 
     @FXML
@@ -43,6 +45,7 @@ public class SearchingController{
             wordDefination.setText("");
             searchResultsListView.getItems().clear();
             countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
+            notAvailableAlert.setText("");
             return;
         }
         try {
@@ -56,6 +59,7 @@ public class SearchingController{
                 searchResultsListView.getItems().clear();
                 countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
                 wordDefination.setText("");
+                notAvailableAlert.setText("Rất tiếc từ điển không hỗ trợ từ này");
                 return;
             }
             wordDefination.setText(englishDAO.renderDefinition(list.get(0)));

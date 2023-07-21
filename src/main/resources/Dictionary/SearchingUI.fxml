@@ -24,7 +24,7 @@
                </children>
             </Pane>
             <ImageView fitHeight="106.0" fitWidth="145.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="327.0" text="Rất tiếc từ điển không cung cấp từ này">
+            <Label fx:id="notAvailableAlert" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="327.0">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -47,7 +47,7 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="54.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="54.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
                         </Label>
                      </children>
