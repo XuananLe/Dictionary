@@ -1,25 +1,21 @@
 package Dictionary.Controllers;
 
 import Dictionary.Models.English;
+import Dictionary.Utils.StringUtils;
 import Dictionary.Utils.VoiceManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import javax.swing.*;
 import java.net.URL;
-import java.security.PublicKey;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static Dictionary.DatabaseConfig.englishDAO;
@@ -32,7 +28,7 @@ public class SearchingController implements Initializable {
     @FXML
     public ObservableList<String> observableWord = FXCollections.observableArrayList();
     @FXML
-    public Label notAvailableAlert = new Label("");
+    public Label notAvailableLabel = new Label("");
 
     @FXML
     public Label countRes = new Label("0 kết quả liên quan ");
@@ -44,23 +40,20 @@ public class SearchingController implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
-        searchResultsListView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                String selectedWord = searchResultsListView.getSelectionModel().getSelectedItem();
-                if (selectedWord != null) {
-                    try {
-                        English english = englishDAO.getWord(selectedWord);
-                        if (english != null) {
-                            currentWord = english;
-                            wordDefination.setText(englishDAO.renderDefinition(english));
-                        } else {
-                            wordDefination.setText("Definition not found for: " + selectedWord);
-                        }
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                        wordDefination.setText("Error fetching definition.");
+        searchResultsListView.setOnMouseClicked(event -> {
+            String selectedWord = searchResultsListView.getSelectionModel().getSelectedItem();
+            if (selectedWord != null) {
+                try {
+                    English english = englishDAO.getWord(selectedWord);
+                    if (english != null) {
+                        currentWord = english;
+                        wordDefination.setText(englishDAO.renderDefinition(english));
+                    } else {
+                        wordDefination.setText("Definition not found for: " + selectedWord);
                     }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    wordDefination.setText("Error fetching definition.");
                 }
             }
         });
@@ -70,35 +63,30 @@ public class SearchingController implements Initializable {
     public void handleSearch(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
         if (searchTerm.isEmpty() || searchTerm.isBlank()) {
-            wordDefination.setText("");
-            searchResultsListView.getItems().clear();
-            countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
-            notAvailableAlert.setText("");
+            clearSearchResultsView();
+            countRes.setText("");
+            notAvailableLabel.setText("");
             return;
         }
         try {
             searchResultsListView.getItems().clear();
-            searchTerm = searchTerm.toLowerCase();
-            searchTerm = searchTerm.substring(0, 1).toUpperCase() + searchTerm.substring(1);
-            searchTerm = searchTerm.strip();
-            searchTerm = searchTerm.trim();
+            searchTerm = StringUtils.normalizeString(searchTerm);
             List<English> list = englishDAO.containWord(searchTerm);
-            if (list.size() == 0) {
-                searchResultsListView.getItems().clear();
-                countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
-                wordDefination.setText("");
-                notAvailableAlert.setText("Rất tiếc từ điển không hỗ trợ từ này" + currentWord);
+            if (list.isEmpty()) {
+               clearSearchResultsView();
+                notAvailableLabel.setText("Rất tiếc từ điển không hỗ trợ từ này " + searchTerm);
                 return;
             }
             currentWord = list.get(0);
-            wordDefination.setText(englishDAO.renderDefinition(list.get(0)));
+            wordDefination.setText(englishDAO.renderDefinition(currentWord));
             for (English english : list) {
                 System.out.println(english.getWord());
                 searchResultsListView.getItems().add(english.getWord());
             }
-            countRes.setText(String.valueOf(searchResultsListView.getItems().size()) + " Kết quả liên quan");
+            countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
         } catch (SQLException e) {
             e.printStackTrace();
+            wordDefination.setText("Error fetching definition.");
         }
     }
 
@@ -107,26 +95,6 @@ public class SearchingController implements Initializable {
         VoiceManager.playVoice(currentWord.getWord());
     }
 
-    @FXML
-    public ListView<String> handleSearchListView(KeyEvent keyEvent) {
-        String searchTerm = searchBox.getText();
-        if (searchTerm.isEmpty() || searchTerm.isBlank()) {
-            return null;
-        }
-        ListView<String> searchResultsListView = new ListView<>();
-        try {
-            searchTerm = searchTerm.toLowerCase();
-            searchTerm = searchTerm.substring(0, 1).toUpperCase() + searchTerm.substring(1);
-            for (English english : englishDAO.containWord(searchTerm)) {
-                searchResultsListView.getItems().add(english.getWord());
-                System.out.println(english.getWord());
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return searchResultsListView;
-        }
-        return searchResultsListView;
-    }
 
     public void deleteWord(ActionEvent actionEvent) throws SQLException {
         if (currentWord.getWord().equals("")) {
@@ -135,19 +103,18 @@ public class SearchingController implements Initializable {
         if (englishDAO.deleteWord(currentWord.getWord())) {
             JOptionPane.showMessageDialog(null, "Xóa thành công"); // Thay vào đây 1 cái alert @Quân Nguyễn ơi
             searchBox.setText("");
-            wordDefination.setText("");
             searchResultsListView.getItems().remove(currentWord.getWord());
             countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
-            notAvailableAlert.setText("");
+            notAvailableLabel.setText("");
         } else {
             JOptionPane.showMessageDialog(null, "Xóa thất bại");
         }
     }
 
     public void updateWord() {
-        if(searchBox.getText().isEmpty() || searchBox.getText().isBlank()
-        || currentWord.getWord().equals("") || currentWord.getWord().isBlank() || currentWord.getWord().isEmpty()
-        ){
+        if (searchBox.getText().isEmpty() || searchBox.getText().isBlank()
+                || currentWord.getWord().equals("") || currentWord.getWord().isBlank() || currentWord.getWord().isEmpty()
+        ) {
             return;
         }
         Dialog<String> dialog = new Dialog<>();
@@ -198,7 +165,7 @@ public class SearchingController implements Initializable {
         dialog.getDialogPane().getButtonTypes().addAll(okButton, cancelButton);
 
         var result = dialog.showAndWait();
-        if (result.isPresent()) {
+            if (result.isPresent()) {
             String word = nameField.getText();
             String definition = definitionField.getText();
             String type = typeField.getText();
@@ -224,4 +191,11 @@ public class SearchingController implements Initializable {
             }
         }
     }
+
+    public void clearSearchResultsView() {
+        searchResultsListView.getItems().clear();
+        countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
+        wordDefination.setText("");
+    }
+
 }

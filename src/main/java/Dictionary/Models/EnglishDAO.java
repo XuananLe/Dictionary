@@ -144,27 +144,12 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
         try {
             English english = this.queryBuilder().where().eq("Word", x.getWord()).queryForFirst();
             if (english != null && !english.getWord().isEmpty()) {
-                if (english.getMeaning().isEmpty()) {
-                    english.setMeaning(x.getMeaning());
-                } else if (!x.getMeaning().isEmpty() && !english.getMeaning().contains(x.getMeaning()) && !Objects.equals(x.getMeaning().trim().strip(), english.getMeaning())) {
-                    english.setMeaning(english.getMeaning() + "\n" + x.getMeaning());
-                }
+                english.setMeaning(x.getMeaning());
                 english.setType(x.getType());
                 english.setPronunciation(x.getPronunciation());
-                if (english.getAntonyms().isEmpty()) {
-                    english.setAntonyms(x.getAntonyms());
-                } else if (!x.getAntonyms().isEmpty() && !english.getAntonyms().contains(x.getAntonyms()) && !Objects.equals(x.getAntonyms(), english.getAntonyms()))
-                    english.setAntonyms(english.getAntonyms() + "\n" + x.getAntonyms());
-
-                if (english.getSynonym().isEmpty()) {
-                    english.setSynonym(x.getSynonym());
-                } else if (!x.getAntonyms().isEmpty() && !english.getSynonym().contains(x.getSynonym()) && !Objects.equals(x.getSynonym(), english.getSynonym()))
-                    english.setSynonym(english.getSynonym() + "\n" + x.getSynonym());
-
-                if (english.getExample().isEmpty()) {
-                    english.setExample(x.getExample());
-                } else if (!x.getExample().isEmpty() && !english.getExample().contains(x.getExample()) && !Objects.equals(x.getExample(), english.getExample()))
-                    english.setExample(english.getExample() + "\n" + x.getExample());
+                english.setAntonyms(x.getAntonyms());
+                english.setSynonym(x.getSynonym());
+                english.setExample(x.getExample());
                 this.update(english);
             } else {
                 this.create(x);
@@ -178,18 +163,12 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
 
     public boolean ifExist(String x) throws SQLException {
         English english = this.queryBuilder().where().eq("Word", x).queryForFirst();
-        if (english == null) {
-            return true;
-        }
-        return false;
+        return english == null;
     }
 
     public boolean ifExist(English english) throws SQLException {
         English english1 = this.queryBuilder().where().eq("Word", english.getWord()).queryForFirst();
-        if (english1 == null) {
-            return true;
-        }
-        return false;
+        return english1 == null;
     }
 
     public boolean deleteWord(String word) throws SQLException {

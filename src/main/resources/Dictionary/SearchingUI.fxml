@@ -24,7 +24,7 @@
                </children>
             </Pane>
             <ImageView fitHeight="106.0" fitWidth="145.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="notAvailableAlert" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="327.0" textAlignment="CENTER">
+            <Label fx:id="notAvailableLabel" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="327.0" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
