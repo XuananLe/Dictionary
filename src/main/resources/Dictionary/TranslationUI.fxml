@@ -48,7 +48,7 @@
             <Pane layoutX="117.0" layoutY="86.0" prefHeight="337.0" prefWidth="599.0">
                <children>
                   <TextArea layoutX="16.0" layoutY="84.0" prefHeight="200.0" prefWidth="284.0" />
-                  <TextArea layoutX="300.0" layoutY="84.0" prefHeight="200.0" prefWidth="284.0" />
+                  <TextArea layoutX="300.0" layoutY="84.0" prefHeight="200.0" prefWidth="284.0" editable="false" />
                   <Pane prefHeight="84.0" prefWidth="599.0">
                      <children>
                         <Label layoutX="358.0" layoutY="26.0" prefHeight="40.0" prefWidth="182.0" text="Vietnamese">

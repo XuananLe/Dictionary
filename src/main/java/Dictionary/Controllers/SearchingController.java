@@ -87,7 +87,7 @@ public class SearchingController implements Initializable {
                 searchResultsListView.getItems().clear();
                 countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
                 wordDefination.setText("");
-                notAvailableAlert.setText("Rất tiếc từ điển không hỗ trợ từ này");
+                notAvailableAlert.setText("Rất tiếc từ điển không hỗ trợ từ này" + currentWord);
                 return;
             }
             currentWord = list.get(0);
