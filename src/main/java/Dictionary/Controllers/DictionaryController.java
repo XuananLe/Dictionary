@@ -36,7 +36,7 @@ public class DictionaryController implements Initializable {
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("/Dictionary/Translation.fxml");
+                showComponent("/Dictionary/TranslationUI.fxml");
             }
         });
 
