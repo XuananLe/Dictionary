@@ -284,6 +284,10 @@ public class EnglishDAO extends BaseDaoImpl<English, Long> {
 
         StringBuilder definitionBuilder = new StringBuilder();
 
+        if(!english.getWord().isEmpty()){
+            definitionBuilder.append("Word: ").append(english.getWord()).append("\n").append("\n");
+        }
+
         if (!english.getType().isEmpty()) {
             definitionBuilder.append("Part of Speech: ").append(english.getType()).append("\n").append("\n");
         }

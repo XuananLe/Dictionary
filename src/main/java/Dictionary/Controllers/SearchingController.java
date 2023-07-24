@@ -31,7 +31,7 @@ public class SearchingController implements Initializable {
     public Label notAvailableLabel = new Label("");
 
     @FXML
-    public Label countRes = new Label("0 kết quả liên quan ");
+    public Label countRes = new Label("");
     @FXML
     public TextArea wordDefination = new TextArea();
 
@@ -63,9 +63,10 @@ public class SearchingController implements Initializable {
     public void handleSearch(KeyEvent keyEvent) {
         String searchTerm = searchBox.getText();
         if (searchTerm.isEmpty() || searchTerm.isBlank()) {
-            clearSearchResultsView();
             countRes.setText("");
+            searchResultsListView.getItems().clear();
             notAvailableLabel.setText("");
+            wordDefination.setText("");
             return;
         }
         try {
