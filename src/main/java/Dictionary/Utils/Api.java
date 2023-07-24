@@ -4,9 +4,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Api {
     public static String translateWord(String textToTranslate, String sourceLanguage, String targetLanguage) {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.submit(() -> {
         try {
             String encodedText = URLEncoder.encode(textToTranslate, "UTF-8");
 
@@ -27,7 +31,9 @@ public class Api {
             return parseTranslationResponse(response.toString());
         } catch (Exception e) {
             e.printStackTrace();
+            return "";
         }
+        });
         return "";
     }
 
@@ -35,6 +41,6 @@ public class Api {
         return response.substring(4, response.indexOf("\"", 4));
     }
     public static void main(String[] args) {
-        System.out.println(translateWord("hello", "en", "vi"));
+        System.out.println(translateWord("hello i love you very much ", "en", "vi"));
     }
 }
