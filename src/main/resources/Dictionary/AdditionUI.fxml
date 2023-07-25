@@ -47,13 +47,13 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="Nw" layoutX="179.0" layoutY="12.0" prefHeight="40.0" prefWidth="208.0" promptText="New Word" />
+            <TextArea fx:id="Nw" layoutX="179.0" layoutY="12.0" wrapText="true"  prefHeight="40.0" prefWidth="208.0" promptText="New Word" onKeyReleased="#handleAdd"/>
             <Label layoutX="33.0" layoutY="131.0" prefHeight="40.0" prefWidth="143.0" text="Synonym" textFill="#da4ed3">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="Ex" layoutX="29.0" layoutY="242.0" prefHeight="146.0" prefWidth="358.0" promptText="Examples" />
+            <TextArea fx:id="Ex" layoutX="29.0" layoutY="242.0" wrapText="true" prefHeight="146.0" prefWidth="358.0" promptText="Examples" />
             <Button fx:id="addBtn" layoutX="36.0" layoutY="412.0" mnemonicParsing="true" onAction="#HandleClickBtn" prefHeight="40.0" prefWidth="92.0" text="Thêm" textFill="#da4ed3">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -69,21 +69,21 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="Pos" layoutX="179.0" layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Part of speech" />
+            <TextArea fx:id="Pos" layoutX="179.0" wrapText="true"  layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Part of speech" />
             <Label layoutX="424.0" layoutY="12.0" prefHeight="40.0" prefWidth="143.0" text="Meaning">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="Mn" layoutX="568.0" layoutY="12.0" prefHeight="40.0" prefWidth="208.0" promptText="Meaning" />
+            <TextArea fx:id="Mn" layoutX="568.0" wrapText="true" layoutY="12.0" prefHeight="40.0" prefWidth="208.0" promptText="Meaning" />
             <Label layoutX="425.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" text="Pronunciation">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="Pro" layoutX="568.0" layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Pronunciation" />
-            <TextField fx:id="Sy" layoutX="179.0" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Synonym" />
-            <Label layoutX="33.0" layoutY="189.0" prefHeight="40.0" prefWidth="168.0" text="Example">
+            <TextArea fx:id="Pro" layoutX="568.0" wrapText="true" layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Pronunciation" />
+            <TextArea fx:id="Sy" layoutX="179.0" wrapText="true" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Synonym" />
+            <Label layoutX="33.0" layoutY="189.0"  prefHeight="40.0" prefWidth="168.0" text="Example">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
@@ -93,7 +93,7 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="An" layoutX="568.0" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Antonym" />
+            <TextArea fx:id="An" layoutX="568.0" wrapText="true" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Antonym" />
          </children>
       </AnchorPane>
    </children>

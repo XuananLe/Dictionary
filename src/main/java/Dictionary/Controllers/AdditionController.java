@@ -2,11 +2,13 @@ package Dictionary.Controllers;
 
 import Dictionary.Alerts.Alerts;
 import Dictionary.Models.English;
+import Dictionary.Utils.StringUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 import java.sql.SQLException;
 
@@ -22,19 +24,45 @@ public class AdditionController {
     private Button addBtn;
 
     @FXML
-    private TextField Nw; // new word
+    private TextArea Nw; // new word
 
     @FXML
-    private TextField Pos; // part of speech
+    private TextArea Pos; // part of speech
     @FXML
-    private TextField Mn; // meaning
+    private TextArea Mn; // meaning
     @FXML
-    private TextField Pro; // pronunciation
+    private TextArea Pro; // pronunciation
     @FXML
-    private TextField Sy; // synonym
+    private TextArea Sy; // synonym
     @FXML
-    private TextField An; // antonym
+    private TextArea An; // antonym
 
+    public void handleAdd() throws SQLException {
+        String word = Nw.getText();
+        if(word.isEmpty() || word.isBlank()){
+            Ex.setText("");
+            Pos.setText("");
+            Mn.setText("");
+            Pro.setText("");
+            Sy.setText("");
+            An.setText("");
+            return;
+        }
+        word = StringUtils.normalizeString(word);
+        var ress = englishDAO.findWord(word);
+        if(ress.size() <= 0) {
+            return;
+        }
+        var res = ress.get(0);
+        if(res != null){
+            Ex.setText(res.getExample());
+            Pos.setText(res.getType());
+            Mn.setText(res.getMeaning());
+            Pro.setText(res.getPronunciation());
+            Sy.setText(res.getSynonym());
+            An.setText(res.getAntonyms());
+        }
+    }
     @FXML
     protected void HandleClickBtn() throws SQLException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -70,4 +98,5 @@ public class AdditionController {
             alert.showAndWait();
         }
     }
+
 }
