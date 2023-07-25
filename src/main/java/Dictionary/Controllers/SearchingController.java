@@ -126,7 +126,8 @@ public class SearchingController implements Initializable {
         TextField nameField = new TextField(currentWord.getWord());
 
         Label definitionLabel = new Label("Definition:");
-        TextField definitionField = new TextField(currentWord.getMeaning());
+        TextArea definitionField = new TextArea(currentWord.getMeaning());
+        definitionField.setWrapText(true);
 
         Label typeLabel = new Label("Part of speech:");
         TextField typeField = new TextField(currentWord.getType());
@@ -135,7 +136,8 @@ public class SearchingController implements Initializable {
         TextField pronunciationField = new TextField(currentWord.getPronunciation());
 
         Label exampleLabel = new Label("Example:");
-        TextField exampleField = new TextField(currentWord.getExample());
+        TextArea exampleField = new TextArea(currentWord.getExample());
+        exampleField.setWrapText(true);
 
         Label synonymLabel = new Label("Synonym:");
         TextField synonymField = new TextField(currentWord.getSynonym());
