@@ -20,7 +20,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="1.0" layoutY="44.0" prefHeight="40.0" prefWidth="403.0" text="Đừng dừng lại khi mệt mỏi, chỉ dừng lại khi đã xong ">
+                  <Label layoutX="1.0" layoutY="44.0" prefHeight="40.0" prefWidth="403.0" text="Đừng dừng lại khi mệt mỏi, chỉ dừng lại khi đã xong " wrapText="true">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -47,8 +47,8 @@
             </Pane>
             <Pane layoutX="117.0" layoutY="86.0" prefHeight="337.0" prefWidth="599.0">
                <children>
-                  <TextArea layoutX="16.0" layoutY="84.0" prefHeight="200.0" prefWidth="284.0" />
-                  <TextArea layoutX="300.0" layoutY="84.0" prefHeight="200.0" prefWidth="284.0" editable="false" />
+                  <TextArea layoutX="16.0" layoutY="84.0" prefHeight="200.0" prefWidth="284.0" fx:id="SourceLanguage" onKeyReleased="#translateWord" />
+                  <TextArea layoutX="300.0" layoutY="84.0" prefHeight="200.0" prefWidth="284.0" fx:id="TransalationLanguage" editable="false"/>
                   <Pane prefHeight="84.0" prefWidth="599.0">
                      <children>
                         <Label layoutX="358.0" layoutY="26.0" prefHeight="40.0" prefWidth="182.0" text="Vietnamese">
@@ -69,12 +69,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Button layoutX="254.0" layoutY="292.0" mnemonicParsing="false" text="Translate">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="14.0" layoutY="292.0" mnemonicParsing="false" text="Mic">
+                  <Button layoutX="14.0" layoutY="292.0" mnemonicParsing="false" text="Mic" onAction="#handleVoice">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
