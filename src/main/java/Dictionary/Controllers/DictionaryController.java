@@ -47,7 +47,7 @@ public class DictionaryController implements Initializable {
         try {
             showComponent("/Dictionary/SearchingUI.fxml");
         }catch (Exception e){
-            System.err.println(e.getMessage());
+            System.err.println(e);
         }
 
 
