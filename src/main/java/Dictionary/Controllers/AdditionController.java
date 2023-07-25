@@ -2,7 +2,6 @@ package Dictionary.Controllers;
 
 import Dictionary.Alerts.Alerts;
 import Dictionary.Models.English;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;

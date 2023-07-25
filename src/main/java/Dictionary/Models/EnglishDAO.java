@@ -7,7 +7,6 @@ import com.j256.ormlite.support.ConnectionSource;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class EnglishDAO extends BaseDaoImpl<English, Long> {
     public EnglishDAO(ConnectionSource connectionSource) throws SQLException, SQLException {

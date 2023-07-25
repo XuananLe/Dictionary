@@ -1,7 +1,5 @@
 package Dictionary.Utils;
 
-import javax.print.DocFlavor;
-
 public class StringUtils {
    public static String normalizeString(String searchTerm){
        searchTerm = searchTerm.toLowerCase();
