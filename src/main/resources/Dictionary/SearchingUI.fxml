@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -72,17 +74,39 @@
                      <children>
                         <Pane prefHeight="57.0" prefWidth="522.0">
                            <children>
-                              <Label layoutX="8.0" prefHeight="57.0" prefWidth="224.0" text="Xuananle">
+                              <Label layoutX="8.0" prefHeight="57.0" prefWidth="168.0" text="Xuananle">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="448.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="73.0" text="Phonetic" wrapText="true" onAction="#speakWord"/>
-                              <Button layoutX="346.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="70.0" text="Delete Word" wrapText="true" onAction="#deleteWord"/>
-                              <Button layoutX="231.0" layoutY="6.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="70.0" text="Update Word" wrapText="true" onAction="#updateWord"/>
+                              <Button layoutX="406.0" layoutY="4.0" mnemonicParsing="false" onAction="#speakWord" prefHeight="50.0" prefWidth="70.0" wrapText="true">
+                                 <tooltip>
+                                    <Tooltip text="Phonetic" />
+                                 </tooltip>
+                                 <graphic>
+                                    <ImageView fitHeight="42.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" />
+                                 </graphic></Button>
+                              <Button layoutX="311.0" layoutY="4.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="46.0" prefWidth="70.0" wrapText="true">
+                                 <tooltip>
+                                    <Tooltip text="Delete Word" />
+                                 </tooltip>
+                                 <graphic>
+                                    <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" />
+                                 </graphic></Button>
+                              <Button layoutX="213.0" layoutY="3.0" mnemonicParsing="false" onAction="#updateWord" prefHeight="49.0" prefWidth="70.0" wrapText="true">
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Utils/Images/an1.jpg" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <tooltip>
+                                    <Tooltip text="Update Word" />
+                                 </tooltip></Button>
                            </children>
                         </Pane>
-                        <TextArea fx:id="wordDefination" layoutX="4.0" layoutY="62.0" prefHeight="318.0" prefWidth="506.0" wrapText="true" editable="false" />
+                        <TextArea fx:id="wordDefination" editable="false" layoutX="4.0" layoutY="62.0" prefHeight="318.0" prefWidth="506.0" wrapText="true" />
                      </children>
                   </Pane>
                </children>

@@ -37,6 +37,8 @@ public class SearchingController implements Initializable {
 
     @FXML
     public English currentWord = new English();
+//    @FXML
+//    public static final Tooltip tooltip1 = new Tooltip();
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {

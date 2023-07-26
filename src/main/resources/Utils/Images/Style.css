@@ -216,3 +216,8 @@
 -fx-background-color: transparent;
 
 }
+.transparent-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}

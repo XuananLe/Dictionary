@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.TranslationController">
    <children>
@@ -47,32 +49,43 @@
             </Pane>
             <Pane layoutX="117.0" layoutY="86.0" prefHeight="337.0" prefWidth="599.0">
                <children>
-                  <TextArea layoutX="16.0" layoutY="84.0" prefHeight="200.0" prefWidth="284.0" fx:id="SourceLanguage" onKeyReleased="#translateWord" wrapText="true" />
-                  <TextArea layoutX="300.0" layoutY="84.0" prefHeight="200.0" prefWidth="284.0" fx:id="TransalationLanguage" editable="false" wrapText="true"/>
-                  <Pane prefHeight="84.0" prefWidth="599.0">
+                  <TextArea fx:id="SourceLanguage" layoutX="16.0" layoutY="84.0" onKeyReleased="#translateWord" prefHeight="246.0" prefWidth="284.0" wrapText="true" />
+                  <TextArea fx:id="TransalationLanguage" editable="false" layoutX="300.0" layoutY="84.0" prefHeight="246.0" prefWidth="284.0" wrapText="true" />
+                  <Pane layoutX="1.0" prefHeight="84.0" prefWidth="599.0">
                      <children>
-                        <Label layoutX="358.0" layoutY="26.0" prefHeight="40.0" prefWidth="182.0" text="Vietnamese">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="37.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                        </Label>
-                        <Label layoutX="39.0" layoutY="26.0" prefHeight="40.0" prefWidth="139.0" text="English">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="40.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                        </Label>
+                        <ComboBox fx:id="targetLanguageComboBox" layoutX="368.0" layoutY="33.0" prefWidth="150.0" promptText="Vietnamese" />
+                        <ComboBox fx:id="sourceLanguageComboBox" layoutX="69.0" layoutY="33.0" prefWidth="150.0" promptText="English" />
                      </children>
                   </Pane>
-                  <Button layoutX="14.0" layoutY="292.0" mnemonicParsing="false" text="Mic" onAction="#handleVoice">
+                  <Button layoutX="24.0" layoutY="287.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="44.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
+                     <tooltip>
+                        <Tooltip text="Mic" />
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/Images/Mic.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="83.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleVoice" prefHeight="36.0" prefWidth="38.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Volume" />
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/Images/volume.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
             </Pane>
