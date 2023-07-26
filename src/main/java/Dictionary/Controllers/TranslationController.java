@@ -8,9 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -23,7 +21,9 @@ public class TranslationController {
     private ComboBox<String> sourceLanguageComboBox;
     @FXML
     private ComboBox<String> targetLanguageComboBox;
-    private List<String> languages = Arrays.asList("English", "Vietnamese", "Spanish", "French");
+    private final List<String> languages = Arrays.asList("English", "Vietnamese", "Spanish", "French");
+
+    private final List<String> ListOfWords = new ArrayList<>(languages);
 
     @FXML
     public void initialize() {
@@ -49,13 +49,16 @@ public class TranslationController {
             TranslationLanguage.setText("");
             return;
         }
-        try {
-            String translation = TranslateManager.translateWord(textToTranslate, sourceLanguage, targetLanguage);
-            TranslationLanguage.setText(translation);
-        } catch (IOException e) {
-            // Handle exception
-            e.printStackTrace();
-        }
+        var executorService = Executors.newSingleThreadExecutor();
+        executorService.submit(() -> {
+            try {
+                String translation = TranslateManager.translateWord(textToTranslate, sourceLanguage, targetLanguage);
+                TranslationLanguage.setText(translation);
+            } catch (IOException e) {
+                // Handle exception
+                e.printStackTrace();
+            }
+        });
     }
 
     @FXML
@@ -85,20 +88,17 @@ public class TranslationController {
 
     // Helper method to update targetLanguageComboBox options
     private void updateTargetLanguageOptions() {
-        String selectedSourceLanguage = sourceLanguageComboBox.getValue();
-        for (int i = 0; i < targetLanguageComboBox.getItems().size(); i++) {
-            if (targetLanguageComboBox.getItems().get(i).equals(selectedSourceLanguage)) {
-                targetLanguageComboBox.getItems().remove(i);
+        String sourceLanguage = sourceLanguageComboBox.getValue();
+        targetLanguageComboBox.getItems().clear();
+        for (String language : languages) {
+            if (!Objects.equals(language, sourceLanguage)) {
+                targetLanguageComboBox.getItems().add(language);
             }
         }
+        targetLanguageComboBox.setValue(targetLanguageComboBox.getItems().get(0));
     }
 
     private void updateSourceLanguageOptions() {
-        String selectedTargetLanguage = targetLanguageComboBox.getValue();
-        for (int i = 0; i < sourceLanguageComboBox.getItems().size(); i++) {
-            if (sourceLanguageComboBox.getItems().get(i).equals(selectedTargetLanguage)) {
-                sourceLanguageComboBox.getItems().remove(i);
-            }
-        }
+
     }
 }
