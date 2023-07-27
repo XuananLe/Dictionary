@@ -11,6 +11,8 @@ module dictionary.Dictionary {
     requires gson;
     requires org.apache.commons.csv;
     requires java.scripting;
+    requires tess4j;
+    requires json;
     requires jlayer;
     exports Dictionary.Utils;
     exports Dictionary.Controllers;
