@@ -13,6 +13,7 @@ module dictionary.Dictionary {
     requires java.scripting;
     requires tess4j;
     requires json;
+    requires opencv;
     requires jlayer;
     exports Dictionary.Utils;
     exports Dictionary.Controllers;

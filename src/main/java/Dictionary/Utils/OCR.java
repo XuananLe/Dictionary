@@ -69,7 +69,7 @@ public class OCR {
 //        }
 //    }
     public static void main(String[] args) throws TesseractException, IOException {
-        File image = new File("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-07-27 17-07-24.png");
+        File image = new File("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-03-02 10-05-31.png");
         Tesseract tesseract = new Tesseract();
         tesseract.setDatapath(testDataPath);
         tesseract.setLanguage("eng");
