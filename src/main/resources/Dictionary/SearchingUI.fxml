@@ -32,13 +32,10 @@
                <image>
                   <Image url="@../Utils/Images/Instagram.jpeg" />
                </image></ImageView>
-            <Label fx:id="notAvailableLabel" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="327.0" styleClass="title" textAlignment="CENTER">
+            <Label fx:id="notAvailableLabel" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="340.0" styleClass="title" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
-               <graphic>
-                  <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic>
             </Label>
             <ImageView fitHeight="114.0" fitWidth="145.0" layoutX="674.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>

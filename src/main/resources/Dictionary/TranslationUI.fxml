@@ -56,7 +56,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="117.0" layoutY="86.0" prefHeight="337.0" prefWidth="599.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css">
+            <Pane layoutX="117.0" layoutY="86.0" prefHeight="345.0" prefWidth="599.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css">
                <children>
                   <TextArea fx:id="SourceLanguage" layoutX="16.0" layoutY="84.0" onKeyReleased="#translateWord" prefHeight="246.0" prefWidth="284.0" styleClass="title" wrapText="true" />
                   <TextArea fx:id="TranslationLanguage" editable="false" layoutX="300.0" layoutY="84.0" prefHeight="246.0" prefWidth="284.0" styleClass="title" wrapText="true" />

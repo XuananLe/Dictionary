@@ -39,8 +39,6 @@ public class SearchingController implements Initializable {
 
     @FXML
     public English currentWord = new English();
-//    @FXML
-//    public static final Tooltip tooltip1 = new Tooltip();
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
@@ -86,7 +84,7 @@ public class SearchingController implements Initializable {
             List<English> list = englishDAO.containWord(searchTerm);
             if (list.isEmpty()) {
                clearSearchResultsView();
-                notAvailableLabel.setText("Rất tiếc từ điển không hỗ trợ từ này " + searchTerm);
+                notAvailableLabel.setText("Rất tiếc từ điển không hỗ trợ từ " + searchTerm);
                 return;
             }
             currentWord = list.get(0);

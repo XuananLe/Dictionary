@@ -27,6 +27,19 @@ public class TranslationController {
 
     @FXML
     public void initialize() {
+        SourceLanguage.setLayoutX(16.0);
+        SourceLanguage.setLayoutY(84.0);
+        SourceLanguage.setPrefWidth(284.0);
+        SourceLanguage.setPrefHeight(246.0);
+        SourceLanguage.setWrapText(true);
+        SourceLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(https://xlink.vn/dm3shtsg);");
+
+        TranslationLanguage.setLayoutX(16.0);
+        TranslationLanguage.setLayoutY(84.0);
+        TranslationLanguage.setPrefWidth(284.0);
+        TranslationLanguage.setPrefHeight(246.0);
+        TranslationLanguage.setWrapText(true);
+        TranslationLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(https://xlink.vn/dm3shtsg);");
         // Populate both ComboBoxes with language options
         sourceLanguageComboBox.getItems().addAll(languages);
         targetLanguageComboBox.getItems().addAll(languages);
