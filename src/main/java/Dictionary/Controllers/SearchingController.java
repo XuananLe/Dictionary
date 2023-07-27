@@ -43,6 +43,13 @@ public class SearchingController implements Initializable {
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
         searchResultsListView.setOnMouseClicked(event -> {
+            try {
+                if(!englishDAO.sortedWord()){
+                    return;
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             String selectedWord = searchResultsListView.getSelectionModel().getSelectedItem();
             if (selectedWord != null) {
                 try {

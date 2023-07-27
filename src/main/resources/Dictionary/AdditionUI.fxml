@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,12 +15,12 @@
          <children>
             <Pane prefHeight="126.0" prefWidth="833.0">
                <children>
-                  <Label layoutX="297.0" layoutY="53.0" prefHeight="25.0" prefWidth="258.0" text="Chúc các bạn mọi điều tốt đẹp" textFill="#da4ed3">
+                  <Label layoutX="297.0" layoutY="53.0" prefHeight="25.0" prefWidth="276.0" text="Chúc các bạn mọi điều tốt đẹp" textFill="#c25e55">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="297.0" layoutY="24.0" text="Wish you all the best" textFill="#da4ed3">
+                  <Label layoutX="297.0" layoutY="24.0" prefHeight="29.0" prefWidth="208.0" text="Wish you all the best" textFill="#c25e55">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
@@ -37,63 +36,53 @@
       </Pane>
       <AnchorPane layoutY="127.0" prefHeight="471.0" prefWidth="833.0">
          <children>
-            <ImageView fitHeight="238.0" fitWidth="427.0" layoutX="424.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Utils/Images/template.jpeg" />
-               </image>
-            </ImageView>
-            <Label layoutX="36.0" layoutY="11.0" prefHeight="40.0" prefWidth="143.0" text="New Word" textFill="#da4ed3">
+            <Label layoutX="33.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="New Word" textFill="#c25e55">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="Nw" layoutX="179.0" layoutY="12.0" wrapText="true"  prefHeight="40.0" prefWidth="208.0" promptText="New Word" onKeyReleased="#handleAdd"/>
-            <Label layoutX="33.0" layoutY="131.0" prefHeight="40.0" prefWidth="143.0" text="Synonym" textFill="#da4ed3">
+            <TextArea fx:id="Nw" layoutX="218.0" layoutY="14.0" onKeyReleased="#handleAdd" prefHeight="40.0" prefWidth="445.0" promptText="New Word" wrapText="true" />
+            <Label layoutX="33.0" layoutY="131.0" prefHeight="40.0" prefWidth="143.0" text="Synonym" textFill="#c25e55">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="Ex" layoutX="29.0" layoutY="242.0" wrapText="true" prefHeight="146.0" prefWidth="358.0" promptText="Examples" />
-            <Button fx:id="addBtn" layoutX="36.0" layoutY="412.0" mnemonicParsing="true" onAction="#HandleClickBtn" prefHeight="40.0" prefWidth="92.0" text="Thêm" textFill="#da4ed3">
+            <TextArea fx:id="Ex" layoutX="29.0" layoutY="242.0" prefHeight="146.0" prefWidth="358.0" promptText="Examples" wrapText="true" />
+            <Button fx:id="addBtn" layoutX="348.0" layoutY="422.0" mnemonicParsing="true" onAction="#HandleClickBtn" prefHeight="40.0" prefWidth="92.0" text="Thêm" textFill="#c25e55">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Label fx:id="Success" alignment="CENTER" layoutX="210.0" layoutY="412.0" prefHeight="43.0" prefWidth="215.0" text="Thành công" textAlignment="RIGHT" textFill="#da4ed3">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="33.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" text="Part of speech">
+            <Label layoutX="33.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" text="Part of speech" textFill="#c25e55">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="Pos" layoutX="179.0" wrapText="true"  layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Part of speech" />
-            <Label layoutX="424.0" layoutY="12.0" prefHeight="40.0" prefWidth="143.0" text="Meaning">
+            <TextArea fx:id="Pos" layoutX="179.0" layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Part of speech" wrapText="true" />
+            <Label layoutX="425.0" layoutY="189.0" prefHeight="40.0" prefWidth="143.0" text="Meaning" textFill="#c25e55">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="Mn" layoutX="568.0" wrapText="true" layoutY="12.0" prefHeight="40.0" prefWidth="208.0" promptText="Meaning" />
-            <Label layoutX="425.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" text="Pronunciation">
+            <TextArea fx:id="Mn" layoutX="417.0" layoutY="242.0" prefHeight="146.0" prefWidth="358.0" promptText="Meaning" wrapText="true" />
+            <Label layoutX="425.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" text="Pronunciation" textFill="#c25e55">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="Pro" layoutX="568.0" wrapText="true" layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Pronunciation" />
-            <TextArea fx:id="Sy" layoutX="179.0" wrapText="true" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Synonym" />
-            <Label layoutX="33.0" layoutY="189.0"  prefHeight="40.0" prefWidth="168.0" text="Example">
+            <TextArea fx:id="Pro" layoutX="568.0" layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Pronunciation" wrapText="true" />
+            <TextArea fx:id="Sy" layoutX="179.0" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Synonym" wrapText="true" />
+            <Label layoutX="33.0" layoutY="189.0" prefHeight="40.0" prefWidth="168.0" text="Example" textFill="#c25e55">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="424.0" layoutY="126.0" prefHeight="40.0" prefWidth="143.0" text="Antonym">
+            <Label layoutX="424.0" layoutY="126.0" prefHeight="40.0" prefWidth="143.0" text="Antonym" textFill="#c25e55">
                <font>
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="An" layoutX="568.0" wrapText="true" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Antonym" />
+            <TextArea fx:id="An" layoutX="568.0" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Antonym" wrapText="true" />
          </children>
       </AnchorPane>
    </children>
