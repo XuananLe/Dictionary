@@ -20,17 +20,27 @@ public class AlertStyler {
     }
 
     public AlertStyler applyVintageStyle() {
-        String vintageStyle = "-fx-background-color: #f9e4b7; -fx-border-color: #b3804d; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-image: url(\"https://example.com/aged_paper_texture.png\");";
+        String vintageStyle = "-fx-background-color: #f9e4b7; -fx-border-color: #b3804d; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-image: url(https://xlink.vn/dm3shtsg);";
         dialogPane.setStyle(vintageStyle);
         return this;
     }
 
     public AlertStyler setTitle(String title) {
-        String titleStyle = "-fx-font-family: 'Lucida Handwriting', cursive; -fx-font-size: 18px; -fx-text-fill: #b3804d;";
-        alert.setHeaderText(title);
+        String titleStyle = "-fx-font-family: 'Lucida Handwriting', cursive; -fx-font-size: 18px; -fx-text-fill: #000000;";
+
+        // Create a new label and apply styling
         Label titleLabel = new Label(title);
         titleLabel.setStyle(titleStyle);
+
+        // Set the title as the header of the dialog pane
         dialogPane.setHeader(titleLabel);
+
+        return this;
+    }
+
+
+    public AlertStyler setWindowTitle(String title) {
+        alert.setTitle(title);
         return this;
     }
 

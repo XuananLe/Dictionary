@@ -80,11 +80,23 @@ public class AdditionController {
         String mn = Mn.getText();
         String pro = Pro.getText();
         if (word.isEmpty() || word.isBlank()) {
-            alert.setHeaderText("Adding word failed");
+            AlertStyler.on(alert)
+                    .applyVintageStyle()
+                    .setTitle("Error")
+                    .setWindowTitle("Adding Word Failed")
+                    .setButtonStyle()
+                    .setMinSize()
+                    .build();
             alert.setContentText("Word cannot be empty, please try again");
             alert.showAndWait();
         } else if (mn.isEmpty() || mn.isBlank()) {
-            alert.setHeaderText("Adding word failed");
+            AlertStyler.on(alert)
+                    .applyVintageStyle()
+                    .setTitle("Error")
+                    .setWindowTitle("Adding Word Failed")
+                    .setButtonStyle()
+                    .setMinSize()
+                    .build();
             alert.setContentText("Meaning cannot be empty, please try again");
             alert.showAndWait();
         } else {
@@ -94,6 +106,7 @@ public class AdditionController {
                 AlertStyler.on(alert)
                         .applyVintageStyle()
                         .setTitle("Success")
+                        .setWindowTitle("Adding Word Success")
                         .setButtonStyle()
                         .setMinSize()
                         .build();
