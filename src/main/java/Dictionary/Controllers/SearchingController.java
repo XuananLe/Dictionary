@@ -15,6 +15,8 @@ import javafx.scene.layout.GridPane;
 import javax.swing.*;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -93,6 +95,7 @@ public class SearchingController implements Initializable {
                 System.out.println(english.getWord());
                 searchResultsListView.getItems().add(english.getWord());
             }
+            Collections.sort(searchResultsListView.getItems());
             countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -116,6 +119,12 @@ public class SearchingController implements Initializable {
             searchResultsListView.getItems().remove(currentWord.getWord());
             countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
             notAvailableLabel.setText("");
+            if(!searchResultsListView.getItems().isEmpty()){
+                currentWord = englishDAO.getWord(searchResultsListView.getItems().get(0));
+                wordDefination.setText(englishDAO.renderDefinition(currentWord));
+            } else{
+                wordDefination.setText("");
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Xóa thất bại");
         }
