@@ -3,16 +3,19 @@ package Dictionary.Controllers;
 import Dictionary.Utils.TranslateManager;
 import Dictionary.Utils.VoiceManager;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.ExecutorService;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Executors;
 
 public class TranslationController {
+    private final List<String> languages = Arrays.asList("English", "Vietnamese", "Spanish", "French");
+    private final List<String> ListOfWords = new ArrayList<>(languages);
     @FXML
     public TextArea SourceLanguage;
     @FXML
@@ -21,9 +24,6 @@ public class TranslationController {
     private ComboBox<String> sourceLanguageComboBox;
     @FXML
     private ComboBox<String> targetLanguageComboBox;
-    private final List<String> languages = Arrays.asList("English", "Vietnamese", "Spanish", "French");
-
-    private final List<String> ListOfWords = new ArrayList<>(languages);
 
     @FXML
     public void initialize() {

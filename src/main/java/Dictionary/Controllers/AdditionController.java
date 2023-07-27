@@ -113,6 +113,13 @@ public class AdditionController {
 
                 alert.setContentText("Word: " + word + " has been added successfully");
                 alert.showAndWait();
+                Nw.setText("");
+                Ex.setText("");
+                Pos.setText("");
+                Mn.setText("");
+                Pro.setText("");
+                Sy.setText("");
+                An.setText("");
             }
 
         }

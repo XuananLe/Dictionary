@@ -1,15 +1,15 @@
 @font-face {
-    font-family: 'Poppins';
-    src: url('fonts/Poppins-Regular.ttf');
+    font-family: 'Voces-Regular';
+    src: url('Utils/Fonts/Voces-Regular.ttf');
 }
 
 .root {
-    -fx-background-color: linear-gradient(to top right, #752e65, #44008b);
+    -fx-background-color: linear-gradient(to top right, #a36a2c, #8f6131); /* old paper gradient */
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 }
 
-.container {
+.container, .myDialog {
     -fx-background-color: #fff;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
@@ -24,27 +24,29 @@
     -fx-background-radius: 30;
     -fx-padding: 0 0 0 10;
     -fx-background-insets: 0;
-    -fx-text-fill: #fff;
+    -fx-text-fill: #8b4513; /* saddle brown */
     -fx-font-weight: bold;
-    -fx-font-family: 'Poppins';
+    -fx-font-family: 'Crimson Text';
 }
 
 .menu-item:hover,
 .menu-item:focused {
-    -fx-background-color: #c6a1d6;
+    -fx-background-color: #ffe4b5; /* moccasin */
 }
 
 .search-box {
-    -fx-background-color: #44008b;
+    -fx-background-color: #f2deb4; /* old paper */
     -fx-background-radius: 30;
     -fx-border-radius: 30;
-    -fx-effect: dropshadow(three-pass-box, #8c7ae6, 15, 0, 0, 2);
+    -fx-effect: dropshadow(three-pass-box, #8b4513, 15, 0, 0, 2); /* saddle brown */
 }
 
-.search-field {
+.search-field,
+.english-word-input,
+.meaning-input {
     -fx-background-color: transparent;
-    -fx-text-fill: #d1d8e0;
-    -fx-font-family: 'Poppins';
+    -fx-text-fill: #8b4513; /* saddle brown */
+    -fx-font-family: 'Crimson Text';
     -fx-font-weight: bold;
     -fx-font-size: 13;
     -fx-border: none;
@@ -64,8 +66,8 @@
     -fx-border-width: 1.5;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
-    -fx-background-color: white;
-    -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1.5);
+    -fx-background-color: #f8e6c8; /* eggshell */
+    -fx-effect: dropshadow(three-pass-box, #f2deb4, 4, 0, 0, 1.5); /* old paper */
 }
 
 .explanation-field {
@@ -73,67 +75,58 @@
     -fx-background-radius: 5;
     -fx-border-radius: 5;
     -fx-border-width: 0;
-    -fx-text-fill: #9f45b0;
+    -fx-text-fill: #8b4513; /* saddle brown */
     -fx-font-size: 16px;
 }
 
 .explanation-menu {
-    -fx-border-color: #966FBD;
+    -fx-border-color: #8b4513; /* saddle brown */
     -fx-border-width: 0 0 2 0;
 }
 
 .edit-button,
 .delete-button,
-.volume-button {
+.volume-button,
+.save-button {
     -fx-padding: 0;
     -fx-background-radius: 5;
     -fx-border-radius: 5;
-    -fx-background-color: #f8f8f8;
+    -fx-background-color: #f8e6c8; /* eggshell */
     -fx-border: none;
     -fx-background-insets: 0;
-    -fx-effect: dropshadow(three-pass-box, #718093, 2, 0, 0, 1);
+    -fx-effect: dropshadow(three-pass-box, #8b4513, 2, 0, 0, 1); /* saddle brown */
 }
 
 .edit-button:hover,
 .delete-button:hover,
-.volume-button:hover {
-    -fx-background-color: #edeff1;
+.volume-button:hover,
+.save-button:hover {
+    -fx-background-color: #f2deb4; /* old paper */
     -fx-effect: dropshadow(three-pass-box, #2b2b2b, 3, 0, 0, 1);
 }
 
 .edit-button:pressed,
 .delete-button:pressed,
-.volume-button:pressed {
-    -fx-effect: dropshadow(three-pass-box, #4f2258, 4, 0, 0, 1);
+.volume-button:pressed,
+.save-button:pressed {
+    -fx-effect: dropshadow(three-pass-box, #8b4513, 4, 0, 0, 1); /* saddle brown */
 }
 
 .save-button {
-    -fx-background-color: #e1efdb;
-    -fx-padding: 0;
-    -fx-background-radius: 5;
-    -fx-border-radius: 5;
-    -fx-text-fill: #9f45b0;
+    -fx-background-color: #f8e6c8; /* eggshell */
+    -fx-text-fill: #8b4513; /* saddle brown */
     -fx-font-weight: bold;
-    -fx-background-insets: 0;
-}
-
-.save-button:hover {
-    -fx-background-color: #4a7b35;
-}
-
-.save-button:pressed {
-    -fx-background-color: #e1efdb;
 }
 
 .title {
-    -fx-background-color: #44008b;
-    -fx-effect: dropshadow(three-pass-box, #8c7ae6, 10, 0, 0, 0);
+    /*-fx-background-color: #f2deb4;*/
+    -fx-effect: dropshadow(three-pass-box, #8b4513, 10, 0, 0, 0); /* saddle brown */
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 }
 
 .list-cell {
-    -fx-text-fill: #9f45b0;
+    -fx-text-fill: #8b4513; /* saddle brown */
     -fx-font-size: 16;
     -fx-font-weight: 700;
     -fx-padding: 5;
@@ -149,87 +142,46 @@
 }
 
 .list-cell:even {
-    -fx-background-color: #f5f6fa;
+    -fx-background-color: #f8e6c8; /* eggshell */
 }
 
 .list-cell:odd {
-    -fx-background-color: #eff0fb;
+    -fx-background-color: #f2deb4; /* old paper */
 }
 
 .list-cell:filled:hover,
 .list-cell:filled:selected {
-    -fx-background-color: linear-gradient(to bottom left, #44008b, #9f45b0);
+    -fx-background-color: linear-gradient(to bottom left, #f2deb4, #8b4513); /* old paper, saddle brown */
     -fx-text-fill: white;
 }
 
-.list-cell .scroll-bar:horizontal .track,
-.list-cell .scroll-bar:vertical .track,
-.explanation-field .scroll-bar:horizontal .track,
-.explanation-field .scroll-bar:vertical .track {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-background-radius: 0em;
-    -fx-border-radius: 2em;
-}
-
-.list-cell .scroll-bar:vertical .increment-button,
-.list-cell .scroll-bar:vertical .decrement-button,
-.explanation-field .scroll-bar:vertical .increment-button,
-.explanation-field .scroll-bar:vertical .decrement-button {
-    -fx-background-color: transparent;
-    -fx-background-radius: 0em;
-    -fx-padding: 0 10 0 0;
-}
-
-.list-cell .scroll-bar:horizontal .increment-button,
-.list-cell .scroll-bar:horizontal .decrement-button,
-.explanation-field .scroll-bar:horizontal .increment-button,
-.explanation-field .scroll-bar:horizontal .decrement-button {
-    -fx-background-color: transparent;
-    -fx-background-radius: 0em;
-    -fx-padding: 0 0 10 0;
-}
-
-.list-cell .scroll-bar .increment-arrow,
-.list-cell .scroll-bar .decrement-arrow,
-.explanation-field .scroll-bar .increment-arrow,
-.explanation-field .scroll-bar .decrement-arrow {
-    -fx-padding: 0;
-}
-
-.list-cell .scroll-bar:vertical .thumb,
-.list-cell .scroll-bar:horizontal .thumb,
-.explanation-field .scroll-bar:vertical .thumb,
-.explanation-field .scroll-bar:horizontal .thumb {
-    -fx-background-color: #BFB1CD;
-    -fx-background-insets: 2, 0, 0;
-    -fx-background-radius: 2em;
-}
-
-.english-word-input,
-.meaning-input {
-    -fx-text-fill: #9f45b0;
-    -fx-border-color: #966FBD;
-    -fx-font-size: 14
-}
 .transparent {
--fx-background-color: transparent;
-
+    -fx-background-color: transparent;
 }
+
 .transparent-button {
     -fx-background-color: transparent;
     -fx-background-radius: 0;
     -fx-padding: 0;
 }
+
 .success-alert{
     -fx-font-size: 14px;
-    -fx-text-fill: #009432;
-    -fx-background-color:  #CAF7D8;
-     -fx-background-radius: 5;
-     -fx-border-radius: 5;
-}
-.myDialog{
-    -fx-background-color: #fff;
+    -fx-text-fill: #8b4513; /* saddle brown */
+    -fx-background-color:  #f8e6c8; /* eggshell */
     -fx-background-radius: 5;
     -fx-border-radius: 5;
 }
+.body {
+      -fx-border-width: 1.5;
+         -fx-background-radius: 5;
+         -fx-border-radius: 5;
+         -fx-background-color: #bd9579; /* eggshell */
+         -fx-effect: dropshadow(three-pass-box, #f2deb4, 4, 0, 0, 1.5); /* old paper */
+ }
+ .my-class {
+     background-color: transparent;
+ }
+ .border {
+     -fx-background-color: #de9d6f;
+ }

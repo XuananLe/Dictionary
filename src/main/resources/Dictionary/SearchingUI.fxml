@@ -14,19 +14,25 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.SearchingController">
    <children>
-      <Pane prefHeight="140.0" prefWidth="833.0">
+      <Pane prefHeight="140.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css">
          <children>
             <Pane layoutX="267.0" layoutY="34.0" prefHeight="46.0" prefWidth="275.0">
                <children>
-                  <TextField fx:id="searchBox" layoutX="43.0" layoutY="-1.0" onKeyReleased="#handleSearch" prefHeight="46.0" prefWidth="232.0" promptText="Nhập từ cần tìm kiếm ">
+                  <TextField fx:id="searchBox" layoutX="43.0" layoutY="-1.0" onKeyReleased="#handleSearch" prefHeight="46.0" prefWidth="232.0" promptText="Nhập từ cần tìm kiếm " styleClass="title">
                      <font>
                         <Font size="15.0" />
                      </font></TextField>
-                  <ImageView fitHeight="39.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="46.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" styleClass="title">
+                     <image>
+                        <Image url="@../Utils/Images/icons8_search_24px.png" />
+                     </image></ImageView>
                </children>
             </Pane>
-            <ImageView fitHeight="106.0" fitWidth="145.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="notAvailableLabel" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="327.0" textAlignment="CENTER">
+            <ImageView fitHeight="106.0" fitWidth="145.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/Images/Instagram.jpeg" />
+               </image></ImageView>
+            <Label fx:id="notAvailableLabel" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="327.0" styleClass="title" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -34,17 +40,20 @@
                   <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Label>
-            <ImageView fitHeight="114.0" fitWidth="145.0" layoutX="674.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="114.0" fitWidth="145.0" layoutX="674.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/Images/Instagram1.jpeg" />
+               </image></ImageView>
          </children>
       </Pane>
-      <AnchorPane layoutY="151.0" prefHeight="454.0" prefWidth="833.0">
+      <AnchorPane layoutY="142.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Utils/Images/Style.css">
          <children>
-            <AnchorPane prefHeight="454.0" prefWidth="311.0">
+            <AnchorPane prefHeight="463.0" prefWidth="311.0" stylesheets="@../Utils/Images/Style.css">
                <children>
-                  <ListView fx:id="searchResultsListView" layoutX="14.0" layoutY="62.0" prefHeight="380.0" prefWidth="287.0" />
+                  <ListView fx:id="searchResultsListView" layoutX="14.0" layoutY="62.0" prefHeight="380.0" prefWidth="287.0" styleClass="title" stylesheets="@../Utils/Images/Style.css" />
                   <Pane prefHeight="57.0" prefWidth="311.0">
                      <children>
-                        <Label fx:id="countRes" prefHeight="57.0" prefWidth="311.0" text="0 Kết quả liên quan">
+                        <Label fx:id="countRes" layoutY="4.0" prefHeight="57.0" prefWidth="311.0" text="0 Kết quả liên quan">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -56,48 +65,57 @@
                   </Pane>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="311.0" prefHeight="454.0" prefWidth="522.0">
+            <AnchorPane layoutX="311.0" layoutY="-8.0" prefHeight="471.0" prefWidth="522.0">
                <children>
-                  <Pane prefHeight="57.0" prefWidth="522.0">
+                  <Pane layoutY="14.0" prefHeight="49.0" prefWidth="522.0" styleClass="cancel-button" stylesheets="@../Utils/Images/Style.css">
                      <children>
-                        <Label prefHeight="57.0" prefWidth="232.0" text="Định nghĩa">
+                        <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="232.0" text="Định nghĩa">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="55.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="55.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/Images/icons8_brick_64px.png" />
+                                 </image></ImageView>
                            </graphic>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutY="60.0" prefHeight="380.0" prefWidth="522.0">
+                  <Pane layoutY="60.0" prefHeight="390.0" prefWidth="522.0">
                      <children>
-                        <Pane prefHeight="57.0" prefWidth="522.0">
+                        <Pane layoutY="8.0" prefHeight="49.0" prefWidth="522.0" stylesheets="@../Utils/Images/Style.css">
                            <children>
-                              <Label layoutX="8.0" prefHeight="57.0" prefWidth="168.0" text="Xuananle">
+                              <Label layoutX="8.0" prefHeight="57.0" prefWidth="168.0" stylesheets="@../Utils/Images/Style.css" text="Setting">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="406.0" layoutY="4.0" mnemonicParsing="false" onAction="#speakWord" prefHeight="50.0" prefWidth="70.0" wrapText="true">
+                              <Button layoutX="406.0" layoutY="4.0" mnemonicParsing="false" onAction="#speakWord" prefHeight="50.0" prefWidth="70.0" styleClass="transparent-button" wrapText="true">
                                  <tooltip>
                                     <Tooltip text="Phonetic" />
                                  </tooltip>
                                  <graphic>
-                                    <ImageView fitHeight="42.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fitHeight="42.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Utils/Images/icons8_speaker_64px.png" />
+                                       </image></ImageView>
                                  </graphic></Button>
-                              <Button layoutX="311.0" layoutY="4.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="46.0" prefWidth="70.0" wrapText="true">
+                              <Button layoutX="311.0" layoutY="4.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="46.0" prefWidth="70.0" styleClass="transparent-button" wrapText="true">
                                  <tooltip>
                                     <Tooltip text="Delete Word" />
                                  </tooltip>
                                  <graphic>
-                                    <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true" />
-                                 </graphic></Button>
-                              <Button layoutX="213.0" layoutY="3.0" mnemonicParsing="false" onAction="#updateWord" prefHeight="49.0" prefWidth="70.0" wrapText="true">
-                                 <graphic>
-                                    <ImageView fitHeight="32.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Utils/Images/an1.jpg" />
+                                          <Image url="@../Utils/Images/icons8_delete_bin_64px.png" />
+                                       </image></ImageView>
+                                 </graphic></Button>
+                              <Button layoutX="226.0" layoutY="4.0" mnemonicParsing="false" onAction="#updateWord" prefHeight="49.0" prefWidth="70.0" styleClass="transparent" wrapText="true">
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Utils/Images/icons8_edit_64px.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -106,7 +124,7 @@
                                  </tooltip></Button>
                            </children>
                         </Pane>
-                        <TextArea fx:id="wordDefination" editable="false" layoutX="4.0" layoutY="62.0" prefHeight="318.0" prefWidth="506.0" wrapText="true" />
+                        <TextArea fx:id="wordDefination" editable="false" layoutX="4.0" layoutY="62.0" prefHeight="328.0" prefWidth="506.0" styleClass="title" stylesheets="@../Utils/Images/Style.css" wrapText="true" />
                      </children>
                   </Pane>
                </children>
