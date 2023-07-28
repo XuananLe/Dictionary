@@ -35,7 +35,7 @@ public class SearchingController implements Initializable {
     @FXML
     public Label countRes = new Label("");
     @FXML
-    public TextArea wordDefination = new TextArea();
+    public TextArea wordDefinition = new TextArea();
 
     @FXML
     public English currentWord = new English();
@@ -56,13 +56,13 @@ public class SearchingController implements Initializable {
                     English english = englishDAO.getWord(selectedWord);
                     if (english != null) {
                         currentWord = english;
-                        wordDefination.setText(englishDAO.renderDefinition(english));
+                        wordDefinition.setText(englishDAO.renderDefinition(english));
                     } else {
-                        wordDefination.setText("Definition not found for: " + selectedWord);
+                        wordDefinition.setText("Definition not found for: " + selectedWord);
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    wordDefination.setText("Error fetching definition.");
+                    wordDefinition.setText("Error fetching definition.");
                 }
             }
         });
@@ -75,7 +75,7 @@ public class SearchingController implements Initializable {
             countRes.setText("");
             searchResultsListView.getItems().clear();
             notAvailableLabel.setText("");
-            wordDefination.setText("");
+            wordDefinition.setText("");
             return;
         }
         try {
@@ -88,7 +88,7 @@ public class SearchingController implements Initializable {
                 return;
             }
             currentWord = list.get(0);
-            wordDefination.setText(englishDAO.renderDefinition(currentWord));
+            wordDefinition.setText(englishDAO.renderDefinition(currentWord));
             for (English english : list) {
                 System.out.println(english.getWord());
                 searchResultsListView.getItems().add(english.getWord());
@@ -97,7 +97,7 @@ public class SearchingController implements Initializable {
             countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
         } catch (SQLException e) {
             e.printStackTrace();
-            wordDefination.setText("Error fetching definition.");
+            wordDefinition.setText("Error fetching definition.");
         }
     }
 
@@ -119,9 +119,9 @@ public class SearchingController implements Initializable {
             notAvailableLabel.setText("");
             if(!searchResultsListView.getItems().isEmpty()){
                 currentWord = englishDAO.getWord(searchResultsListView.getItems().get(0));
-                wordDefination.setText(englishDAO.renderDefinition(currentWord));
+                wordDefinition.setText(englishDAO.renderDefinition(currentWord));
             } else{
-                wordDefination.setText("");
+                wordDefinition.setText("");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Xóa thất bại");
@@ -201,7 +201,7 @@ public class SearchingController implements Initializable {
                 successAlert.setContentText("Word information updated successfully!");
                 successAlert.showAndWait();
                 currentWord = english;
-                wordDefination.setText(englishDAO.renderDefinition(currentWord));
+                wordDefinition.setText(englishDAO.renderDefinition(currentWord));
             } catch (SQLException e) {
                 e.printStackTrace();
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -214,7 +214,7 @@ public class SearchingController implements Initializable {
     public void clearSearchResultsView() {
         searchResultsListView.getItems().clear();
         countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
-        wordDefination.setText("");
+        wordDefinition.setText("");
     }
 
 }

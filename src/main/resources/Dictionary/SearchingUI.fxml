@@ -121,7 +121,7 @@
                                  </tooltip></Button>
                            </children>
                         </Pane>
-                        <TextArea fx:id="wordDefination" editable="false" layoutX="4.0" layoutY="62.0" prefHeight="328.0" prefWidth="506.0" styleClass="title" stylesheets="@../Utils/Images/Style.css" wrapText="true" />
+                        <TextArea fx:id="wordDefinition" editable="false" layoutX="4.0" layoutY="62.0" prefHeight="328.0" prefWidth="506.0" styleClass="title" stylesheets="@../Utils/Images/Style.css" wrapText="true" />
                      </children>
                   </Pane>
                </children>
