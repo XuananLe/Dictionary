@@ -53,7 +53,7 @@
                </font>
             </Label>
             <TextArea fx:id="Ex" layoutX="29.0" layoutY="242.0" prefHeight="169.0" prefWidth="358.0" promptText="Examples" styleClass="title" wrapText="true" />
-            <Button fx:id="addBtn" layoutX="377.0" layoutY="425.0" mnemonicParsing="true" onAction="#HandleClickBtn" prefHeight="40.0" prefWidth="57.0" styleClass="transparent-button">
+            <Button fx:id="addBtn" layoutX="375.0" layoutY="415.0" mnemonicParsing="true" onAction="#HandleClickBtn" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

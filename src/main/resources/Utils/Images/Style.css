@@ -188,6 +188,8 @@
 .transparent-button {
     -fx-background-color: transparent;
     -fx-text-fill: white; /* Set the text color */
+    -fx-shape: "M 25 25 m -25 0 a 25 25 0 1 1 50 0 a 25 25 0 1 1 -50 0"; /* This defines the circle shape */
+
 }
 
 .transparent-button:hover {

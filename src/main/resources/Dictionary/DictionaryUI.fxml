@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="636.0" prefWidth="962.0" styleClass="root" stylesheets="@../Utils/Images/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.DictionaryController">
    <children>
       <AnchorPane fx:id="container" layoutX="14.0" layoutY="14.0" prefHeight="605.0" prefWidth="833.0" styleClass="border" />
-      <Button fx:id="searchBtn" layoutX="876.0" layoutY="194.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="50.0" styleClass="transparent-button">
+      <Button fx:id="searchBtn" layoutX="876.0" layoutY="194.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button">
          <tooltip>
             <Tooltip fx:id="tooltip1" text="Search" />
          </tooltip>
@@ -25,7 +25,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="addBtn" layoutX="876.0" layoutY="297.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="50.0" styleClass="transparent-button">
+      <Button fx:id="addBtn" layoutX="876.0" layoutY="297.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -40,7 +40,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="translateBtn" layoutX="876.0" layoutY="401.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="50.0" styleClass="transparent-button">
+      <Button fx:id="translateBtn" layoutX="876.0" layoutY="401.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -55,7 +55,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="exitBtn" layoutX="876.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="50.0" styleClass="transparent-button">
+      <Button fx:id="exitBtn" layoutX="876.0" layoutY="573.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
