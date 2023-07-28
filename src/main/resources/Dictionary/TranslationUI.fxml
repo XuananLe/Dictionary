@@ -15,7 +15,7 @@
    <children>
       <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css">
          <children>
-            <Pane layoutX="156.0" layoutY="31.0" prefHeight="84.0" prefWidth="522.0" styleClass="definition-wrapper">
+            <Pane layoutX="156.0" layoutY="31.0" prefHeight="84.0" prefWidth="522.0">
                <children>
                   <Label prefHeight="40.0" prefWidth="522.0" text="Don't stop when you're tired, stop when you're done">
                      <font>

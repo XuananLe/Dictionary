@@ -55,7 +55,10 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                            <graphic>
-                              <ImageView fitHeight="54.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Utils/Images/icons8_arrow_64px.png" />
+                                 </image></ImageView>
                            </graphic>
                         </Label>
                      </children>

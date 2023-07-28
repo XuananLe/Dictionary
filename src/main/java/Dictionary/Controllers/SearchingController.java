@@ -1,5 +1,6 @@
 package Dictionary.Controllers;
 
+import Dictionary.Alerts.AlertStyler;
 import Dictionary.Models.English;
 import Dictionary.Utils.StringUtils;
 import Dictionary.Utils.VoiceManager;
@@ -112,7 +113,17 @@ public class SearchingController implements Initializable {
             return;
         }
         if (englishDAO.deleteWord(currentWord.getWord())) {
-            JOptionPane.showMessageDialog(null, "Xóa thành công"); // Thay vào đây 1 cái alert @Quân Nguyễn ơi
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            AlertStyler.on(alert)
+                    .applyVintageStyle()
+                    .setTitle("Success")
+                    .setWindowTitle("Delete Success")
+                    .setButtonStyle()
+                    .setMinSize()
+                    .build();
+            alert.setContentText("Xóa thành công");
+            alert.showAndWait();
+//            JOptionPane.showMessageDialog(null, "Xóa thành công"); // Thay vào đây 1 cái alert @Quân Nguyễn ơi
             searchBox.setText("");
             searchResultsListView.getItems().remove(currentWord.getWord());
             countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
@@ -124,7 +135,16 @@ public class SearchingController implements Initializable {
                 wordDefinition.setText("");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Xóa thất bại");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            AlertStyler.on(alert)
+                    .applyVintageStyle()
+                    .setTitle("Failed")
+                    .setWindowTitle("Delete Success")
+                    .setButtonStyle()
+                    .setMinSize()
+                    .build();
+            alert.setContentText("Xóa thất bại");
+            alert.showAndWait();
         }
     }
 
