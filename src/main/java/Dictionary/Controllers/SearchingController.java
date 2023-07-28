@@ -216,8 +216,13 @@ public class SearchingController implements Initializable {
             try {
                 englishDAO.updateWord(english);
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                successAlert.setTitle("Update Successful");
-                successAlert.setHeaderText(null);
+                AlertStyler.on(successAlert)
+                        .applyVintageStyle()
+                        .setTitle("Update Successful")
+                        .setWindowTitle("Update Success")
+                        .setButtonStyle()
+                        .setMinSize()
+                        .build();
                 successAlert.setContentText("Word information updated successfully!");
                 successAlert.showAndWait();
                 currentWord = english;
@@ -225,8 +230,14 @@ public class SearchingController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                errorAlert.setTitle("Update Failed");
-                errorAlert.setHeaderText(null);
+                AlertStyler.on(errorAlert)
+                        .applyVintageStyle()
+                        .setTitle("Update Failed")
+                        .setWindowTitle("Update Failed")
+                        .setButtonStyle()
+                        .setMinSize()
+                        .build();
+                errorAlert.setHeaderText("Failed to update word information.");
             }
         }
     }
