@@ -33,7 +33,7 @@ public class EncodingServerService {
     // Decode base64 từ server trả về thành ảnh lưu tên result.jpeg
     public static void base64ToImage(String base64Image) throws IOException {
         byte[] decodedBytes = Base64.getDecoder().decode(base64Image);
-        Files.write(Paths.get("result.jpeg"), decodedBytes);
+        Files.write(Paths.get("result.png"), decodedBytes);
     }
 
     public static void sendBase64ToServer(String ImagePath) throws IOException {
@@ -63,7 +63,8 @@ public class EncodingServerService {
                 response.append(responseLine.trim());
             }
             responseLine = response.toString();
-            responseLine = responseLine.substring(15, responseLine.length() - 2);
+            responseLine = responseLine.substring(16, responseLine.length() - 2);
+            System.out.println(responseLine);
             try {
                 base64ToImage(responseLine);
             } catch (IOException e) {
@@ -77,6 +78,6 @@ public class EncodingServerService {
     }
 
     public static void main(String[] args) throws IOException {
-        sendBase64ToServer("/home/xuananle/Pictures/Pictures/Screenshots/Screenshot from 2023-07-24 10-46-36.png");
+        sendBase64ToServer("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-03-02 10-05-31.png");
     }
 }
