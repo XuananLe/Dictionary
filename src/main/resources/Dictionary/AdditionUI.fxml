@@ -52,11 +52,18 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="Ex" layoutX="29.0" layoutY="242.0" prefHeight="146.0" prefWidth="358.0" promptText="Examples" styleClass="title" wrapText="true" />
-            <Button fx:id="addBtn" layoutX="358.0" layoutY="425.0" mnemonicParsing="true" onAction="#HandleClickBtn" prefHeight="40.0" prefWidth="92.0" styleClass="edit-button" text="Thêm">
+            <TextArea fx:id="Ex" layoutX="29.0" layoutY="242.0" prefHeight="169.0" prefWidth="358.0" promptText="Examples" styleClass="title" wrapText="true" />
+            <Button fx:id="addBtn" layoutX="377.0" layoutY="425.0" mnemonicParsing="true" onAction="#HandleClickBtn" prefHeight="40.0" prefWidth="57.0" styleClass="transparent-button">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/Images/icons8_add_64px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
             <Label layoutX="33.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" text="Part of speech">
                <font>
@@ -69,7 +76,7 @@
                   <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="Mn" layoutX="417.0" layoutY="242.0" prefHeight="146.0" prefWidth="358.0" promptText="Meaning" styleClass="title" wrapText="true" />
+            <TextArea fx:id="Mn" layoutX="417.0" layoutY="242.0" prefHeight="169.0" prefWidth="358.0" promptText="Meaning" styleClass="title" wrapText="true" />
             <Label layoutX="425.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" text="Pronunciation">
                <font>
                   <Font name="System Bold Italic" size="20.0" />

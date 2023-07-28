@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="636.0" prefWidth="962.0" styleClass="root" stylesheets="@../Utils/Images/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.DictionaryController">
    <children>
       <AnchorPane fx:id="container" layoutX="14.0" layoutY="14.0" prefHeight="605.0" prefWidth="833.0" styleClass="border" />
-      <Button fx:id="searchBtn" layoutX="871.0" layoutY="193.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="68.0" styleClass="transparent-button">
+      <Button fx:id="searchBtn" layoutX="876.0" layoutY="194.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="50.0" styleClass="transparent-button">
          <tooltip>
             <Tooltip fx:id="tooltip1" text="Search" />
          </tooltip>
@@ -18,14 +18,14 @@
             <Font name="System Bold" size="18.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="29.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/Images/icons8_search_24px.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="addBtn" layoutX="875.0" layoutY="280.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="60.0" styleClass="transparent-button">
+      <Button fx:id="addBtn" layoutX="876.0" layoutY="297.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="50.0" styleClass="transparent-button">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -33,14 +33,14 @@
             <Tooltip fx:id="tooltip2" text="Add" />
          </tooltip>
          <graphic>
-            <ImageView fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="39.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/Images/icons8_add_32px.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="translateBtn" layoutX="876.0" layoutY="362.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="60.0" styleClass="transparent-button">
+      <Button fx:id="translateBtn" layoutX="876.0" layoutY="401.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="50.0" styleClass="transparent-button">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -48,14 +48,14 @@
             <Tooltip fx:id="tooltip3" text="Translate" />
          </tooltip>
          <graphic>
-            <ImageView fitHeight="36.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="38.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/Images/icons8_google_translate_48px.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="exitBtn" layoutX="889.0" layoutY="558.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="25.0" styleClass="transparent-button">
+      <Button fx:id="exitBtn" layoutX="876.0" layoutY="573.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="50.0" styleClass="transparent-button">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -63,7 +63,7 @@
             <Tooltip fx:id="tooltip4" text="Exit" />
          </tooltip>
          <graphic>
-            <ImageView fitHeight="33.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/Images/icons8_exit_32px.png" />
                </image>

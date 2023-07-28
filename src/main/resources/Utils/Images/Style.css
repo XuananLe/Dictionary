@@ -185,3 +185,11 @@
  .border {
      -fx-background-color: #de9d6f;
  }
+.transparent-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white; /* Set the text color */
+}
+
+.transparent-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2); /* Set the background color with some transparency */
+}

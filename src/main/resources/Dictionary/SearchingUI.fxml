@@ -91,37 +91,39 @@
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="406.0" layoutY="4.0" mnemonicParsing="false" onAction="#speakWord" prefHeight="50.0" prefWidth="70.0" styleClass="transparent-button" wrapText="true">
+                              <Button layoutX="398.0" layoutY="1.0" mnemonicParsing="false" onAction="#speakWord" prefHeight="46.0" prefWidth="56.0" styleClass="transparent-button" wrapText="true">
                                  <tooltip>
                                     <Tooltip text="Phonetic" />
                                  </tooltip>
                                  <graphic>
-                                    <ImageView fitHeight="42.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../Utils/Images/icons8_speaker_64px.png" />
-                                       </image></ImageView>
+                                       </image>
+                                    </ImageView>
                                  </graphic></Button>
-                              <Button layoutX="311.0" layoutY="4.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="46.0" prefWidth="70.0" styleClass="transparent-button" wrapText="true">
+                              <Button layoutX="325.0" layoutY="1.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="46.0" prefWidth="56.0" styleClass="transparent-button" wrapText="true">
                                  <tooltip>
                                     <Tooltip text="Delete Word" />
                                  </tooltip>
                                  <graphic>
-                                    <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="40.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../Utils/Images/icons8_delete_bin_64px.png" />
-                                       </image></ImageView>
+                                       </image>
+                                    </ImageView>
                                  </graphic></Button>
-                              <Button layoutX="226.0" layoutY="4.0" mnemonicParsing="false" onAction="#updateWord" prefHeight="49.0" prefWidth="70.0" styleClass="transparent" wrapText="true">
+                              <Button layoutX="253.0" layoutY="2.0" mnemonicParsing="false" onAction="#updateWord" prefHeight="46.0" prefWidth="56.0" styleClass="transparent-button" wrapText="true">
+                                 <tooltip>
+                                    <Tooltip text="Update Word" />
+                                 </tooltip>
                                  <graphic>
-                                    <ImageView fitHeight="32.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="43.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../Utils/Images/icons8_edit_64px.png" />
                                        </image>
                                     </ImageView>
-                                 </graphic>
-                                 <tooltip>
-                                    <Tooltip text="Update Word" />
-                                 </tooltip></Button>
+                                 </graphic></Button>
                            </children>
                         </Pane>
                         <TextArea fx:id="wordDefinition" editable="false" layoutX="4.0" layoutY="62.0" prefHeight="328.0" prefWidth="506.0" styleClass="title" stylesheets="@../Utils/Images/Style.css" wrapText="true" />
