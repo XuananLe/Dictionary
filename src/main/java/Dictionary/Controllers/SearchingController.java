@@ -3,7 +3,7 @@ package Dictionary.Controllers;
 import Dictionary.Alerts.AlertStyler;
 import Dictionary.Models.English;
 import Dictionary.Utils.StringUtils;
-import Dictionary.Utils.VoiceManager;
+import Dictionary.Utils.VoiceService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,10 +13,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
 
-import javax.swing.*;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -104,7 +102,7 @@ public class SearchingController implements Initializable {
 
     @FXML
     public void speakWord() {
-        VoiceManager.playVoice(currentWord.getWord());
+        VoiceService.playVoice(currentWord.getWord());
     }
 
 

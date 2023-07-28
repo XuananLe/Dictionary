@@ -1,7 +1,7 @@
 package Dictionary.Controllers;
 
-import Dictionary.Utils.TranslateManager;
-import Dictionary.Utils.VoiceManager;
+import Dictionary.Utils.TranslateService;
+import Dictionary.Utils.VoiceService;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -58,7 +58,7 @@ public class TranslationController {
         var executorService = Executors.newSingleThreadExecutor();
         executorService.submit(() -> {
             try {
-                String translation = TranslateManager.translateWord(textToTranslate, sourceLanguage, targetLanguage);
+                String translation = TranslateService.translateWord(textToTranslate, sourceLanguage, targetLanguage);
                 TranslationLanguage.setText(translation);
             } catch (IOException e) {
                 // Handle exception
@@ -73,7 +73,7 @@ public class TranslationController {
         if (textToTranslate.isEmpty() || textToTranslate.isBlank()) {
             return;
         }
-        VoiceManager.playVoice(textToTranslate);
+        VoiceService.playVoice(textToTranslate);
     }
 
     // Helper method to get the language code based on language name

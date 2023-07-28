@@ -12,11 +12,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
 
-public class EncodingServerManager {
+public class EncodingServerService {
     public static final URL SERVER_URL;
 
     static {
         try {
+            // Flask server connection string
             SERVER_URL = new URL("http://127.0.0.1:5000");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
@@ -28,9 +29,11 @@ public class EncodingServerManager {
         return Base64.getEncoder().encodeToString(fileContent);
     }
 
+
+    // Decode base64 từ server trả về thành ảnh lưu tên result.jpeg
     public static void base64ToImage(String base64Image) throws IOException {
         byte[] decodedBytes = Base64.getDecoder().decode(base64Image);
-        Files.write(Paths.get("result.jpg"), decodedBytes);
+        Files.write(Paths.get("result.jpeg"), decodedBytes);
     }
 
     public static void sendBase64ToServer(String ImagePath) throws IOException {
@@ -40,8 +43,8 @@ public class EncodingServerManager {
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setDoOutput(true);
+        // Json is the same as the one in the server
         String jsonData = "{\"image_data\":\"" + base64Data + "\"}";
-
 
 
         try (OutputStream os = conn.getOutputStream()) {
@@ -73,10 +76,7 @@ public class EncodingServerManager {
         }
     }
 
-
     public static void main(String[] args) throws IOException {
-        //        String base64Image = imageToBase64("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-03-02 10-05-31.png");
-        //        base64ToImage(base64Image, "/home/xuananle/Pictures/Screenshots/Screenshot from 2023-03-02 10-05-31.png");
-        sendBase64ToServer("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-07-26 10-09-22.png");
+        sendBase64ToServer("/home/xuananle/Pictures/Pictures/Screenshots/Screenshot from 2023-07-24 10-46-36.png");
     }
 }

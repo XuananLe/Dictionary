@@ -8,10 +8,11 @@ import java.net.URL;
 import org.json.JSONArray;
 import org.json.JSONException;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
-public class TranslateManager {
+public class TranslateService {
     public static String translateWord(String textToTranslate, String sourceLanguage, String targetLanguage) throws IOException {
-        String encodedText = URLEncoder.encode(textToTranslate, "UTF-8");
+        String encodedText = URLEncoder.encode(textToTranslate, StandardCharsets.UTF_8);
 
         String apiUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="
                 + sourceLanguage + "&tl=" + targetLanguage + "&dt=t&text=" + encodedText + "&op=translate";
