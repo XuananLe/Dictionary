@@ -78,6 +78,6 @@ public class EncodingServerService {
     }
 
     public static void main(String[] args) throws IOException {
-        sendBase64ToServer("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-03-02 10-05-31.png");
+        sendBase64ToServer("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-07-29 09-55-10.png");
     }
 }
