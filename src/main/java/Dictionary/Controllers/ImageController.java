@@ -39,8 +39,8 @@ public class ImageController {
         File selectedFile = fileChooser.showOpenDialog(currentStage);
 
         ImageView imageView = new ImageView();
-        imageView.setFitWidth(300); // Set the desired width of the image
-        imageView.setFitHeight(200); // Set the desired height of the image
+        imageView.setFitWidth(800); // Set the desired width of the image
+        imageView.setFitHeight(600); // Set the desired height of the image
         imageView.setPreserveRatio(true); // Preserve the ratio of the image when scaling it
 
         if (selectedFile != null) {
@@ -60,6 +60,9 @@ public class ImageController {
                 Scene imageScene = new Scene(imageRoot);
                 imageStage.setScene(imageScene);
                 imageStage.setTitle("Image Preview");
+
+                imageScene.getWindow().setWidth(800);
+                imageScene.getWindow().setHeight(600);
                 imageStage.show();
 
             } catch (Exception ex) {
