@@ -98,21 +98,6 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="chooseImageButton" layoutX="106.0" layoutY="287.0" mnemonicParsing="false" onAction="#HandleFile" prefHeight="36.0" prefWidth="38.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
-                     <font>
-                        <Font name="System Bold" size="15.0" />
-                     </font>
-                     <tooltip>
-                        <Tooltip text="Volume" />
-                     </tooltip>
-                     <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../Utils/Images/attachment.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                </children>
             </Pane>
          </children>
