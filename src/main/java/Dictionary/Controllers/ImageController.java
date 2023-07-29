@@ -38,33 +38,33 @@ public class ImageController {
         fileChooser.setTitle("Choose Image File");
         File selectedFile = fileChooser.showOpenDialog(currentStage);
 
-        ImageView imageView = new ImageView();
-        imageView.setFitWidth(800); // Set the desired width of the image
-        imageView.setFitHeight(600); // Set the desired height of the image
-        imageView.setPreserveRatio(true); // Preserve the ratio of the image when scaling it
-
         if (selectedFile != null) {
             try {
-                Image image = new Image(selectedFile.toURI().toString());
-                imageView.setImage(image);
+                Image originalImage = new Image(selectedFile.toURI().toString());
 
-                // Save the image to the Utils/Images folder with the name "Client.jpg"
-                String destinationPath = "/home/quanng/Documents/Dictionary/Client.jpg";
+                // Create a new ImageView and set the resized image
+                ImageView imageView = new ImageView(originalImage);
+                imageView.setFitWidth(1500);
+                imageView.setFitHeight(1500);
+                imageView.setPreserveRatio(true); // Preserve the aspect ratio of the image
+
+                // Save the image to the destination path
+                String workingDir = System.getProperty("user.dir");
+
+                // Use a relative path for destinationPath
+                String destinationPath = workingDir + "/Client.jpg";
+
                 saveImageToFile(selectedFile, destinationPath);
 
-                // Create a new stage to show the image
+                // Create a new stage to show the resized image
                 Stage imageStage = new Stage();
                 BorderPane imageRoot = new BorderPane();
-                imageRoot.setCenter(new ImageView(image));
+                imageRoot.setCenter(imageView);
 
                 Scene imageScene = new Scene(imageRoot);
                 imageStage.setScene(imageScene);
                 imageStage.setTitle("Image Preview");
-
-                imageScene.getWindow().setWidth(800);
-                imageScene.getWindow().setHeight(600);
                 imageStage.show();
-
             } catch (Exception ex) {
                 System.err.println("Error loading image: " + ex.getMessage());
             }
