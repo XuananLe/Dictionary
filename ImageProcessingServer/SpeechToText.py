@@ -1,0 +1,11 @@
+import whisper
+print(whisper.available_models())
+model = whisper.load_model("base")
+# audio = whisper.load_audio("/home/xuananle/Downloads/test.mp3")
+# audio = whisper.pad_or_trim(audio)
+# mel = whisper.log_mel_spectrogram(audio).to(model.device)
+# _, probs = model.detect_language(mel)
+# print("Language:", {max(probs, key=probs.get)})
+# options = whisper.DecodingOptions(fp16=False)
+result = model.transcribe("Recording 1.flac", fp16=False)
+print(result['text'])

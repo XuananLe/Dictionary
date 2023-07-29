@@ -8,7 +8,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route('/', methods=['GET', 'POST'])
-async def base64_to_image():
+async def translate_image():
     if request.method == 'POST':
         try:
             data_from_client = request.get_json()
@@ -26,4 +26,4 @@ async def base64_to_image():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)
