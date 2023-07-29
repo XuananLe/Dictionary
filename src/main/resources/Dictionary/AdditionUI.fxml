@@ -13,24 +13,24 @@
    <children>
       <Pane prefHeight="596.0" prefWidth="833.0" stylesheets="@../Utils/Images/Style.css">
          <children>
-            <Pane prefHeight="126.0" prefWidth="833.0" styleClass="definition-wrapper">
+            <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper">
                <children>
-                  <Label layoutX="157.0" layoutY="63.0" prefHeight="29.0" prefWidth="303.0" text="Chúc các bạn mọi điều tốt đẹp">
+                  <Label layoutX="180.0" layoutY="63.0" prefHeight="29.0" prefWidth="303.0" text="Chúc các bạn mọi điều tốt đẹp">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="157.0" layoutY="34.0" prefHeight="29.0" prefWidth="208.0" text="All the best to you ">
+                  <Label layoutX="180.0" layoutY="34.0" prefHeight="29.0" prefWidth="208.0" text="All the best to you ">
                      <font>
                         <Font name="System Bold Italic" size="20.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="116.0" fitWidth="92.0" layoutX="35.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="33.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/Images/icon1.jpeg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="99.0" fitWidth="92.0" layoutX="703.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="682.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/Images/icon2.jpeg" />
                      </image>
@@ -39,7 +39,7 @@
             </Pane>
          </children>
       </Pane>
-      <AnchorPane layoutY="127.0" prefHeight="479.0" prefWidth="833.0" styleClass="border" stylesheets="@../Utils/Images/Style.css">
+      <AnchorPane layoutY="143.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Utils/Images/Style.css">
          <children>
             <Label layoutX="33.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" text="New Word">
                <font>

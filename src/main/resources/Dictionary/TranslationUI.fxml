@@ -29,14 +29,16 @@
                   </Label>
                </children>
             </Pane>
-            <ImageView fitHeight="97.0" fitWidth="114.0" layoutX="40.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="22.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/Images/Instagram2.jpeg" />
-               </image></ImageView>
-            <ImageView fitHeight="97.0" fitWidth="114.0" layoutX="678.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               </image>
+            </ImageView>
+            <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="699.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/Images/Instagram3.jpeg" />
-               </image></ImageView>
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <AnchorPane layoutY="142.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Utils/Images/Style.css">
@@ -81,7 +83,22 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="83.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleVoice" prefHeight="36.0" prefWidth="38.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
+                  <Button layoutX="68.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleVoice" prefHeight="36.0" prefWidth="38.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Volume" />
+                     </tooltip>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Utils/Images/volume.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="chooseImageButton" layoutX="106.0" layoutY="287.0" mnemonicParsing="false" onAction="#HandleFile" prefHeight="36.0" prefWidth="38.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -91,7 +108,7 @@
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Utils/Images/volume.png" />
+                              <Image url="@../Utils/Images/attachment.png" />
                            </image>
                         </ImageView>
                      </graphic>

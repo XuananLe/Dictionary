@@ -14,33 +14,36 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.SearchingController">
    <children>
-      <Pane prefHeight="140.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css">
+      <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css">
          <children>
-            <Pane layoutX="267.0" layoutY="34.0" prefHeight="46.0" prefWidth="275.0">
+            <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="28.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/Images/Instagram.jpeg" />
+               </image>
+            </ImageView>
+            <Pane layoutX="267.0" layoutY="34.0" prefHeight="46.0" prefWidth="287.0" styleClass="search-box">
                <children>
-                  <TextField fx:id="searchBox" layoutX="43.0" layoutY="-1.0" onKeyReleased="#handleSearch" prefHeight="46.0" prefWidth="232.0" promptText="Nhập từ cần tìm kiếm " styleClass="title">
+                  <TextField fx:id="searchBox" layoutX="47.0" layoutY="2.0" onKeyReleased="#handleSearch" prefHeight="43.0" prefWidth="240.0" promptText="Nhập từ cần tìm kiếm " styleClass="text-field">
                      <font>
                         <Font size="15.0" />
-                     </font></TextField>
-                  <ImageView fitHeight="46.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" styleClass="title">
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="43.0" fitWidth="43.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" styleClass="title">
                      <image>
                         <Image url="@../Utils/Images/icons8_search_24px.png" />
                      </image></ImageView>
                </children>
             </Pane>
-            <ImageView fitHeight="106.0" fitWidth="145.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Utils/Images/Instagram.jpeg" />
-               </image></ImageView>
-            <Label fx:id="notAvailableLabel" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="340.0" styleClass="title" textAlignment="CENTER">
+            <Label fx:id="notAvailableLabel" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="365.0" styleClass="title" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <ImageView fitHeight="114.0" fitWidth="145.0" layoutX="674.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="687.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Utils/Images/Instagram1.jpeg" />
-               </image></ImageView>
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <AnchorPane layoutY="142.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Utils/Images/Style.css">
@@ -69,7 +72,7 @@
                <children>
                   <Pane layoutY="14.0" prefHeight="49.0" prefWidth="522.0" styleClass="cancel-button" stylesheets="@../Utils/Images/Style.css">
                      <children>
-                        <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="232.0" text="Định nghĩa">
+                        <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="232.0" text="Definition">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>

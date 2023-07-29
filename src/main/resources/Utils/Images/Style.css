@@ -195,3 +195,36 @@
 .transparent-button:hover {
     -fx-background-color: rgba(255, 255, 255, 0.2); /* Set the background color with some transparency */
 }
+.searchPane {
+    -fx-effect: dropshadow(three-pass-box, #8b4513, 10, 0, 0, 0); /* saddle brown */
+    -fx-background-radius: 5;
+    -fx-border-color: #8b4513; /* saddle brown */
+    -fx-border-radius: 5;
+    -fx-border-width: 2px; /* Adjust the border width as needed */
+    -fx-border-radius: 5px; /* Adjust the border radius as needed */
+}
+/* Styles for the search-box pane */
+.search-box {
+    -fx-background-color: #f0f0f0; /* Light gray background */
+    -fx-background-radius: 5;
+    -fx-border-color: #cccccc; /* Light gray border color */
+    -fx-border-radius: 5;
+    -fx-border-width: 1px; /* Adjust the border width as needed */
+}
+
+/* Styles for the TextField inside the search-box */
+.search-box .text-field {
+    -fx-font-size: 18.0;
+    -fx-background-color: transparent; /* Transparent background */
+    -fx-background-radius: 5;
+    -fx-border-color: transparent; /* Transparent border */
+    -fx-border-radius: 5;
+    -fx-text-fill: #333333; /* Text color */
+    -fx-prompt-text-fill: #999999; /* Prompt text color */
+    -fx-padding: 0 5 0 5; /* Adjust padding as needed */
+}
+
+/* Styles for the ImageView inside the search-box */
+.search-box .image-view {
+    -fx-padding: 0 5 0 5; /* Adjust padding as needed */
+}
