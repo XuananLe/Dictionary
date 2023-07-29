@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
 
-public class EncodingServerService {
+public  class EncodingServerService {
     public static final URL SERVER_URL;
 
     static {
@@ -77,7 +77,7 @@ public class EncodingServerService {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        sendBase64ToServer("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-07-29 09-55-10.png");
+    public static void sendImageToServer() throws IOException {
+        sendBase64ToServer("Client.jpg");
     }
 }

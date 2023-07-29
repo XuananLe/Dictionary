@@ -1,5 +1,6 @@
 package Dictionary.Controllers;
 
+import Dictionary.Utils.EncodingServerService;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -13,6 +14,8 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class ImageController {
@@ -75,5 +78,14 @@ public class ImageController {
                 System.err.println("Error loading image: " + ex.getMessage());
             }
         }
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(() -> {
+            try {
+                EncodingServerService.sendImageToServer();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
     }
 }
