@@ -1,6 +1,6 @@
 import asyncio
 import base64
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import cv2
 import pytesseract
 import aiohttp
@@ -29,45 +29,6 @@ class TranslateManager:
             return " "
 
 
-async def make_word_invisible(image_path):
-    pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
-
-    img = cv2.imread(image_path)
-    h, w, _ = img.shape
-
-    # Convert the image to RGB
-    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
-    # Perform OCR to get the bounding box of the word
-    data = pytesseract.image_to_data(img_rgb, output_type=pytesseract.Output.DICT)
-
-    for i, word_text in enumerate(data['text']):
-        word_text = word_text.lower()
-        word_text = word_text.replace(')', '')
-        word_text = word_text.replace('(', '')
-        word_text = word_text.replace('.', '')
-        word_text = word_text.replace(',', '')
-        translated_text = word_text
-        # try:
-        #     translated_text = await TranslateManager.translate_word(word_text, 'en', 'vi')
-        # except:
-        #     pass
-        # if(translated_text != ' '):
-        #     print(translated_text)
-        # Get the bounding box of the original word
-        translated_text = translated_text.encode('utf-8').decode('utf-8')
-        (x, y, w, h) = (data['left'][i], data['top'][i], data['width'][i], data['height'][i])
-
-        # Draw a white rectangle over the original word
-        cv2.rectangle(img_rgb, (x, y), (x + w, y + h), (255, 255, 255), -1)
-
-        # Write the translated word in the box
-        cv2.putText(img_rgb, translated_text, (x, y + h), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 2)
-
-    # Save the image
-    cv2.imwrite('result.png', cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR))
-
-
 async def main(base64_data: str):
     pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
     base64_to_image(base64_data)
@@ -85,19 +46,27 @@ async def main(base64_data: str):
                 cv2.rectangle(img, (x, y), (x + text_w, y + text_h), (0, 0, 255), 2)
                 text = b[11]
                 text = await TranslateManager.translate_word(text, 'en', 'vi')
-                print(text)
-                font = ImageFont.truetype(font_path, 18)
-
                 draw = ImageDraw.Draw(pil_img)
+                font_size = 40
+                font = ImageFont.truetype(font_path, font_size)
+                while font_size > 1:
+                    if font.getlength(text) - text_w < 0000000.1:
+                        break
+                    font_size -= 1
+                    font = ImageFont.truetype(font_path, font_size)
 
-                text_region = pil_img.crop((x, y, x + text_w + 100, y + text_h + 100))
-
+                font_size -= 1
+                print(f"TextSize: {font_size}, font.getLenghth: {font.getbbox(text)}, text heigh: {text_h}, text width: {text_w}   TEXT {text}")
+                draw.rectangle([(x, y), (x + text_w, y + text_h)], fill=(255, 255, 255, 0))
+                text_region = pil_img.crop((x, y, x + text_w, y + text_h))
                 pil_img.paste(text_region, (x, y))
-                draw.rectangle([(x, y), (x + text_w, y + text_h)], fill=(255, 255, 255))
-                draw.text((x, y), text, font=font, fill=(0, 0, 0))
+                text_width, text_height = font.getsize(text)
+                draw.text((x + (text_w - text_width) // 2, y + (text_h - text_height) // 2), text, font=font, align="left", fill=(0, 0, 0))    # draw text in the middle of the box)
 
     pil_img.save('result.png')
     return image_to_base64('result.png')
+
+
 def image_to_base64(image_path):
     with open(image_path, 'rb') as f:
         image_data = f.read()
@@ -111,5 +80,7 @@ def base64_to_image(base64_code):
     img_file.write(decoded_data)
     img_file.close()
 
-if(__name__ == "__main__"):
-    asyncio.run(main(image_to_base64("/home/xuananle/Pictures/Pictures/Screenshots/Screenshot from 2023-06-25 22-27-05.png")))
+
+if (__name__ == "__main__"):
+    asyncio.run(
+        main(image_to_base64("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-07-29 09-55-10.png")))
