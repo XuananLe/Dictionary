@@ -39,7 +39,8 @@ public  class EncodingServerService {
     public static void sendBase64ToServer(String ImagePath) throws IOException {
 
         String base64Data = imageToBase64(ImagePath);
-        HttpURLConnection conn = (HttpURLConnection) SERVER_URL.openConnection();
+        URL ImageServerUrl = new URL(SERVER_URL + "/image");
+        HttpURLConnection conn = (HttpURLConnection) ImageServerUrl .openConnection();
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setDoOutput(true);
@@ -78,6 +79,6 @@ public  class EncodingServerService {
     }
 
     public static void sendImageToServer() throws IOException {
-        sendBase64ToServer("Client.jpg");
+        sendBase64ToServer("Client.png");
     }
 }

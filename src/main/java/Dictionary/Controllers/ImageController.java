@@ -51,21 +51,17 @@ public class ImageController {
                 double screenWidth = screenBounds.getWidth();
                 double screenHeight = screenBounds.getHeight();
 
-                // Create a new ImageView and set the resized image
                 ImageView imageView = new ImageView(originalImage);
                 imageView.setFitWidth(screenWidth / 2);
                 imageView.setFitHeight(screenHeight / 2);
-                imageView.setPreserveRatio(true); // Preserve the aspect ratio of the image
+                imageView.setPreserveRatio(true);
 
-                // Save the image to the destination path
                 String workingDir = System.getProperty("user.dir");
 
-                // Use a relative path for destinationPath
-                String destinationPath = workingDir + "/Client.jpg";
+                String destinationPath = workingDir + "/Client.png";
 
                 saveImageToFile(selectedFile, destinationPath);
 
-                // Create a new stage to show the resized image
                 Stage imageStage = new Stage();
                 BorderPane imageRoot = new BorderPane();
                 imageRoot.setCenter(imageView);
