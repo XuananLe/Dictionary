@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import CoreImage
+import CoreWav
 
 app = Flask(__name__)
 CORS(app)
@@ -28,6 +29,22 @@ async def translate_image():
             return response
     elif request.method == "GET":
         return "Hello world"
+
+
+@app.route('/wav', methods=['GET', 'POST'])
+async def translate_wav():
+    if request.method == 'POST':
+        try:
+            data_from_client = request.get_json()
+            base64_data = data_from_client.get('wav_data', '')
+            text1, text2 = await CoreWav.main(base64_data)
+            response = jsonify({'original_text': text1, 'translated_text': text2})
+            return response
+        except:
+            response = jsonify({'original_text': '', 'translated_text': ''})
+            return response
+    elif request.method == "GET":
+        return jsonify({'message': 'Hello world'})
 
 
 if __name__ == '__main__':

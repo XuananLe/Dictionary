@@ -18,3 +18,4 @@ future~=0.18.3
 opencv-python~=4.8.0.74
 pytesseract~=0.3.10
 aiohttp~=3.8.5
+Flask~=2.0.2
