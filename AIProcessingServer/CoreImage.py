@@ -58,8 +58,6 @@ async def main(base64_data: str):
                 font_size -= 1
                 print(f"TextSize: {font_size}, font.getLenghth: {font.getbbox(text)}, text heigh: {text_h}, text width: {text_w}   TEXT {text}")
                 draw.rectangle([(x, y), (x + text_w, y + text_h)], fill=(255, 255, 255, 0))
-                text_region = pil_img.crop((x, y, x + text_w, y + text_h))
-                pil_img.paste(text_region, (x, y))
                 text_width, text_height = font.getsize(text)
                 draw.text((x + (text_w - text_width) // 2, y + (text_h - text_height) // 2), text, font=font, align="left", fill=(0, 0, 0))    # draw text in the middle of the box)
 
@@ -81,6 +79,6 @@ def base64_to_image(base64_code):
     img_file.close()
 
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     asyncio.run(
         main(image_to_base64("/home/xuananle/Pictures/Screenshots/Screenshot from 2023-07-29 09-55-10.png")))

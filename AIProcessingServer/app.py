@@ -8,6 +8,11 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 @app.route('/', methods=['GET', 'POST'])
+async def index():
+    return "Hello world this is the index page"
+
+
+@app.route('/image', methods=['GET', 'POST'])
 async def translate_image():
     if request.method == 'POST':
         try:
