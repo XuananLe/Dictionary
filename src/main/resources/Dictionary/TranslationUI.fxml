@@ -69,7 +69,7 @@
                      </children>
                   </Pane>
 
-                  <Button fx:id="recordButoon" layoutX="24.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleRecording" prefHeight="36.0" prefWidth="44.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
+                  <Button fx:id="recordButton" layoutX="24.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleRecording" prefHeight="36.0" prefWidth="44.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

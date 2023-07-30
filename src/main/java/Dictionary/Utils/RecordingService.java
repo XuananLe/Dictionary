@@ -5,11 +5,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class RecordingService {
-    private TargetDataLine targetDataLine;
-    private static RecordingService instance;
-    private boolean isRecording;
+    public TargetDataLine targetDataLine;
+    public static RecordingService instance;
+    public boolean isRecording;
 
-    private RecordingService() {
+    public RecordingService() {
         AudioFormat audioFormat = new AudioFormat(
                 AudioFormat.Encoding.PCM_SIGNED,
                 44100,
