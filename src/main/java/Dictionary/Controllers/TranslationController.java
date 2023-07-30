@@ -125,6 +125,8 @@ public class TranslationController {
                     System.out.println("Recording");
                     recordButton.setStyle("-fx-background-color: #ff0000");
                     recordingService.startRecording();
+                    SourceLanguage.setText("");
+                    TranslationLanguage.setText("");
                 } else {
                     System.out.println("Stop recording");
                     recordButton.setStyle("-fx-background-color: #ffffff");

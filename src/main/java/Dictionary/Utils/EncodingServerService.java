@@ -3,7 +3,6 @@ package Dictionary.Utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.print.DocFlavor;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
