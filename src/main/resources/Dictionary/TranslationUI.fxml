@@ -68,7 +68,8 @@
                         <ComboBox fx:id="sourceLanguageComboBox" layoutX="69.0" layoutY="33.0" prefWidth="150.0" promptText="English" />
                      </children>
                   </Pane>
-                  <Button layoutX="24.0" layoutY="287.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="44.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
+
+                  <Button fx:id="recordButoon" layoutX="24.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleRecording" prefHeight="36.0" prefWidth="44.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
@@ -83,6 +84,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
+
                   <Button layoutX="68.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleVoice" prefHeight="36.0" prefWidth="38.0" styleClass="transparent-button" stylesheets="@../Utils/Images/Style.css">
                      <font>
                         <Font name="System Bold" size="15.0" />
