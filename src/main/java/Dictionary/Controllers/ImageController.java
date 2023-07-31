@@ -66,7 +66,6 @@ public class ImageController {
                 String workingDir = System.getProperty("user.dir");
 
                 String destinationPath = workingDir + "/Client.png";
-
                 saveImageToFile(selectedFile, destinationPath);
 
 
@@ -98,7 +97,6 @@ public class ImageController {
                 }, executorService);
                 completableFuture.thenRun(() -> {
                     try {
-                        EncodingServerService.sendImageToServer();
                         Platform.runLater(() -> {
                             File resultFile = new File("result.png");
                             Image ResultImage = null;
@@ -111,12 +109,15 @@ public class ImageController {
                             ResultImageView.setFitHeight(screenHeight / 3);
                             ResultImageView.setFitWidth(screenWidth / 3);
                             ResultImageView.preserveRatioProperty().setValue(true);
+
                             HBox hbox = new HBox(ClinetImageView, ResultImageView);
+
                             Dialog<ButtonType> resultDialog = new Dialog<>();
                             resultDialog.setTitle("Result");
                             resultDialog.initOwner(AppStage);
                             resultDialog.getDialogPane().setContent(hbox);
                             resultDialog.getDialogPane().getButtonTypes().add(okButton);
+
                             progressIndicator.setVisible(false);
                             resultDialog.showAndWait();
                         });
