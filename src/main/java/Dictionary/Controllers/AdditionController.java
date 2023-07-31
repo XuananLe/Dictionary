@@ -6,8 +6,6 @@ import Dictionary.Models.English;
 import Dictionary.Utils.StringUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Region;
 
 import java.sql.SQLException;
 
