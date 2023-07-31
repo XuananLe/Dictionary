@@ -83,7 +83,7 @@ public class SearchingController implements Initializable {
             List<English> list = englishDAO.containWord(searchTerm);
             if (list.isEmpty()) {
                clearSearchResultsView();
-                notAvailableLabel.setText("Rất tiếc từ điển không hỗ trợ từ " + searchTerm);
+                notAvailableLabel.setText("Sorry, We don't have word " + searchTerm);
                 return;
             }
             currentWord = list.get(0);
@@ -93,7 +93,7 @@ public class SearchingController implements Initializable {
                 searchResultsListView.getItems().add(english.getWord());
             }
             Collections.sort(searchResultsListView.getItems());
-            countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
+            countRes.setText(searchResultsListView.getItems().size() + " Related Results");
         } catch (SQLException e) {
             e.printStackTrace();
             wordDefinition.setText("Error fetching definition.");

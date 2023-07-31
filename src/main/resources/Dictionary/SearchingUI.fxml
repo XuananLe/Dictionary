@@ -34,7 +34,7 @@
                      </image></ImageView>
                </children>
             </Pane>
-            <Label fx:id="notAvailableLabel" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="365.0" styleClass="title" textAlignment="CENTER">
+            <Label fx:id="notAvailableLabel" layoutX="253.0" layoutY="89.0" prefHeight="31.0" prefWidth="311.0" styleClass="title" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -53,7 +53,7 @@
                   <ListView fx:id="searchResultsListView" layoutX="14.0" layoutY="62.0" prefHeight="380.0" prefWidth="287.0" styleClass="title" stylesheets="@../Utils/Images/Style.css" />
                   <Pane prefHeight="57.0" prefWidth="311.0">
                      <children>
-                        <Label fx:id="countRes" layoutY="4.0" prefHeight="57.0" prefWidth="311.0" text="0 Kết quả liên quan">
+                        <Label fx:id="countRes" layoutY="4.0" prefHeight="57.0" prefWidth="311.0">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
