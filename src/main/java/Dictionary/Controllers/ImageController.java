@@ -1,6 +1,7 @@
 package Dictionary.Controllers;
 
 import Dictionary.Utils.EncodingServerService;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
@@ -9,14 +10,18 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
 import javafx.stage.Window;
 
 import java.io.*;
+import java.net.MalformedURLException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
+
+import static Dictionary.App.AppStage;
 
 
 public class ImageController {
@@ -24,9 +29,6 @@ public class ImageController {
     public Button chooseImageButton;
     @FXML
     public Window fileWindow;
-    @FXML
-    public ImageView imageView = new ImageView();
-
 
     public ProgressIndicator progressIndicator = new ProgressIndicator(-1);
 
@@ -54,8 +56,6 @@ public class ImageController {
         File selectedFile = fileChooser.showOpenDialog(fileWindow);
         if (selectedFile != null) {
             try {
-                progressIndicator.setProgress(-1);
-                progressIndicator.setVisible(true);
 
                 Image originalImage = new Image(selectedFile.toURI().toString());
                 Rectangle2D screenBounds = Screen.getPrimary().getBounds();
@@ -70,24 +70,23 @@ public class ImageController {
                 saveImageToFile(selectedFile, destinationPath);
 
 
-                ImageView imageView = new ImageView(originalImage);
-                imageView.setFitWidth(screenWidth / 2);
-                imageView.setFitHeight(screenHeight / 2);
-                imageView.setPreserveRatio(true);
-                imageView.setSmooth(true);
+                ImageView ClinetImageView = new ImageView(originalImage);
+                ClinetImageView.setFitWidth(screenWidth / 3);
+                ClinetImageView.setFitHeight(screenHeight / 3);
+                ClinetImageView.setPreserveRatio(true);
+                ClinetImageView.setSmooth(true);
 
-                StackPane dialogContent = new StackPane(imageView);
-                dialogContent.getChildren().add(progressIndicator);
+                StackPane dialogContent = new StackPane(ClinetImageView);
+                ButtonType okButton = ButtonType.OK;
+
 
                 Dialog<ButtonType> dialog = new Dialog<>();
                 dialog.setTitle("Image Preview");
                 dialog.getDialogPane().setContent(dialogContent);
-
-                ButtonType okButton = ButtonType.OK;
                 dialog.getDialogPane().getButtonTypes().add(okButton);
-
+                dialog.initOwner(AppStage);
                 dialog.showAndWait();
-
+                progressIndicator.setVisible(true);
 
                 var executorService = Executors.newSingleThreadExecutor();
                 CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> {
@@ -97,10 +96,31 @@ public class ImageController {
                         e.printStackTrace();
                     }
                 }, executorService);
-
                 completableFuture.thenRun(() -> {
                     try {
-                       EncodingServerService.sendImageToServer();
+                        EncodingServerService.sendImageToServer();
+                        Platform.runLater(() -> {
+                            File resultFile = new File("result.png");
+                            Image ResultImage = null;
+                            try {
+                                ResultImage = new Image(resultFile.toURI().toURL().toString());
+                            } catch (MalformedURLException e) {
+                                throw new RuntimeException(e);
+                            }
+                            ImageView ResultImageView = new ImageView(ResultImage);
+                            ResultImageView.setFitHeight(screenHeight / 3);
+                            ResultImageView.setFitWidth(screenWidth / 3);
+                            ResultImageView.preserveRatioProperty().setValue(true);
+                            HBox hbox = new HBox(ClinetImageView, ResultImageView);
+                            Dialog<ButtonType> resultDialog = new Dialog<>();
+                            resultDialog.setTitle("Result");
+                            resultDialog.initOwner(AppStage);
+                            resultDialog.getDialogPane().setContent(hbox);
+                            resultDialog.getDialogPane().getButtonTypes().add(okButton);
+                            progressIndicator.setVisible(false);
+                            resultDialog.showAndWait();
+                        });
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
