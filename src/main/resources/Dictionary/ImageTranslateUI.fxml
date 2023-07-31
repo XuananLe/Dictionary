@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.ImageController">
+<AnchorPane prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.ImageTranslateController">
    <children>
       <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css">
          <children>

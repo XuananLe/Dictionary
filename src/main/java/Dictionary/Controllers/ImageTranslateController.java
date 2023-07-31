@@ -24,7 +24,7 @@ import java.util.concurrent.Executors;
 import static Dictionary.App.AppStage;
 
 
-public class ImageController {
+public class ImageTranslateController {
     @FXML
     public Button chooseImageButton;
     @FXML

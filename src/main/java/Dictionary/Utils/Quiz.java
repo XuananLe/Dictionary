@@ -1,8 +1,9 @@
 package Dictionary.Utils;
 
-import static Dictionary.DatabaseConfig.englishDAO;
-
+import java.sql.SQLException;
 import java.util.Scanner;
+
+import static Dictionary.DatabaseConfig.englishDAO;
 
 public class Quiz {
     enum QuestionType {
@@ -16,10 +17,12 @@ public class Quiz {
     private String ques;
     private String[] choices = new String[4];
     private int scores;
+    private int size = englishDAO.getAllWords().size();
+
     private int type;
     private String answer;
 
-    Quiz() {
+    Quiz() throws SQLException {
         this.type = 0;
         this.scores = 0;
         this.ques = "";
@@ -88,7 +91,6 @@ public class Quiz {
 
     public String getRandomWord() {
         try {
-            int size = englishDAO.getAllWords().size();
             int random = (int) (Math.random() * size);
             return englishDAO.getAllWords().get(random).getWord();
         } catch (Exception e) {

@@ -42,7 +42,7 @@ public class DictionaryController implements Initializable {
         attachBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("/Dictionary/ImageUI.fxml");
+                showComponent("/Dictionary/ImageTranslateUI.fxml");
             }
         });
 
