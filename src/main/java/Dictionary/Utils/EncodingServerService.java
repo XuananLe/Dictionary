@@ -66,7 +66,6 @@ public class EncodingServerService {
             }
             responseLine = response.toString();
             responseLine = responseLine.substring(16, responseLine.length() - 2);
-            System.out.println(responseLine);
             try {
                 base64ToImage(responseLine);
             } catch (IOException e) {
@@ -127,7 +126,6 @@ public class EncodingServerService {
             return result;
         }
 
-        // Parse the JSON response
         try {
             JSONObject jsonResponse = new JSONObject(responseBuilder.toString());
             String originalText = jsonResponse.optString("original_text", "");

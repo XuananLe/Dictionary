@@ -48,7 +48,6 @@ public class TranslationController {
         sourceLanguageComboBox.setValue("English");
         targetLanguageComboBox.setValue("Vietnamese");
 
-        // Add event handlers to update ComboBox options
         sourceLanguageComboBox.setOnAction(e -> updateTargetLanguageOptions());
         targetLanguageComboBox.setOnAction(e -> updateSourceLanguageOptions());
     }
@@ -119,7 +118,7 @@ public class TranslationController {
 
     public void handleRecording() throws IOException {
         recordButton.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER) {
+            if (event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.SPACE) {
                 ++count;
                 if (count % 2 == 1) {
                     System.out.println("Recording");
@@ -163,7 +162,6 @@ public class TranslationController {
 
     private void deleteRecordedFile() {
         try {
-            // Replace "Client.wav" with the actual recorded file name and path if needed
             File recordedFile = new File("Client.wav");
             if (recordedFile.exists()) {
                 if (recordedFile.delete()) {

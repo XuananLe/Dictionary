@@ -1,35 +1,38 @@
 package Dictionary.Utils;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
+
+import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class TranslateService {
+
+    private static final CloseableHttpClient httpClient = HttpClients.createDefault();
+
     public static String translateWord(String textToTranslate, String sourceLanguage, String targetLanguage) throws IOException {
         String encodedText = URLEncoder.encode(textToTranslate, StandardCharsets.UTF_8);
 
         String apiUrl = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="
                 + sourceLanguage + "&tl=" + targetLanguage + "&dt=t&text=" + encodedText + "&op=translate";
 
-        URL url = new URL(apiUrl);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
+        HttpGet httpGet = new HttpGet(apiUrl);
+        HttpResponse response = httpClient.execute(httpGet);
+        HttpEntity entity = response.getEntity();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        StringBuilder response = new StringBuilder();
-        String line = "";
-        while ((line = reader.readLine()) != null) {
-            response.append(line);
+        if (entity != null) {
+            String jsonResponse = EntityUtils.toString(entity);
+            return parseTranslationResponse(jsonResponse);
         }
-        return parseTranslationResponse(response.toString());
-    }
 
+        return "Error: Unable to get translation response.";
+    }
 
     public static String parseTranslationResponse(String response) {
         try {
@@ -49,7 +52,6 @@ public class TranslateService {
             return "Error: Unable to parse the translation response.";
         }
     }
-
 
     public static void main(String[] args) throws IOException {
         System.out.println(translateWord("hello i love you very much ", "en", "vi"));

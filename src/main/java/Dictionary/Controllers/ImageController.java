@@ -3,25 +3,33 @@ package Dictionary.Controllers;
 import Dictionary.Utils.EncodingServerService;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Screen;
-import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.*;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 
 
 public class ImageController {
     @FXML
-    private Button chooseImageButton;
-    private Window currentStage;
+    public Button chooseImageButton;
+    @FXML
+    public Window fileWindow;
+    @FXML
+    public ImageView imageView = new ImageView();
+
+
+    public ProgressIndicator progressIndicator = new ProgressIndicator(-1);
+
 
     private void saveImageToFile(File sourceFile, String destinationPath) {
         try (InputStream is = new FileInputStream(sourceFile);
@@ -40,21 +48,20 @@ public class ImageController {
     }
 
     @FXML
-    public void HandleFile() {
+    public void HandleFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose Image File");
-        File selectedFile = fileChooser.showOpenDialog(currentStage);
+        File selectedFile = fileChooser.showOpenDialog(fileWindow);
         if (selectedFile != null) {
             try {
+                progressIndicator.setProgress(-1);
+                progressIndicator.setVisible(true);
+
                 Image originalImage = new Image(selectedFile.toURI().toString());
                 Rectangle2D screenBounds = Screen.getPrimary().getBounds();
                 double screenWidth = screenBounds.getWidth();
                 double screenHeight = screenBounds.getHeight();
 
-                ImageView imageView = new ImageView(originalImage);
-                imageView.setFitWidth(screenWidth / 2);
-                imageView.setFitHeight(screenHeight / 2);
-                imageView.setPreserveRatio(true);
 
                 String workingDir = System.getProperty("user.dir");
 
@@ -62,25 +69,46 @@ public class ImageController {
 
                 saveImageToFile(selectedFile, destinationPath);
 
-                Stage imageStage = new Stage();
-                BorderPane imageRoot = new BorderPane();
-                imageRoot.setCenter(imageView);
-                Scene imageScene = new Scene(imageRoot);
-                imageStage.setScene(imageScene);
 
-                imageStage.setTitle("Image Preview");
-                imageStage.show();
+                ImageView imageView = new ImageView(originalImage);
+                imageView.setFitWidth(screenWidth / 2);
+                imageView.setFitHeight(screenHeight / 2);
+                imageView.setPreserveRatio(true);
+                imageView.setSmooth(true);
+
+                StackPane dialogContent = new StackPane(imageView);
+                dialogContent.getChildren().add(progressIndicator);
+
+                Dialog<ButtonType> dialog = new Dialog<>();
+                dialog.setTitle("Image Preview");
+                dialog.getDialogPane().setContent(dialogContent);
+
+                ButtonType okButton = ButtonType.OK;
+                dialog.getDialogPane().getButtonTypes().add(okButton);
+
+                dialog.showAndWait();
+
+
+                var executorService = Executors.newSingleThreadExecutor();
+                CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> {
+                    try {
+                        EncodingServerService.sendImageToServer();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }, executorService);
+
+                completableFuture.thenRun(() -> {
+                    try {
+                       EncodingServerService.sendImageToServer();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
             } catch (Exception ex) {
                 System.err.println("Error loading image: " + ex.getMessage());
             }
         }
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-        executorService.execute(() -> {
-            try {
-                EncodingServerService.sendImageToServer();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
     }
+
 }

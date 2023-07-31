@@ -41,7 +41,7 @@ def OpenAI_translate(text, language):
 
 async def main(base64_data: str):
     base64_to_wav(base64_data)
-    text1 = wav_to_text("tiny.en")
+    text1 = wav_to_text("tiny")
     text2 = OpenAI_translate(text1, "Vietnamese")
     print("Original text: ", text1)
     print("Translated text: ", text2)
