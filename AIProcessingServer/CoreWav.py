@@ -1,10 +1,16 @@
 import base64
 import os
 import whisper
+import time
+
 import asyncio
 import openai
 
+import CoreImage
+
 openai.api_key = "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"
+
+
 def wav_to_base64(wav_path):
     with open(wav_path, 'rb') as f:
         wav_data = f.read()
@@ -12,9 +18,9 @@ def wav_to_base64(wav_path):
     return base64_data
 
 
-def wav_to_text(models):
-    model = whisper.load_model(models)
-    result = model.transcribe("result.wav", fp16=False)
+def wav_to_text():
+    audio_file = open("result.wav", "rb")
+    result = openai.Audio.transcribe("whisper-1", audio_file)
     return result['text']
 
 
@@ -41,10 +47,11 @@ def OpenAI_translate(text, language):
 
 async def main(base64_data: str):
     base64_to_wav(base64_data)
-    text1 = wav_to_text("tiny")
-    text2 = OpenAI_translate(text1, "Vietnamese")
+    text1 = wav_to_text()
+    text2 = await CoreImage.TranslateManager.translate_word(text1, "en", "vi")
     print("Original text: ", text1)
     print("Translated text: ", text2)
+
     return text1, text2
 
 
