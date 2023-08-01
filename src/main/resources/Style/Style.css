@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Voces-Regular';
-    src: url('Font/Voces-Regular.ttf');
+    src: url('../Font/Voces-Regular.ttf');
 }
 
 .root {
