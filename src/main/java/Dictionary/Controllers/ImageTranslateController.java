@@ -1,6 +1,6 @@
 package Dictionary.Controllers;
 
-import Dictionary.Utils.EncodingServerService;
+import Dictionary.Utils.ImageTranslationService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
@@ -90,7 +90,7 @@ public class ImageTranslateController {
                 var executorService = Executors.newSingleThreadExecutor();
                 CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(() -> {
                     try {
-                        EncodingServerService.sendImageToServer();
+                        ImageTranslationService.sendImageToServer();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

@@ -1,9 +1,6 @@
 package Dictionary.Controllers;
 
-import Dictionary.Utils.EncodingServerService;
-import Dictionary.Utils.RecordingService;
-import Dictionary.Utils.TranslateService;
-import Dictionary.Utils.VoiceService;
+import Dictionary.Utils.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -140,7 +137,7 @@ public class TranslationController {
     private void translateAndDeleteFile() {
         CompletableFuture<List<String>> serverCommunicationFuture = CompletableFuture.supplyAsync(() -> {
             try {
-                return EncodingServerService.sendWavToServer();
+                return WavTranslationService.sendWavToServer();
             } catch (IOException e) {
                 e.printStackTrace();
                 return new ArrayList<>();
