@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static Dictionary.App.AppStage;
 import static Dictionary.DatabaseConfig.englishDAO;
 
 public class SearchingController implements Initializable {
@@ -199,6 +200,7 @@ public class SearchingController implements Initializable {
         ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         dialog.getDialogPane().getButtonTypes().addAll(okButton, cancelButton);
+        dialog.initOwner(AppStage);
 
         var result = dialog.showAndWait();
             if (result.isPresent()) {
