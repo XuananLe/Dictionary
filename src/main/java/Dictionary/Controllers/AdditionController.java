@@ -5,7 +5,9 @@ import Dictionary.Alerts.Alerts;
 import Dictionary.Models.English;
 import Dictionary.Service.StringUtils;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 
 import java.sql.SQLException;
 
@@ -34,26 +36,25 @@ public class AdditionController {
     @FXML
     private TextArea An; // antonym
 
+    public void resetText() {
+        Ex.setText("");
+        Pos.setText("");
+        Mn.setText("");
+        Pro.setText("");
+        Sy.setText("");
+        An.setText("");
+    }
+
     public void handleAdd() throws SQLException {
         String word = Nw.getText();
         if (word.isEmpty() || word.isBlank()) {
-            Ex.setText("");
-            Pos.setText("");
-            Mn.setText("");
-            Pro.setText("");
-            Sy.setText("");
-            An.setText("");
+            resetText();
             return;
         }
         word = StringUtils.normalizeString(word);
         var ress = englishDAO.findWord(word);
-        if (ress.size() <= 0) {
-            Ex.setText("");
-            Pos.setText("");
-            Mn.setText("");
-            Pro.setText("");
-            Sy.setText("");
-            An.setText("");
+        if (ress.isEmpty()) {
+            resetText();
             return;
         }
         var res = ress.get(0);
@@ -111,18 +112,10 @@ public class AdditionController {
 
                 alert.setContentText("Word: " + word + " has been added successfully");
                 alert.showAndWait();
-                Nw.setText("");
-                Ex.setText("");
-                Pos.setText("");
-                Mn.setText("");
-                Pro.setText("");
-                Sy.setText("");
-                An.setText("");
+                resetText();
             }
 
         }
     }
-
-    // You can call this method to hide the SuccessAlert after a certain time duration
 
 }

@@ -13,6 +13,8 @@ import static Dictionary.Service.EncodingService.*;
 public class ImageTranslationService {
     public static void sendImageBase64ToServer(String ImagePath) throws IOException { // image -> base64 -> server -> base64 -> image
 
+
+        // Set up connection
         String base64Data = imageToBase64(ImagePath);
         URL ImageServerUrl = new URL(SERVER_URL + "/image");
         HttpURLConnection conn = (HttpURLConnection) ImageServerUrl.openConnection();
@@ -33,7 +35,7 @@ public class ImageTranslationService {
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8))) {
             StringBuilder response = new StringBuilder();
-            String responseLine = "";
+            String responseLine;
             while ((responseLine = br.readLine()) != null) {
                 response.append(responseLine.trim());
             }

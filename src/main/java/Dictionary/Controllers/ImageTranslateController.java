@@ -1,9 +1,9 @@
 package Dictionary.Controllers;
 
+import Dictionary.Service.FileService;
 import Dictionary.Service.ImageTranslationService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -13,15 +13,17 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
-import javafx.stage.Screen;
 import javafx.stage.Window;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 
 import static Dictionary.App.AppStage;
+import static Dictionary.Service.DeviceInfoService.ScreenHeight;
+import static Dictionary.Service.DeviceInfoService.ScreenWidth;
 
 
 public class ImageTranslateController {
@@ -33,22 +35,6 @@ public class ImageTranslateController {
     public ProgressIndicator progressIndicator = new ProgressIndicator(-1);
 
 
-    private void saveImageToFile(File sourceFile, String destinationPath) {
-        try (InputStream is = new FileInputStream(sourceFile);
-             OutputStream os = new FileOutputStream(destinationPath)) {
-
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            while ((bytesRead = is.read(buffer)) != -1) {
-                os.write(buffer, 0, bytesRead);
-            }
-
-            System.out.println("Image saved to: " + destinationPath);
-        } catch (IOException e) {
-            System.err.println("Error saving image: " + e.getMessage());
-        }
-    }
-
     @FXML
     public void HandleFile() throws IOException {
         FileChooser fileChooser = new FileChooser();
@@ -58,20 +44,17 @@ public class ImageTranslateController {
             try {
 
                 Image originalImage = new Image(selectedFile.toURI().toString());
-                Rectangle2D screenBounds = Screen.getPrimary().getBounds();
-                double screenWidth = screenBounds.getWidth();
-                double screenHeight = screenBounds.getHeight();
 
 
                 String workingDir = System.getProperty("user.dir");
 
                 String destinationPath = workingDir + "/Client.png";
-                saveImageToFile(selectedFile, destinationPath);
+                FileService.saveImageToFile(selectedFile, destinationPath);
 
 
                 ImageView ClinetImageView = new ImageView(originalImage);
-                ClinetImageView.setFitWidth(screenWidth / 3);
-                ClinetImageView.setFitHeight(screenHeight / 3);
+                ClinetImageView.setFitWidth(ScreenWidth / 3);
+                ClinetImageView.setFitHeight(ScreenHeight / 3);
                 ClinetImageView.setPreserveRatio(true);
                 ClinetImageView.setSmooth(true);
 
@@ -106,8 +89,8 @@ public class ImageTranslateController {
                                 throw new RuntimeException(e);
                             }
                             ImageView ResultImageView = new ImageView(ResultImage);
-                            ResultImageView.setFitHeight(screenHeight / 3);
-                            ResultImageView.setFitWidth(screenWidth / 3);
+                            ResultImageView.setFitHeight(ScreenHeight / 3);
+                            ResultImageView.setFitWidth(ScreenWidth / 3);
                             ResultImageView.preserveRatioProperty().setValue(true);
 
                             HBox hbox = new HBox(ClinetImageView, ResultImageView);

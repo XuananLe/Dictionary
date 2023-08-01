@@ -107,7 +107,7 @@ public class SearchingController implements Initializable {
 
 
     public void deleteWord(ActionEvent actionEvent) throws SQLException {
-        if (currentWord.getWord().equals("")) {
+        if (currentWord.getWord().isEmpty()) {
             return;
         }
         if (englishDAO.deleteWord(currentWord.getWord())) {
@@ -121,7 +121,6 @@ public class SearchingController implements Initializable {
                     .build();
             alert.setContentText("Xóa thành công");
             alert.showAndWait();
-//            JOptionPane.showMessageDialog(null, "Xóa thành công"); // Thay vào đây 1 cái alert @Quân Nguyễn ơi
             searchBox.setText("");
             searchResultsListView.getItems().remove(currentWord.getWord());
             countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
@@ -148,7 +147,7 @@ public class SearchingController implements Initializable {
 
     public void updateWord() {
         if (searchBox.getText().isEmpty() || searchBox.getText().isBlank()
-                || currentWord.getWord().equals("") || currentWord.getWord().isBlank() || currentWord.getWord().isEmpty()
+                || currentWord.getWord().isBlank() || currentWord.getWord().isEmpty()
         ) {
             return;
         }
