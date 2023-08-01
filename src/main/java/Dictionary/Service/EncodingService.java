@@ -1,23 +1,11 @@
 package Dictionary.Service;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
 
 public class EncodingService {
-    public static final URL SERVER_URL;
-
-    static {
-        try {
-            // Flask server connection string
-            SERVER_URL = new URL("http://127.0.0.1:5000");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public static String imageToBase64(String ImagePath) throws IOException {
         byte[] fileContent = Files.readAllBytes(Paths.get(ImagePath));

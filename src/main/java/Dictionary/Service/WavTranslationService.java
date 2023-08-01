@@ -5,15 +5,26 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Dictionary.Service.EncodingService.SERVER_URL;
 import static Dictionary.Service.EncodingService.wavToBase64;
 
 public class WavTranslationService {
+    public static final URL SERVER_URL;
+
+    static {
+        try {
+            // Flask server connection string
+            SERVER_URL = new URL("http://127.0.0.1:5000");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static List<String> sendWavBase64ToServer(String wavPath) throws IOException {
         List<String> result = new ArrayList<>();
         String base64Data = wavToBase64(wavPath);

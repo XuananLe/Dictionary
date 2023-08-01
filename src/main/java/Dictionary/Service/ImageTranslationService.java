@@ -5,12 +5,25 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import static Dictionary.Service.EncodingService.*;
+import static Dictionary.Service.EncodingService.base64ToImage;
+import static Dictionary.Service.EncodingService.imageToBase64;
 
 public class ImageTranslationService {
+    public static final URL SERVER_URL;
+
+    static {
+        try {
+            // Flask server connection string
+            SERVER_URL = new URL("http://127.0.0.1:5000");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void sendImageBase64ToServer(String ImagePath) throws IOException { // image -> base64 -> server -> base64 -> image
 
 
