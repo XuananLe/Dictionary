@@ -1,7 +1,6 @@
 package Dictionary.Controllers;
 
 import Dictionary.Alerts.AlertStyler;
-import Dictionary.Alerts.Alerts;
 import Dictionary.Models.English;
 import Dictionary.Services.StringUtils;
 import javafx.fxml.FXML;
@@ -14,7 +13,6 @@ import java.sql.SQLException;
 import static Dictionary.DatabaseConfig.englishDAO;
 
 public class AdditionController {
-    private Alerts alerts = new Alerts();
 
     @FXML
     private TextArea Ex; // example

@@ -35,10 +35,10 @@ public class TranslationController {
        
 
         SourceLanguage.setWrapText(true);
-        SourceLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(/Utils/Images/Background.png);");
+        SourceLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(/Images/Background.png);");
 
         TranslationLanguage.setWrapText(true);
-        TranslationLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(/Utils/Images/Background.png);");
+        TranslationLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(/Images/Background.png);");
         sourceLanguageComboBox.getItems().addAll(languages);
         targetLanguageComboBox.getItems().addAll(languages);
 
