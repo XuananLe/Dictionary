@@ -1,11 +1,11 @@
-package Dictionary.Utils;
+package Dictionary.Service;
 
 import java.sql.SQLException;
 import java.util.Scanner;
 
 import static Dictionary.DatabaseConfig.englishDAO;
 
-public class Quiz {
+public class QuizFactory {
     enum QuestionType {
         ChooseMeaning,
         ChooseWord,
@@ -22,7 +22,7 @@ public class Quiz {
     private int type;
     private String answer;
 
-    Quiz() throws SQLException {
+    QuizFactory() throws SQLException {
         this.type = 0;
         this.scores = 0;
         this.ques = "";

@@ -1,4 +1,4 @@
-package Dictionary.Utils;
+package Dictionary.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import static Dictionary.Utils.EncodingService.*;
+import static Dictionary.Service.EncodingService.*;
 
 public class ImageTranslationService {
     public static void sendImageBase64ToServer(String ImagePath) throws IOException { // image -> base64 -> server -> base64 -> image

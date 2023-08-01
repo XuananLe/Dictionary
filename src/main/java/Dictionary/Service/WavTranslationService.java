@@ -1,4 +1,4 @@
-package Dictionary.Utils;
+package Dictionary.Service;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,8 +10,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Dictionary.Utils.EncodingService.SERVER_URL;
-import static Dictionary.Utils.EncodingService.wavToBase64;
+import static Dictionary.Service.EncodingService.SERVER_URL;
+import static Dictionary.Service.EncodingService.wavToBase64;
 
 public class WavTranslationService {
     public static List<String> sendWavBase64ToServer(String wavPath) throws IOException {

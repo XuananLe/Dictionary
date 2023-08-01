@@ -1,6 +1,6 @@
 package Dictionary.Controllers;
 
-import Dictionary.Utils.ImageTranslationService;
+import Dictionary.Service.ImageTranslationService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
