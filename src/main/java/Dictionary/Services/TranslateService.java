@@ -1,4 +1,4 @@
-package Dictionary.Service;
+package Dictionary.Services;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;

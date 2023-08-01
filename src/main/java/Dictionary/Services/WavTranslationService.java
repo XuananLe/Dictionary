@@ -1,4 +1,4 @@
-package Dictionary.Service;
+package Dictionary.Services;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import static Dictionary.Service.EncodingService.wavToBase64;
+import static Dictionary.Services.EncodingService.wavToBase64;
 
 public class WavTranslationService {
     public static final URL SERVER_URL;

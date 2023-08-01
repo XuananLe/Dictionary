@@ -1,4 +1,4 @@
-package Dictionary.Service;
+package Dictionary.Services;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,8 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import static Dictionary.Service.EncodingService.base64ToImage;
-import static Dictionary.Service.EncodingService.imageToBase64;
+import static Dictionary.Services.EncodingService.base64ToImage;
+import static Dictionary.Services.EncodingService.imageToBase64;
 
 public class ImageTranslationService {
     public static final URL SERVER_URL;

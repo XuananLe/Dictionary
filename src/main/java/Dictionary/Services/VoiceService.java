@@ -1,4 +1,4 @@
-package Dictionary.Service;
+package Dictionary.Services;
 
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.FactoryRegistry;

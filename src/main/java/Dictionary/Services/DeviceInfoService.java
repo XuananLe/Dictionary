@@ -1,4 +1,4 @@
-package Dictionary.Service;
+package Dictionary.Services;
 
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;

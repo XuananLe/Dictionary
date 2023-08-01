@@ -2,8 +2,8 @@ package Dictionary.Controllers;
 
 import Dictionary.Alerts.AlertStyler;
 import Dictionary.Models.English;
-import Dictionary.Service.StringUtils;
-import Dictionary.Service.VoiceService;
+import Dictionary.Services.StringUtils;
+import Dictionary.Services.VoiceService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

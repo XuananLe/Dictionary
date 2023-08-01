@@ -1,4 +1,4 @@
-package Dictionary.Service;
+package Dictionary.Services;
 
 import javax.sound.sampled.*;
 import java.io.File;

@@ -1,4 +1,4 @@
-package Dictionary.Service;
+package Dictionary.Services;
 
 public class StringUtils {
    public static String normalizeString(String searchTerm){

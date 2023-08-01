@@ -1,6 +1,6 @@
 package Dictionary.Controllers;
 
-import Dictionary.Service.*;
+import Dictionary.Services.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;

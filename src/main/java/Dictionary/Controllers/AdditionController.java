@@ -3,7 +3,7 @@ package Dictionary.Controllers;
 import Dictionary.Alerts.AlertStyler;
 import Dictionary.Alerts.Alerts;
 import Dictionary.Models.English;
-import Dictionary.Service.StringUtils;
+import Dictionary.Services.StringUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;

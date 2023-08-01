@@ -1,4 +1,4 @@
-package Dictionary.Service;
+package Dictionary.Services;
 
 import java.sql.SQLException;
 import java.util.Scanner;

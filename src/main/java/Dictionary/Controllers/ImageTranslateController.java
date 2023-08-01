@@ -1,7 +1,7 @@
 package Dictionary.Controllers;
 
-import Dictionary.Service.FileService;
-import Dictionary.Service.ImageTranslationService;
+import Dictionary.Services.FileService;
+import Dictionary.Services.ImageTranslationService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -22,8 +22,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 
 import static Dictionary.App.AppStage;
-import static Dictionary.Service.DeviceInfoService.ScreenHeight;
-import static Dictionary.Service.DeviceInfoService.ScreenWidth;
+import static Dictionary.Services.DeviceInfoService.ScreenHeight;
+import static Dictionary.Services.DeviceInfoService.ScreenWidth;
 
 
 public class ImageTranslateController {
