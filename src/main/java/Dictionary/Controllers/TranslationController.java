@@ -1,9 +1,6 @@
 package Dictionary.Controllers;
 
-import Dictionary.Utils.EncodingServerService;
-import Dictionary.Utils.RecordingService;
-import Dictionary.Utils.TranslateService;
-import Dictionary.Utils.VoiceService;
+import Dictionary.Services.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -38,10 +35,10 @@ public class TranslationController {
        
 
         SourceLanguage.setWrapText(true);
-        SourceLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(https://xlink.vn/dm3shtsg);");
+        SourceLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(/Images/Background.png);");
 
         TranslationLanguage.setWrapText(true);
-        TranslationLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(https://xlink.vn/dm3shtsg);");
+        TranslationLanguage.setStyle("-fx-font-size: 19px; -fx-border-width: 3px; -fx-border-radius: 10px; -fx-background-image: url(/Images/Background.png);");
         sourceLanguageComboBox.getItems().addAll(languages);
         targetLanguageComboBox.getItems().addAll(languages);
 
@@ -140,7 +137,7 @@ public class TranslationController {
     private void translateAndDeleteFile() {
         CompletableFuture<List<String>> serverCommunicationFuture = CompletableFuture.supplyAsync(() -> {
             try {
-                return EncodingServerService.sendWavToServer();
+                return WavTranslationService.sendWavToServer();
             } catch (IOException e) {
                 e.printStackTrace();
                 return new ArrayList<>();

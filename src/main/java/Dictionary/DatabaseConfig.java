@@ -84,7 +84,7 @@ public class DatabaseConfig {
     }
 
     public static void LoadData() throws SQLException{
-        String csvFile = "/home/xuananle/Documents/Dictionary/src/main/java/Dictionary/final_db.csv";
+        String csvFile = "/home/xuananle/Documents/View/src/main/java/View/final_db.csv";
         List<English> englishList = parseEnglish(csvFile);
         for (English english : englishList) {
             englishDAO.updateWord(english);

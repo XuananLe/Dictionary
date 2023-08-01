@@ -18,7 +18,7 @@ module dictionary.Dictionary {
     requires commons.httpclient;
     requires opencv;
     requires jlayer;
-    exports Dictionary.Utils;
+    exports Dictionary.Services;
     exports Dictionary.Controllers;
     opens Dictionary.Controllers to javafx.fxml;
     opens Dictionary.Models;

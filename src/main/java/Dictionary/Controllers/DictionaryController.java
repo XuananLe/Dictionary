@@ -22,27 +22,27 @@ public class DictionaryController implements Initializable {
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("/Dictionary/SearchingUI.fxml");
+                showComponent("/View/SearchingUI.fxml");
             }
         });
 
         addBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("/Dictionary/AdditionUI.fxml");
+                showComponent("/View/AdditionUI.fxml");
             }
         });
 
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("/Dictionary/TranslationUI.fxml");
+                showComponent("/View/TranslationUI.fxml");
             }
         });
         attachBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                showComponent("/Dictionary/ImageUI.fxml");
+                showComponent("/View/ImageTranslateUI.fxml");
             }
         });
 
@@ -52,7 +52,7 @@ public class DictionaryController implements Initializable {
         tooltip4.setShowDelay(Duration.seconds(0.5));
         tooltip5.setShowDelay(Duration.seconds(0.5));
         try {
-            showComponent("/Dictionary/SearchingUI.fxml");
+            showComponent("/View/SearchingUI.fxml");
         }catch (Exception e){
             System.err.println(e.getMessage());
         }

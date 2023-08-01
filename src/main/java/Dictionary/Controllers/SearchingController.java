@@ -2,8 +2,8 @@ package Dictionary.Controllers;
 
 import Dictionary.Alerts.AlertStyler;
 import Dictionary.Models.English;
-import Dictionary.Utils.StringUtils;
-import Dictionary.Utils.VoiceService;
+import Dictionary.Services.StringUtils;
+import Dictionary.Services.VoiceService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static Dictionary.App.AppStage;
 import static Dictionary.DatabaseConfig.englishDAO;
 
 public class SearchingController implements Initializable {
@@ -83,7 +84,7 @@ public class SearchingController implements Initializable {
             List<English> list = englishDAO.containWord(searchTerm);
             if (list.isEmpty()) {
                clearSearchResultsView();
-                notAvailableLabel.setText("Rất tiếc từ điển không hỗ trợ từ " + searchTerm);
+                notAvailableLabel.setText("Sorry, We don't have word " + searchTerm);
                 return;
             }
             currentWord = list.get(0);
@@ -93,7 +94,7 @@ public class SearchingController implements Initializable {
                 searchResultsListView.getItems().add(english.getWord());
             }
             Collections.sort(searchResultsListView.getItems());
-            countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
+            countRes.setText(searchResultsListView.getItems().size() + " Related Results");
         } catch (SQLException e) {
             e.printStackTrace();
             wordDefinition.setText("Error fetching definition.");
@@ -107,7 +108,7 @@ public class SearchingController implements Initializable {
 
 
     public void deleteWord(ActionEvent actionEvent) throws SQLException {
-        if (currentWord.getWord().equals("")) {
+        if (currentWord.getWord().isEmpty()) {
             return;
         }
         if (englishDAO.deleteWord(currentWord.getWord())) {
@@ -121,7 +122,6 @@ public class SearchingController implements Initializable {
                     .build();
             alert.setContentText("Xóa thành công");
             alert.showAndWait();
-//            JOptionPane.showMessageDialog(null, "Xóa thành công"); // Thay vào đây 1 cái alert @Quân Nguyễn ơi
             searchBox.setText("");
             searchResultsListView.getItems().remove(currentWord.getWord());
             countRes.setText(searchResultsListView.getItems().size() + " Kết quả liên quan");
@@ -148,7 +148,7 @@ public class SearchingController implements Initializable {
 
     public void updateWord() {
         if (searchBox.getText().isEmpty() || searchBox.getText().isBlank()
-                || currentWord.getWord().equals("") || currentWord.getWord().isBlank() || currentWord.getWord().isEmpty()
+                || currentWord.getWord().isBlank() || currentWord.getWord().isEmpty()
         ) {
             return;
         }
@@ -200,6 +200,7 @@ public class SearchingController implements Initializable {
         ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
         ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
         dialog.getDialogPane().getButtonTypes().addAll(okButton, cancelButton);
+        dialog.initOwner(AppStage);
 
         var result = dialog.showAndWait();
             if (result.isPresent()) {
