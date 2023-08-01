@@ -7,21 +7,21 @@
 
 <AnchorPane prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.ImageTranslateController">
    <children>
-      <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css">
+      <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Style/Style.css">
          <children>
             <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="34.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/Images/icon4.jpeg" />
+                  <Image url="@../Images/icon4.jpeg" />
                </image>
             </ImageView>
             <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="677.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/Images/icon5.jpeg" />
+                  <Image url="@../Images/icon5.jpeg" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="1.0" layoutY="144.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Utils/Images/Style.css">
+      <Pane layoutX="1.0" layoutY="144.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">
          <children>
             <Text layoutX="332.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a picture">
                <font>

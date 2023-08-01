@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="636.0" prefWidth="962.0" styleClass="root" stylesheets="@../Utils/Images/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.DictionaryController">
+<AnchorPane prefHeight="636.0" prefWidth="962.0" styleClass="root" stylesheets="@../Style/Style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.DictionaryController">
    <children>
       <AnchorPane fx:id="container" layoutX="14.0" layoutY="14.0" prefHeight="605.0" prefWidth="833.0" styleClass="border" />
       <Button fx:id="searchBtn" layoutX="876.0" layoutY="162.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button">
@@ -20,7 +20,7 @@
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/Images/icons8_search_24px.png" />
+                  <Image url="@../Images/icons8_search_24px.png" />
                </image>
             </ImageView>
          </graphic>
@@ -35,7 +35,7 @@
          <graphic>
             <ImageView fitHeight="39.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/Images/icons8_add_32px.png" />
+                  <Image url="@../Images/icons8_add_32px.png" />
                </image>
             </ImageView>
          </graphic>
@@ -50,7 +50,7 @@
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/Images/icons8_google_translate_48px.png" />
+                  <Image url="@../Images/icons8_google_translate_48px.png" />
                </image>
             </ImageView>
          </graphic>
@@ -65,7 +65,7 @@
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/Images/icons8_exit_32px.png" />
+                  <Image url="@../Images/icons8_exit_32px.png" />
                </image>
             </ImageView>
          </graphic>
@@ -74,7 +74,7 @@
          <graphic>
             <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/Images/attachment.png" />
+                  <Image url="@../Images/attachment.png" />
                </image>
             </ImageView>
          </graphic>

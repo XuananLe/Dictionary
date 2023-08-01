@@ -14,11 +14,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.SearchingController">
    <children>
-      <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css">
+      <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Style/Style.css">
          <children>
             <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="28.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/Images/Instagram.jpeg" />
+                  <Image url="@../Images/Instagram.jpeg" />
                </image>
             </ImageView>
             <Pane layoutX="267.0" layoutY="34.0" prefHeight="46.0" prefWidth="287.0" styleClass="search-box">
@@ -30,7 +30,7 @@
                   </TextField>
                   <ImageView fitHeight="43.0" fitWidth="43.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" styleClass="title">
                      <image>
-                        <Image url="@../Utils/Images/icons8_search_24px.png" />
+                        <Image url="@../Images/icons8_search_24px.png" />
                      </image></ImageView>
                </children>
             </Pane>
@@ -41,16 +41,16 @@
             </Label>
             <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="687.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Utils/Images/Instagram1.jpeg" />
+                  <Image url="@../Images/Instagram1.jpeg" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <AnchorPane layoutY="142.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Utils/Images/Style.css">
+      <AnchorPane layoutY="142.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">
          <children>
-            <AnchorPane prefHeight="463.0" prefWidth="311.0" stylesheets="@../Utils/Images/Style.css">
+            <AnchorPane prefHeight="463.0" prefWidth="311.0" stylesheets="@../Style/Style.css">
                <children>
-                  <ListView fx:id="searchResultsListView" layoutX="14.0" layoutY="62.0" prefHeight="380.0" prefWidth="287.0" styleClass="title" stylesheets="@../Utils/Images/Style.css" />
+                  <ListView fx:id="searchResultsListView" layoutX="14.0" layoutY="62.0" prefHeight="380.0" prefWidth="287.0" styleClass="title" stylesheets="@../Style/Style.css" />
                   <Pane prefHeight="57.0" prefWidth="311.0">
                      <children>
                         <Label fx:id="countRes" layoutY="4.0" prefHeight="57.0" prefWidth="311.0">
@@ -60,7 +60,7 @@
                            <graphic>
                               <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Utils/Images/icons8_arrow_64px.png" />
+                                    <Image url="@../Images/icons8_arrow_64px.png" />
                                  </image></ImageView>
                            </graphic>
                         </Label>
@@ -70,7 +70,7 @@
             </AnchorPane>
             <AnchorPane layoutX="311.0" layoutY="-8.0" prefHeight="471.0" prefWidth="522.0">
                <children>
-                  <Pane layoutY="14.0" prefHeight="49.0" prefWidth="522.0" styleClass="cancel-button" stylesheets="@../Utils/Images/Style.css">
+                  <Pane layoutY="14.0" prefHeight="49.0" prefWidth="522.0" styleClass="cancel-button" stylesheets="@../Style/Style.css">
                      <children>
                         <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="232.0" text="Definition">
                            <font>
@@ -79,7 +79,7 @@
                            <graphic>
                               <ImageView fitHeight="55.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Utils/Images/icons8_brick_64px.png" />
+                                    <Image url="@../Images/icons8_brick_64px.png" />
                                  </image></ImageView>
                            </graphic>
                         </Label>
@@ -87,9 +87,9 @@
                   </Pane>
                   <Pane layoutY="60.0" prefHeight="390.0" prefWidth="522.0">
                      <children>
-                        <Pane layoutY="8.0" prefHeight="49.0" prefWidth="522.0" stylesheets="@../Utils/Images/Style.css">
+                        <Pane layoutY="8.0" prefHeight="49.0" prefWidth="522.0" stylesheets="@../Style/Style.css">
                            <children>
-                              <Label layoutX="8.0" prefHeight="57.0" prefWidth="168.0" stylesheets="@../Utils/Images/Style.css" text="Setting">
+                              <Label layoutX="8.0" prefHeight="57.0" prefWidth="168.0" stylesheets="@../Style/Style.css" text="Setting">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
@@ -101,7 +101,7 @@
                                  <graphic>
                                     <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Utils/Images/icons8_speaker_64px.png" />
+                                          <Image url="@../Images/icons8_speaker_64px.png" />
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
@@ -112,7 +112,7 @@
                                  <graphic>
                                     <ImageView fitHeight="40.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Utils/Images/icons8_delete_bin_64px.png" />
+                                          <Image url="@../Images/icons8_delete_bin_64px.png" />
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
@@ -123,13 +123,13 @@
                                  <graphic>
                                     <ImageView fitHeight="43.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Utils/Images/icons8_edit_64px.png" />
+                                          <Image url="@../Images/icons8_edit_64px.png" />
                                        </image>
                                     </ImageView>
                                  </graphic></Button>
                            </children>
                         </Pane>
-                        <TextArea fx:id="wordDefinition" editable="false" layoutX="4.0" layoutY="62.0" prefHeight="328.0" prefWidth="506.0" styleClass="title" stylesheets="@../Utils/Images/Style.css" wrapText="true" />
+                        <TextArea fx:id="wordDefinition" editable="false" layoutX="4.0" layoutY="62.0" prefHeight="328.0" prefWidth="506.0" styleClass="title" stylesheets="@../Style/Style.css" wrapText="true" />
                      </children>
                   </Pane>
                </children>

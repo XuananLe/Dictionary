@@ -10,8 +10,8 @@
 
 <AnchorPane prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.QuizController">
    <children>
-      <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Utils/Images/Style.css" />
-      <AnchorPane layoutY="144.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Utils/Images/Style.css">
+      <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Style/Style.css" />
+      <AnchorPane layoutY="144.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">
          <children>
             <Pane prefHeight="68.0" prefWidth="833.0" />
             <Label fx:id="FilltheBlank" layoutX="81.0" layoutY="74.0" prefHeight="57.0" prefWidth="689.0" text="Label">

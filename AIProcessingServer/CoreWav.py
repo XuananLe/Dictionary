@@ -1,7 +1,6 @@
 import base64
 import os
 import whisper
-import time
 
 import asyncio
 import openai
