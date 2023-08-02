@@ -1,10 +1,13 @@
 package Dictionary.Services;
 
 import java.sql.SQLException;
+import java.util.Random;
 
 import static Dictionary.DatabaseConfig.englishDAO;
 
 public class QuizFactory {
+    long seed = System.currentTimeMillis();
+    Random random = new Random(seed);
 
     enum QuestionType {
         ChooseMeaning,
@@ -20,41 +23,61 @@ public class QuizFactory {
     private int typeOfQuestion;
     private String inputAnswer;
     private String trueAnswer;
+    private int playTimes;
+
+    public int getPlayTimes() {
+        return playTimes;
+    }
 
     public QuizFactory() throws SQLException {
     }
 
-    public void quiz() {
-        for (int i = 0; i < 5; i++) {
-            startQuiz();
+    public void makeNewQuiz() {
+        setQuestion(null);
+        setChoices(null);
+        setTypeOfQuestion(-1);
+        setInputAnswer(null);
+        setTrueAnswer(null);
+        playTimes++;
+        if (checkAnswer()) {
+            increaseScore();
         }
-        endQuiz();
     }
 
-    public void startQuiz() {
+    public void playAgain() {
+        if (playTimes < 5) {
+            makeNewQuiz();
+            initQuiz();
+        } else {
+            endQuiz();
+        }
+    }
+
+    public String endQuiz() {
+        return "Your score: " + scores;
+    }
+
+    public String generateQuestion() {
+        switch (QuestionType.values()[typeOfQuestion]) {
+            case ChooseMeaning:
+                return "What is the meaning of " + question + "?";
+            case ChooseWord:
+                return "What is the word for " + question + "?";
+            case FillBlank:
+                return "Fill in the blank: " + question;
+            case ListenAndChoose:
+                VoiceService.playVoice(getTrueAnswer());
+                return "Listen to the audio and choose the correct answer";
+            default:
+                return "";
+        }
+    }
+
+    public void initQuiz() {
         // get random type
         int random = (int) (Math.random() * 2);
         setTypeOfQuestion(random);
-        initQuiz(typeOfQuestion);
-        System.out.println(generateQuestion());
-        getInput(inputAnswer);
-        while (!checkAnswer()) {
-            System.out.println("Wrong answer, try again!");
-            getInput(inputAnswer);
-        }
-        increaseScore();
-        System.out.println("Correct answer!");
-    }
-
-    public void endQuiz() {
-        System.out.println("Your score: " + scores);
-    }
-
-    public void getInput(String input) {
-    }
-
-    public void initQuiz(int type) {
-        switch (QuestionType.values()[type]) {
+        switch (QuestionType.values()[getTypeOfQuestion()]) {
             case ChooseMeaning:
                 initChooseMeaningQuiz();
                 break;
@@ -159,10 +182,6 @@ public class QuizFactory {
         }
     }
 
-    public int getDbSize() {
-        return dbSize;
-    }
-
     public String getTrueAnswer() {
         return trueAnswer;
     }
@@ -211,21 +230,4 @@ public class QuizFactory {
         this.inputAnswer = answer;
     }
 
-    public String generateQuestion() {
-        switch (QuestionType.values()[typeOfQuestion]) {
-            case ChooseMeaning:
-                return "What is the meaning of " + question + "?";
-            case ChooseWord:
-                return "What is the word for " + question + "?";
-            case FillBlank:
-                return "Fill in the blank: " + question;
-            case ListenAndChoose:
-                VoiceService.playVoice(getTrueAnswer());
-                return "Listen to the audio and choose the correct answer";
-            // case ListenAndFillBlank:
-            // return "Listen to the audio and fill in the blank";
-            default:
-                return "";
-        }
-    }
 }

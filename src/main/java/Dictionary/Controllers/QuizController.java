@@ -1,25 +1,21 @@
 package Dictionary.Controllers;
 
 import Dictionary.Services.QuizFactory;
-import javafx.event.ActionEvent;
+import Dictionary.Services.VoiceService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import org.opencv.dnn.Layer;
+import javafx.scene.control.ToggleGroup;
+import javafx.event.ActionEvent;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class QuizController implements Initializable {
-    private QuizFactory quiz;
-
-    public QuizController() throws SQLException {
-        quiz = new QuizFactory();
-    }
     @FXML
     private RadioButton PlanA;
     @FXML
@@ -28,6 +24,9 @@ public class QuizController implements Initializable {
     private RadioButton PlanC;
     @FXML
     private RadioButton PlanD;
+
+    ToggleGroup group = new ToggleGroup();
+
     @FXML
     private Label Question;
     @FXML
@@ -37,26 +36,43 @@ public class QuizController implements Initializable {
     @FXML
     private Button Sound;
 
-    public void handleOption() {
-        Sound.setVisible(false);
-        AnswertheBlank.setVisible(false);
-        Question.setText("Choose the correct answer");
-        Submit.setVisible(false);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        PlanA.setToggleGroup(group);
+        PlanB.setToggleGroup(group);
+        PlanC.setToggleGroup(group);
+        PlanD.setToggleGroup(group);
+
+        Sound.setVisible(true);
     }
-    public void handletheBlank() {
-        PlanA.setVisible(false);
-        PlanB.setVisible(false);
-        PlanC.setVisible(false);
-        PlanD.setVisible(false);
-        Sound.setVisible(false);
-        AnswertheBlank.setVisible(true);
+    // public void handleOption() {
+    // Sound.setVisible(false);
+    // AnswertheBlank.setVisible(false);
+    // Question.setText("Choose the correct answer");
+    // Submit.setVisible(false);
+
+    // }
+
+    // public void handletheBlank() {
+    // PlanA.setVisible(false);
+    // PlanB.setVisible(false);
+    // PlanC.setVisible(false);
+    // PlanD.setVisible(false);
+    // Sound.setVisible(false);
+    // AnswertheBlank.setVisible(true);
+    // }
+
+    private QuizFactory quiz;
+
+    public QuizController() throws SQLException {
+        quiz = new QuizFactory();
     }
-    public void setQuestion(String question) {
+
+    public void setQuestion() {
         Question.setText(quiz.generateQuestion());
     }
 
-    // set value for radio button
     public void setChoices() {
         PlanA.setText(quiz.getChoices()[0]);
         PlanB.setText(quiz.getChoices()[1]);
@@ -64,36 +80,40 @@ public class QuizController implements Initializable {
         PlanD.setText(quiz.getChoices()[3]);
     }
 
-    // button submit
-//    public void Submit() {
-//        if (PlanA.isSelected()) {
-//            quiz.setInputAnswer(PlanA.getText());
-//        } else if (PlanB.isSelected()) {
-//            quiz.setInputAnswer(PlanB.getText());
-//        } else if (PlanC.isSelected()) {
-//            quiz.setInputAnswer(PlanC.getText());
-//        } else if (PlanD.isSelected()) {
-//            quiz.setInputAnswer(PlanD.getText());
-//        }
-//        if (quiz.checkAnswer()) {
-//            quiz.increaseScore();
-//            FilltheBlank.setText("Correct");
-//        } else {
-//            FilltheBlank.setText("Wrong");
-//        }
-//        PlanA.setSelected(false);
-//        PlanB.setSelected(false);
-//        PlanC.setSelected(false);
-//        PlanD.setSelected(false);
-//        setQuestion(quiz.generateQuestion());
-//        setChoices();
-//    }
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    public void setInputAnswer() {
+        if (PlanA.isSelected()) {
+            quiz.setInputAnswer(PlanA.getText());
+        }
+        if (PlanB.isSelected()) {
+            quiz.setInputAnswer(PlanB.getText());
+        }
+        if (PlanC.isSelected()) {
+            quiz.setInputAnswer(PlanC.getText());
+        }
+        if (PlanD.isSelected()) {
+            quiz.setInputAnswer(PlanD.getText());
+        }
     }
 
-}
+    public void handleSound() {
+        VoiceService.playVoice(quiz.getTrueAnswer());
+    }
 
+    // if(quiz.getPlayTimes==-1)
+    // {
+    // quiz.initQuiz();
+    // setQuestion();
+    // setChoices();
+    // }
+
+    public void handleSubmit(ActionEvent event) {
+        setInputAnswer();
+        quiz.playAgain();
+        setQuestion();
+        setChoices();
+    }
+
+    public void soundButton(ActionEvent event) {
+       VoiceService.playVoice("hello");
+    }
+}
