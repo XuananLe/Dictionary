@@ -8,95 +8,77 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/20.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.AdditionController">
-   <AnchorPane prefHeight="596.0" prefWidth="833.0" stylesheets="@../Style/Style.css">
-      <AnchorPane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper">
-         <Label layoutX="180.0" layoutY="63.0" prefHeight="29.0" prefWidth="323.0" snapToPixel="false"
-                text="Chúc các bạn mọi điều tốt đẹp ">
-            <font>
-               <Font name="System Bold" size="20.0"/>
-            </font>
-         </Label>
-         <Label layoutX="180.0" layoutY="34.0" prefHeight="29.0" prefWidth="208.0" snapToPixel="false"
-                text="All the best to you ">
-            <font>
-               <Font name="System Bold" size="20.0"/>
-            </font>
-         </Label>
-         <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="33.0" layoutY="11.0" pickOnBounds="true"
-                    preserveRatio="true">
-            <Image url="@../Images/icon1.jpeg"/>
-         </ImageView>
-         <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="682.0" layoutY="11.0" pickOnBounds="true"
-                    preserveRatio="true">
-            <Image url="@../Images/icon2.jpeg"/>
-         </ImageView>
-      </AnchorPane>
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.AdditionController">
+   <AnchorPane prefHeight="143.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Style/Style.css">
+      <Label layoutX="180.0" layoutY="47.0" snapToPixel="false" text="All the best to you " AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="466.0" AnchorPane.topAnchor="47.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../Images/icon1.jpeg" />
+      </ImageView>
+      <Label layoutX="180.0" layoutY="76.0" prefHeight="29.0" prefWidth="323.0" snapToPixel="false" text="Chúc các bạn mọi điều tốt đẹp " AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="76.0">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="705.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../Images/icon2.jpeg" />
+      </ImageView>
    </AnchorPane>
-   <AnchorPane layoutY="143.0" prefHeight="463.0" prefWidth="833.0" styleClass="border"
-               stylesheets="@../Style/Style.css">
+   <AnchorPane layoutY="143.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">
       <Label layoutX="33.0" layoutY="14.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false" text="New Word">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="Nw" layoutX="218.0" layoutY="14.0" onKeyReleased="#handleAdd" prefHeight="40.0"
-                prefWidth="445.0" promptText="New Word" styleClass="title" wrapText="true"/>
-      <Label layoutX="33.0" layoutY="131.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false" text="Synonym">
+      <TextArea fx:id="Nw" layoutX="218.0" layoutY="14.0" onKeyReleased="#handleAdd" prefHeight="40.0" prefWidth="445.0" promptText="New Word" styleClass="title" wrapText="true" />
+      <Label layoutX="33.0" layoutY="131.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false" text="Synonym" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="131.0">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="Ex" layoutX="29.0" layoutY="242.0" prefHeight="169.0" prefWidth="358.0" promptText="Examples"
-                styleClass="title" wrapText="true"/>
-      <Button fx:id="addBtn" layoutX="387.0" layoutY="411.0" onAction="#HandleClickBtn"
-              prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button">
+      <TextArea fx:id="Ex" layoutX="29.0" layoutY="242.0" prefHeight="169.0" prefWidth="358.0" promptText="Examples" styleClass="title" wrapText="true" />
+      <Button fx:id="addBtn" layoutX="387.0" layoutY="411.0" onAction="#HandleClickBtn" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@../Images/icons8_add_64px.png"/>
+               <Image url="@../Images/icons8_add_64px.png" />
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="33.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false"
-             text="Part of speech">
+      <Label layoutX="33.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false" text="Part of speech" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="74.0">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="Pos" layoutX="179.0" layoutY="74.0" prefHeight="40.0" prefWidth="208.0"
-                promptText="Part of speech" styleClass="title" wrapText="true"/>
-      <Label layoutX="433.0" layoutY="189.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false" text="Meaning">
+      <TextArea fx:id="Pos" layoutX="179.0" layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Part of speech" styleClass="title" wrapText="true" AnchorPane.leftAnchor="179.0" AnchorPane.topAnchor="74.0" />
+      <Label layoutX="433.0" layoutY="189.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false" text="Meaning" AnchorPane.leftAnchor="433.0" AnchorPane.topAnchor="189.0">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="Mn" layoutX="433.0" layoutY="242.0" prefHeight="169.0" prefWidth="358.0" promptText="Meaning"
-                styleClass="title" wrapText="true"/>
-      <Label layoutX="433.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false"
-             text="Pronunciation">
+      <TextArea fx:id="Mn" layoutX="433.0" layoutY="242.0" prefHeight="169.0" prefWidth="358.0" promptText="Meaning" styleClass="title" wrapText="true" />
+      <Label layoutX="433.0" layoutY="74.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false" text="Pronunciation" AnchorPane.leftAnchor="433.0" AnchorPane.topAnchor="74.0">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="Pro" layoutX="583.0" layoutY="74.0" prefHeight="40.0" prefWidth="208.0"
-                promptText="Pronunciation" styleClass="title" wrapText="true"/>
-      <TextArea fx:id="Sy" layoutX="179.0" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Synonym"
-                styleClass="title" wrapText="true"/>
-      <Label layoutX="33.0" layoutY="189.0" prefHeight="40.0" prefWidth="168.0" snapToPixel="false" text="Example">
+      <TextArea fx:id="Pro" layoutX="583.0" layoutY="74.0" prefHeight="40.0" prefWidth="208.0" promptText="Pronunciation" styleClass="title" wrapText="true" />
+      <TextArea fx:id="Sy" layoutX="179.0" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Synonym" styleClass="title" wrapText="true" />
+      <Label layoutX="33.0" layoutY="189.0" prefHeight="40.0" prefWidth="168.0" snapToPixel="false" text="Example" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="189.0">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="433.0" layoutY="131.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false" text="Antonym">
+      <Label layoutX="433.0" layoutY="131.0" prefHeight="40.0" prefWidth="143.0" snapToPixel="false" text="Antonym" AnchorPane.leftAnchor="433.0" AnchorPane.topAnchor="131.0">
          <font>
-            <Font name="System Bold" size="20.0"/>
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextArea fx:id="An" layoutX="583.0" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Antonym"
-                styleClass="title" wrapText="true"/>
+      <TextArea fx:id="An" layoutX="583.0" layoutY="131.0" prefHeight="40.0" prefWidth="208.0" promptText="Antonym" styleClass="title" wrapText="true" />
    </AnchorPane>
 </AnchorPane>
