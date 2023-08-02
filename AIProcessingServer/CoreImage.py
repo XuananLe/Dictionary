@@ -1,32 +1,11 @@
 import asyncio
 import base64
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+
 import cv2
 import pytesseract
-import aiohttp
-import requests
+from PIL import Image, ImageDraw, ImageFont
 
-
-class TranslateManager:
-    @staticmethod
-    async def translate_word(text_to_translate, source_language, target_language):
-        encoded_text = requests.utils.quote(text_to_translate)
-        api_url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl={source_language}&tl={target_language}&dt=t&text={encoded_text}&op=translate"
-
-        async with aiohttp.ClientSession() as session:
-            async with session.get(api_url) as response:
-                translation_data = await response.json()
-
-        return await TranslateManager.parse_translation_response(translation_data)
-
-    @staticmethod
-    async def parse_translation_response(response):
-        try:
-            translation_segments = response[0]
-            translated_text = "".join(segment[0] for segment in translation_segments)
-            return translated_text
-        except (KeyError, IndexError):
-            return " "
+import CoreTranslation
 
 
 async def main(base64_data: str):
@@ -45,7 +24,7 @@ async def main(base64_data: str):
                 x, y, text_w, text_h = int(b[6]), int(b[7]), int(b[8]), int(b[9])
                 cv2.rectangle(img, (x, y), (x + text_w, y + text_h), (0, 0, 255), 2)
                 text = b[11]
-                text = await TranslateManager.translate_word(text, 'en', 'vi')
+                text = await CoreTranslation.TranslateManager.translate_word(text, 'en', 'vi')
                 draw = ImageDraw.Draw(pil_img)
                 font_size = 40
                 font = ImageFont.truetype(font_path, font_size)
@@ -56,10 +35,12 @@ async def main(base64_data: str):
                     font = ImageFont.truetype(font_path, font_size)
 
                 font_size -= 1
-                print(f"TextSize: {font_size}, font.getLenghth: {font.getbbox(text)}, text heigh: {text_h}, text width: {text_w}   TEXT {text}")
+                print(
+                    f"TextSize: {font_size}, font.getLenghth: {font.getbbox(text)}, text heigh: {text_h}, text width: {text_w}   TEXT {text}")
                 draw.rectangle([(x, y), (x + text_w, y + text_h)], fill=(255, 255, 255, 0))
                 text_width, text_height = font.getsize(text)
-                draw.text((x + (text_w - text_width) // 2, y + (text_h - text_height) // 2), text, font=font, align="left", fill=(0, 0, 0))    # draw text in the middle of the box)
+                draw.text((x + (text_w - text_width) // 2, y + (text_h - text_height) // 2), text, font=font,
+                          align="left", fill=(0, 0, 0))  # draw text in the middle of the box)
 
     pil_img.save('result.png')
     return image_to_base64('result.png')

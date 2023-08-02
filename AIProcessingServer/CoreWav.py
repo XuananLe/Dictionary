@@ -3,7 +3,7 @@ import base64
 
 import openai
 import whisper
-
+import CoreTranslation
 import CoreImage
 
 openai.api_key = "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"
@@ -52,7 +52,7 @@ def OpenAI_translate(text, language):
 async def main(base64_data: str):
     base64_to_wav(base64_data)
     text1 = wav_to_text2("base.en")
-    text2 = await CoreImage.TranslateManager.translate_word(text1, "en", "vi")
+    text2 = await CoreTranslation.TranslateManager.translate_word(text1, "en", "vi")
     print("Original text: ", text1)
     print("Translated text: ", text2)
 
