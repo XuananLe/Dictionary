@@ -1,3 +1,4 @@
+import whisper
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import CoreImage
@@ -5,6 +6,7 @@ import requests
 import CoreWav
 
 app = Flask(__name__)
+main_model = whisper.load_model("base.en")
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 

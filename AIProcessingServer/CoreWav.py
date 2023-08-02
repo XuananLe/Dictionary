@@ -1,5 +1,9 @@
 import asyncio
 import base64
+import concurrent
+import multiprocessing
+import time
+import app
 
 import openai
 import whisper
@@ -29,10 +33,31 @@ def base64_to_wav(base64_code):
     wav_file.close()
 
 
-def wav_to_text2(model: str) -> str:
-    models = whisper.load_model(model)
-    result = whisper.transcribe(models, "result.wav", fp16=False)
+def transcribe_wav():
+    start_time = time.time()
+    result = whisper.transcribe(app.main_model, "result.wav", fp16=False)
+    end_time = time.time()
+    transcribe_time = end_time - start_time
+    print(f"Transcribe Time: {transcribe_time:.4f} seconds")
     return result["text"]
+
+
+def wav_to_text2() -> str:
+    start_time = time.time()
+
+    try:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count()) as executor:
+            transcribe_future = executor.submit(transcribe_wav)
+
+            concurrent.futures.wait([transcribe_future])
+
+            text_result = transcribe_future.result()
+
+        total_time = time.time() - start_time
+        print(f"Total Time: {total_time:.4f} seconds")
+        return text_result
+    except whisper.WhisperException as e:
+        return str(e)
 
 
 def OpenAI_translate(text, language):
@@ -51,7 +76,7 @@ def OpenAI_translate(text, language):
 
 async def main(base64_data: str):
     base64_to_wav(base64_data)
-    text1 = wav_to_text2("base.en")
+    text1 = wav_to_text2()
     text2 = await CoreTranslation.TranslateManager.translate_word(text1, "en", "vi")
     print("Original text: ", text1)
     print("Translated text: ", text2)
