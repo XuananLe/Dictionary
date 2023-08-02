@@ -1,13 +1,13 @@
 module dictionary.Dictionary {
-
-    requires transitive javafx.controls;
+    requires javafx.controls;
     requires javafx.fxml;
-    requires transitive javafx.graphics;
+    exports Dictionary;
+    opens Dictionary to javafx.fxml;
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
-    requires transitive java.desktop;
-    requires transitive ormlite.jdbc;
+    requires java.desktop;
+    requires ormlite.jdbc;
     requires httpclient;
     requires httpcore;
     requires gson;
@@ -18,13 +18,8 @@ module dictionary.Dictionary {
     requires commons.httpclient;
     requires opencv;
     requires jlayer;
-
     exports Dictionary.Services;
     exports Dictionary.Controllers;
-    exports Dictionary;
-    exports Dictionary.Models;
-
     opens Dictionary.Controllers to javafx.fxml;
     opens Dictionary.Models;
-    opens Dictionary to javafx.fxml;
 }
