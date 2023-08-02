@@ -21,7 +21,7 @@ public class QuizFactory {
     private String inputAnswer;
     private String trueAnswer;
 
-    QuizFactory() throws SQLException {
+    public QuizFactory() throws SQLException {
     }
 
     public void quiz() {
