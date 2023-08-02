@@ -1,5 +1,6 @@
 package Dictionary.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -27,13 +28,11 @@ public class QuizController implements Initializable {
     @FXML
     private TextField AnswertheBlank;
     @FXML
-    private Label layer;
-    @FXML
     private Button Sound;
 
     public void handleOption() {
         Sound.setVisible(false);
-        layer.setVisible(false);
+        AnswertheBlank.setVisible(false);
     }
     public void handletheBlank() {
         PlanA.setVisible(false);
@@ -41,14 +40,13 @@ public class QuizController implements Initializable {
         PlanC.setVisible(false);
         PlanD.setVisible(false);
         Sound.setVisible(false);
-        layer.setVisible(true);
-    }
-    public void test() {
-        handletheBlank();
+        AnswertheBlank.setVisible(true);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        handletheBlank();
 
     }
+
 }

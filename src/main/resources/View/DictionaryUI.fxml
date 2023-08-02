@@ -85,5 +85,21 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Button fx:id="quizBtn" layoutX="876.0" layoutY="65.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button">
+         <tooltip>
+            <Tooltip fx:id="tooltip6" text="Quiz">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Tooltip>
+         </tooltip>
+         <graphic>
+            <ImageView fitHeight="41.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/quiz.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>
