@@ -1,43 +1,27 @@
 package Dictionary.Services;
 
 import java.sql.SQLException;
-import java.util.Scanner;
 
 import static Dictionary.DatabaseConfig.englishDAO;
 
 public class QuizFactory {
-    private VoiceService voiceService = new VoiceService();
 
     enum QuestionType {
         ChooseMeaning,
         ChooseWord,
         ListenAndChoose,
-        ListenAndFillBlank,
         FillBlank,
     }
 
-    private String ques;
+    private String question;
     private String[] choices = new String[4];
     private int scores;
-    private int size = englishDAO.getAllWords().size();
-
-    private int type;
-    private String answer;
-    private int choose;
-
-    public int getChoose() {
-        return choose;
-    }
-
-    public void setChoose(int choose) {
-        this.choose = choose;
-    }
+    private int dbSize = englishDAO.getAllWords().size();
+    private int typeOfQuestion;
+    private String inputAnswer;
+    private String trueAnswer;
 
     QuizFactory() throws SQLException {
-        this.type = 0;
-        this.scores = 0;
-        this.ques = "";
-        this.answer = "";
     }
 
     public void quiz() {
@@ -50,13 +34,13 @@ public class QuizFactory {
     public void startQuiz() {
         // get random type
         int random = (int) (Math.random() * 2);
-        setType(random);
-        initQuiz(type);
-        System.out.println(getQuestion(type, ques));
-        getInput(answer);
+        setTypeOfQuestion(random);
+        initQuiz(typeOfQuestion);
+        System.out.println(generateQuestion());
+        getInput(inputAnswer);
         while (!checkAnswer()) {
             System.out.println("Wrong answer, try again!");
-            getInput(answer);
+            getInput(inputAnswer);
         }
         increaseScore();
         System.out.println("Correct answer!");
@@ -67,13 +51,6 @@ public class QuizFactory {
     }
 
     public void getInput(String input) {
-        Scanner scanner = new Scanner(System.in);
-        input = scanner.nextLine();
-        System.out.println("You entered: " + input);
-        setAnswer(input);
-        // close scanner
-        scanner.close();
-
     }
 
     public void initQuiz(int type) {
@@ -90,41 +67,23 @@ public class QuizFactory {
             case ListenAndChoose:
                 initListenQuiz();
                 break;
-            case ListenAndFillBlank:
-                initListenQuiz();
-                break;
             default:
                 break;
         }
     }
 
     public boolean checkAnswer() {
-        if (type == 0) {
-            return answer.equals(getMeaningFromWord(ques));
-        } else {
-            return answer.equals(getWordFromMeaning(ques));
-        }
+        return inputAnswer.equals(trueAnswer);
     }
 
-    // public boolean checkAnswer() {
-    // switch (type) {
-    // case 0:
-    // return answer.equals(getMeaningFromWord(ques));
-    // case 1:
-    // return answer.equals(getWordFromMeaning(ques));
-    // case 2:
-    // return answer.equals(getWordFromMeaning(ques));
-    // case 3:
-
-    // }
-    // }
     public void initChooseMeaningQuiz() {
         for (int i = 0; i < 4; i++) {
             choices[i] = getRandomMeaning();
         }
         // get random from 0 to 3
         int random = (int) (Math.random() * 4);
-        setQues(getWordFromMeaning(choices[random]));
+        setQuestion(getWordFromMeaning(choices[random]));
+        setTrueAnswer(choices[random]);
     }
 
     public void initChooseWordQuiz() {
@@ -132,16 +91,8 @@ public class QuizFactory {
             choices[i] = getRandomWord();
         }
         int random = (int) (Math.random() * 4);
-        setQues(getMeaningFromWord(choices[random]));
-    }
-
-    public void initListenQuiz() {
-        for (int i = 0; i < 4; i++) {
-            choices[i] = getRandomWord();
-        }
-        int random = (int) (Math.random() * 4);
-        setQues(getMeaningFromWord(choices[random]));
-        ques.replace(choices[random], "______");
+        setQuestion(getMeaningFromWord(choices[random]));
+        setTrueAnswer(choices[random]);
     }
 
     public void initFillBlankQuiz() {
@@ -149,7 +100,19 @@ public class QuizFactory {
             choices[i] = getRandomWord();
         }
         int random = (int) (Math.random() * 4);
-        setQues(getWordFromMeaning(choices[random]));
+        setQuestion(getMeaningFromWord(choices[random]));
+        setTrueAnswer(choices[random]);
+        question.replace(choices[random], "______");
+
+    }
+
+    public void initListenQuiz() {
+        for (int i = 0; i < 4; i++) {
+            choices[i] = getRandomMeaning();
+        }
+        int random = (int) (Math.random() * 4);
+        setTrueAnswer(choices[random]);
+        setQuestion(getWordFromMeaning(choices[random]));
     }
 
     public void increaseScore() {
@@ -158,7 +121,7 @@ public class QuizFactory {
 
     public String getRandomWord() {
         try {
-            int random = (int) (Math.random() * size);
+            int random = (int) (Math.random() * dbSize);
             return englishDAO.getAllWords().get(random).getWord();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -168,8 +131,7 @@ public class QuizFactory {
 
     public String getRandomMeaning() {
         try {
-            int size = englishDAO.getAllWords().size();
-            int random = (int) (Math.random() * size);
+            int random = (int) (Math.random() * dbSize);
             return englishDAO.getAllWords().get(random).getMeaning();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -188,7 +150,6 @@ public class QuizFactory {
     }
 
     // get meaning from word
-
     public static String getMeaningFromWord(String word) {
         try {
             return englishDAO.queryBuilder().where().eq("word", word).queryForFirst().getMeaning();
@@ -198,20 +159,32 @@ public class QuizFactory {
         }
     }
 
-    public int getType() {
-        return type;
+    public int getDbSize() {
+        return dbSize;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public String getTrueAnswer() {
+        return trueAnswer;
     }
 
-    public String getQues() {
-        return ques;
+    public void setTrueAnswer(String trueAnswer) {
+        this.trueAnswer = trueAnswer;
     }
 
-    public void setQues(String ques) {
-        this.ques = ques;
+    public int getTypeOfQuestion() {
+        return typeOfQuestion;
+    }
+
+    public void setTypeOfQuestion(int type) {
+        this.typeOfQuestion = type;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String ques) {
+        this.question = ques;
     }
 
     public String[] getChoices() {
@@ -230,29 +203,29 @@ public class QuizFactory {
         this.scores = scores;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String getInputAnswer() {
+        return inputAnswer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setInputAnswer(String answer) {
+        this.inputAnswer = answer;
     }
 
-    public String getQuestion(int type, String ques) {
-        switch (QuestionType.values()[type]) {
+    public String generateQuestion() {
+        switch (QuestionType.values()[typeOfQuestion]) {
             case ChooseMeaning:
-                return "What is the meaning of " + ques + "?";
+                return "What is the meaning of " + question + "?";
             case ChooseWord:
-                return "What is the word for " + ques + "?";
+                return "What is the word for " + question + "?";
             case FillBlank:
-                return "Fill in the blank: " + ques;
+                return "Fill in the blank: " + question;
             case ListenAndChoose:
-                return "Listen to the audio and choose the correct word";
-            case ListenAndFillBlank:
-                return "Listen to the audio and fill in the blank";
+                VoiceService.playVoice(getTrueAnswer());
+                return "Listen to the audio and choose the correct answer";
+            // case ListenAndFillBlank:
+            // return "Listen to the audio and fill in the blank";
             default:
                 return "";
         }
     }
-
 }
