@@ -71,19 +71,19 @@ public class QuizController implements Initializable {
         VoiceService.playVoice(quiz.getTrueAnswer());
     }
 
-    // if(quiz.getPlayTimes==-1)
-    // {
-    // quiz.initQuiz();
-    // setQuestion();
-    // setChoices();
-    // }
-
     public void handleSubmit(ActionEvent event) {
+        quiz.initQuiz();
         setQuestion();
         setChoices();
         setInputAnswer();
+        if (quiz.getTypeOfQuestion() == 2) {
+            Sound.setVisible(true);
+        } else {
+            Sound.setVisible(false);
+        }
         // quiz.playAgain();
         System.out.println("Submit button clicked!");
+        
 
     }
 
@@ -94,17 +94,23 @@ public class QuizController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        // only once choice
         PlanA.setToggleGroup(group);
         PlanB.setToggleGroup(group);
         PlanC.setToggleGroup(group);
         PlanD.setToggleGroup(group);
-        if (quiz.getPlayTimes() == -1) {
-            quiz.initQuiz();
-        }
-        setQuestion();
-        setChoices();
 
-        Sound.setVisible(true);
+        if (quiz.getPlayTimes() == 0) {
+            quiz.initQuiz();
+            setQuestion();
+            setChoices();
+            if (quiz.getTypeOfQuestion() == 2) {
+                Sound.setVisible(true);
+            } else {
+                Sound.setVisible(false);
+            }
+        }
+
         // right click submit button call handle submit
         Submit.setOnAction(this::handleSubmit);
         Sound.setOnAction(this::soundButton);

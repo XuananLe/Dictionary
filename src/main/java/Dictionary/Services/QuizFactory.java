@@ -32,22 +32,14 @@ public class QuizFactory {
     public QuizFactory() throws SQLException {
     }
 
-    public void makeNewQuiz() {
-        setQuestion(null);
-        setChoices(null);
-        setTypeOfQuestion(-1);
-        setInputAnswer(null);
-        setTrueAnswer(null);
-        playTimes++;
-        if (checkAnswer()) {
-            increaseScore();
-        }
-    }
-
     public void playAgain() {
         if (playTimes < 5) {
-            makeNewQuiz();
             initQuiz();
+            playTimes++;
+            if (checkAnswer()) {
+                increaseScore();
+                System.out.println("Correct");
+            }
         } else {
             endQuiz();
         }
