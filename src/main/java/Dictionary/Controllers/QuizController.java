@@ -17,52 +17,24 @@ import java.util.ResourceBundle;
 
 public class QuizController implements Initializable {
     @FXML
-    private RadioButton PlanA;
+    private RadioButton PlanA = new RadioButton();
     @FXML
-    private RadioButton PlanB;
+    private RadioButton PlanB = new RadioButton();
     @FXML
-    private RadioButton PlanC;
+    private RadioButton PlanC = new RadioButton();
     @FXML
-    private RadioButton PlanD;
+    private RadioButton PlanD = new RadioButton();
 
     ToggleGroup group = new ToggleGroup();
 
     @FXML
-    private Label Question;
+    private Label Question = new Label();
     @FXML
-    private Button Submit;
+    private Button Submit = new Button();
     @FXML
-    private TextField AnswertheBlank;
+    private TextField AnswertheBlank = new TextField();
     @FXML
-    private Button Sound;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        PlanA.setToggleGroup(group);
-        PlanB.setToggleGroup(group);
-        PlanC.setToggleGroup(group);
-        PlanD.setToggleGroup(group);
-
-        Sound.setVisible(true);
-    }
-    // public void handleOption() {
-    // Sound.setVisible(false);
-    // AnswertheBlank.setVisible(false);
-    // Question.setText("Choose the correct answer");
-    // Submit.setVisible(false);
-
-    // }
-
-    // public void handletheBlank() {
-    // PlanA.setVisible(false);
-    // PlanB.setVisible(false);
-    // PlanC.setVisible(false);
-    // PlanD.setVisible(false);
-    // Sound.setVisible(false);
-    // AnswertheBlank.setVisible(true);
-    // }
-
+    private Button Sound = new Button();
     private QuizFactory quiz;
 
     public QuizController() throws SQLException {
@@ -107,13 +79,35 @@ public class QuizController implements Initializable {
     // }
 
     public void handleSubmit(ActionEvent event) {
-        setInputAnswer();
-        quiz.playAgain();
         setQuestion();
         setChoices();
+        setInputAnswer();
+        // quiz.playAgain();
+        System.out.println("Submit button clicked!");
+
     }
 
     public void soundButton(ActionEvent event) {
-       VoiceService.playVoice("hello");
+        VoiceService.playVoice("hello");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        PlanA.setToggleGroup(group);
+        PlanB.setToggleGroup(group);
+        PlanC.setToggleGroup(group);
+        PlanD.setToggleGroup(group);
+        if (quiz.getPlayTimes() == -1) {
+            quiz.initQuiz();
+        }
+        setQuestion();
+        setChoices();
+
+        Sound.setVisible(true);
+        // right click submit button call handle submit
+        Submit.setOnAction(this::handleSubmit);
+        Sound.setOnAction(this::soundButton);
+
     }
 }
