@@ -4,7 +4,8 @@ import java.sql.SQLException;
 import java.util.Random;
 
 import static Dictionary.DatabaseConfig.englishDAO;
-
+import Dictionary.Models.English;
+import java.util.List;
 public class QuizFactory {
     long seed = System.currentTimeMillis();
     Random random = new Random(seed);
@@ -20,6 +21,7 @@ public class QuizFactory {
     private String[] choices = new String[4];
     private int scores;
     private int dbSize = englishDAO.getAllWords().size();
+    private List<English> englishList = englishDAO.getAllWords();
     private int typeOfQuestion;
     private String inputAnswer;
     private String trueAnswer;
@@ -67,7 +69,7 @@ public class QuizFactory {
 
     public void initQuiz() {
         // get random type
-        int random = (int) (Math.random() * 2);
+        int random = (int) (Math.random() * 4);
         setTypeOfQuestion(random);
         switch (QuestionType.values()[getTypeOfQuestion()]) {
             case ChooseMeaning:
@@ -123,11 +125,11 @@ public class QuizFactory {
 
     public void initListenQuiz() {
         for (int i = 0; i < 4; i++) {
-            choices[i] = getRandomMeaning();
+            choices[i] = getRandomWord();
         }
         int random = (int) (Math.random() * 4);
         setTrueAnswer(choices[random]);
-        setQuestion(getWordFromMeaning(choices[random]));
+        setQuestion(getMeaningFromWord(choices[random]));
     }
 
     public void increaseScore() {
@@ -137,7 +139,7 @@ public class QuizFactory {
     public String getRandomWord() {
         try {
             int random = (int) (Math.random() * dbSize);
-            return englishDAO.getAllWords().get(random).getWord();
+            return englishList.get(random).getWord();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "";
@@ -147,7 +149,7 @@ public class QuizFactory {
     public String getRandomMeaning() {
         try {
             int random = (int) (Math.random() * dbSize);
-            return englishDAO.getAllWords().get(random).getMeaning();
+            return englishList.get(random).getMeaning();
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "";

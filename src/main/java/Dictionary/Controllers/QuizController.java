@@ -67,6 +67,12 @@ public class QuizController implements Initializable {
         }
     }
 
+    public void clearInputAnswer() {
+        PlanA.setSelected(false);
+        PlanB.setSelected(false);
+        PlanC.setSelected(false);
+        PlanD.setSelected(false);
+    }
     public void handleSound() {
         VoiceService.playVoice(quiz.getTrueAnswer());
     }
@@ -78,17 +84,34 @@ public class QuizController implements Initializable {
         setInputAnswer();
         if (quiz.getTypeOfQuestion() == 2) {
             Sound.setVisible(true);
+            System.out.println("Sound button visible");
         } else {
             Sound.setVisible(false);
         }
+        if (quiz.getTypeOfQuestion() == 3) {
+            AnswertheBlank.setVisible(true);
+            PlanA.setVisible(false);
+            PlanB.setVisible(false);
+            PlanC.setVisible(false);
+            PlanD.setVisible(false);
+        } else {
+            AnswertheBlank.setVisible(false);
+            PlanA.setVisible(true);
+            PlanB.setVisible(true);
+            PlanC.setVisible(true);
+            PlanD.setVisible(true);
+        }
         // quiz.playAgain();
         System.out.println("Submit button clicked!");
-        
+        clearInputAnswer();
+        AnswertheBlank.clear();
 
     }
 
     public void soundButton(ActionEvent event) {
-        VoiceService.playVoice("hello");
+        if (quiz.getTrueAnswer() != null) {
+            VoiceService.playVoice(quiz.getTrueAnswer());
+        }
     }
 
     @Override
@@ -108,6 +131,19 @@ public class QuizController implements Initializable {
                 Sound.setVisible(true);
             } else {
                 Sound.setVisible(false);
+            }
+            if (quiz.getTypeOfQuestion() == 3) {
+                AnswertheBlank.setVisible(true);
+                PlanA.setVisible(false);
+                PlanB.setVisible(false);
+                PlanC.setVisible(false);
+                PlanD.setVisible(false);
+            } else {
+                AnswertheBlank.setVisible(false);
+                PlanA.setVisible(true);
+                PlanB.setVisible(true);
+                PlanC.setVisible(true);
+                PlanD.setVisible(true);
             }
         }
 
