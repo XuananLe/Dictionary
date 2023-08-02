@@ -70,9 +70,9 @@
             </AnchorPane>
             <AnchorPane layoutX="311.0" layoutY="-8.0" prefHeight="471.0" prefWidth="522.0">
                <children>
-                  <Pane layoutY="14.0" prefHeight="49.0" prefWidth="522.0" styleClass="cancel-button" stylesheets="@../Style/Style.css">
+                  <Pane layoutY="6.0" prefHeight="57.0" prefWidth="522.0" styleClass="cancel-button" stylesheets="@../Style/Style.css">
                      <children>
-                        <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="232.0" text="Definition">
+                        <Label alignment="TOP_LEFT" prefHeight="57.0" prefWidth="232.0" snapToPixel="false" text="Definition">
                            <font>
                               <Font name="System Bold" size="20.0" />
                            </font>
@@ -87,16 +87,16 @@
                   </Pane>
                   <Pane layoutY="60.0" prefHeight="390.0" prefWidth="522.0">
                      <children>
-                        <Pane layoutY="8.0" prefHeight="49.0" prefWidth="522.0" stylesheets="@../Style/Style.css">
+                        <Pane prefHeight="57.0" prefWidth="522.0" stylesheets="@../Style/Style.css">
                            <children>
-                              <Label layoutX="8.0" prefHeight="57.0" prefWidth="168.0" stylesheets="@../Style/Style.css" text="Setting">
+                              <Label layoutX="8.0" prefHeight="57.0" prefWidth="168.0" snapToPixel="false" stylesheets="@../Style/Style.css" text="Setting">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Label>
                               <Button layoutX="404.0" layoutY="-1.0" mnemonicParsing="false" onAction="#speakWord" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button" wrapText="true">
                                  <tooltip>
-                                    <Tooltip text="Phonetic" />
+                                    <Tooltip fx:id="tooltip1" text="Phonetic" />
                                  </tooltip>
                                  <graphic>
                                     <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
@@ -107,7 +107,7 @@
                                  </graphic></Button>
                               <Button layoutX="333.0" mnemonicParsing="false" onAction="#deleteWord" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button" wrapText="true">
                                  <tooltip>
-                                    <Tooltip text="Delete Word" />
+                                    <Tooltip fx:id="tooltip2" text="Delete Word" />
                                  </tooltip>
                                  <graphic>
                                     <ImageView fitHeight="40.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
@@ -118,7 +118,7 @@
                                  </graphic></Button>
                               <Button layoutX="255.0" layoutY="1.0" mnemonicParsing="false" onAction="#updateWord" prefHeight="50.0" prefWidth="50.0" styleClass="transparent-button" wrapText="true">
                                  <tooltip>
-                                    <Tooltip text="Update Word" />
+                                    <Tooltip fx:id="tooltip3" text="Update Word" />
                                  </tooltip>
                                  <graphic>
                                     <ImageView fitHeight="43.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">

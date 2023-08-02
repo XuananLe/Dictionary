@@ -81,6 +81,9 @@
          <tooltip>
             <Tooltip fx:id="tooltip5" text="Attachment" />
          </tooltip>
+         <font>
+            <Font size="18.0" />
+         </font>
       </Button>
    </children>
 </AnchorPane>
