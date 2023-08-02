@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -39,6 +40,8 @@ public class SearchingController implements Initializable {
 
     @FXML
     public English currentWord = new English();
+    @FXML
+    private Tooltip tooltip1,tooltip2,tooltip3;
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,6 +69,9 @@ public class SearchingController implements Initializable {
                 }
             }
         });
+        tooltip1.setShowDelay(Duration.seconds(0.1));
+        tooltip2.setShowDelay(Duration.seconds(0.1));
+        tooltip3.setShowDelay(Duration.seconds(0.1));
     }
 
     @FXML

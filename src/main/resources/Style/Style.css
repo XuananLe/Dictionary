@@ -164,6 +164,9 @@
     -fx-background-radius: 0;
     -fx-padding: 0;
 }
+.transparent-button:selected {
+    -fx-font-weight: bold;
+}
 
 .success-alert{
     -fx-font-size: 14px;

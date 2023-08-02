@@ -46,11 +46,11 @@ public class DictionaryController implements Initializable {
             }
         });
 
-        tooltip1.setShowDelay(Duration.seconds(0.5));
-        tooltip2.setShowDelay(Duration.seconds(0.5));
-        tooltip3.setShowDelay(Duration.seconds(0.5));
-        tooltip4.setShowDelay(Duration.seconds(0.5));
-        tooltip5.setShowDelay(Duration.seconds(0.5));
+        tooltip1.setShowDelay(Duration.seconds(0.1));
+        tooltip2.setShowDelay(Duration.seconds(0.1));
+        tooltip3.setShowDelay(Duration.seconds(0.1));
+        tooltip4.setShowDelay(Duration.seconds(0.1));
+        tooltip5.setShowDelay(Duration.seconds(0.1));
         try {
             showComponent("/View/SearchingUI.fxml");
         }catch (Exception e){
