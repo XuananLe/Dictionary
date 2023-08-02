@@ -45,12 +45,19 @@ public class DictionaryController implements Initializable {
                 showComponent("/View/ImageTranslateUI.fxml");
             }
         });
+        quizBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                showComponent("/View/QuizUI.fxml");
+            }
+        });
 
         tooltip1.setShowDelay(Duration.seconds(0.1));
         tooltip2.setShowDelay(Duration.seconds(0.1));
         tooltip3.setShowDelay(Duration.seconds(0.1));
         tooltip4.setShowDelay(Duration.seconds(0.1));
         tooltip5.setShowDelay(Duration.seconds(0.1));
+        tooltip6.setShowDelay(Duration.seconds(0.1));
         try {
             showComponent("/View/SearchingUI.fxml");
         }catch (Exception e){
@@ -79,10 +86,10 @@ public class DictionaryController implements Initializable {
     }
 
     @FXML
-    private Tooltip tooltip1, tooltip2, tooltip3, tooltip4,tooltip5;
+    private Tooltip tooltip1, tooltip2, tooltip3, tooltip4,tooltip5,tooltip6;
 
     @FXML
-    private Button addBtn, translateBtn, searchBtn, attachBtn, exitBtn;
+    private Button addBtn, translateBtn, searchBtn, attachBtn, exitBtn,quizBtn;
 
     @FXML
     private AnchorPane container;

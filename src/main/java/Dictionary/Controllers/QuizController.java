@@ -1,12 +1,17 @@
 package Dictionary.Controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import org.opencv.dnn.Layer;
 
-public class QuizController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class QuizController implements Initializable {
     @FXML
     private RadioButton PlanA;
     @FXML
@@ -18,30 +23,32 @@ public class QuizController {
     @FXML
     private Label Question;
     @FXML
-    private Button Submit,getWord;
-    @FXML
-    private Label FilltheBlank;
+    private Button Submit;
     @FXML
     private TextField AnswertheBlank;
-    public void HandletheBlank(){
-        FilltheBlank.setText("Fill the blank");
-        AnswertheBlank.setVisible(true);
-        Submit.setVisible(true);
-        getWord.setVisible(false);
+    @FXML
+    private Label layer;
+    @FXML
+    private Button Sound;
+
+    public void handleOption() {
+        Sound.setVisible(false);
+        layer.setVisible(false);
     }
-    public void HandleOption(){
-        FilltheBlank.setText("Choose the correct answer");
-        AnswertheBlank.setVisible(false);
-        Submit.setVisible(false);
-        getWord.setVisible(true);
+    public void handletheBlank() {
+        PlanA.setVisible(false);
+        PlanB.setVisible(false);
+        PlanC.setVisible(false);
+        PlanD.setVisible(false);
+        Sound.setVisible(false);
+        layer.setVisible(true);
     }
-    public void HandleSubmit(){
-        if(AnswertheBlank.getText().equals("")){
-            FilltheBlank.setText("Please fill the blank");
-        }
-        else{
-            FilltheBlank.setText("Correct");
-        }
+    public void test() {
+        handletheBlank();
     }
-    
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
