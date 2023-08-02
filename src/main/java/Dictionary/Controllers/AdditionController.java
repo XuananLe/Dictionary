@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 
 import java.sql.SQLException;
 
+import static Dictionary.App.AppStage;
 import static Dictionary.DatabaseConfig.englishDAO;
 
 public class AdditionController {
@@ -84,6 +85,7 @@ public class AdditionController {
                     .setButtonStyle()
                     .setMinSize()
                     .build();
+            alert.initOwner(AppStage);
             alert.setContentText("Word cannot be empty, please try again");
             alert.showAndWait();
         } else if (mn.isEmpty() || mn.isBlank()) {
@@ -94,6 +96,7 @@ public class AdditionController {
                     .setButtonStyle()
                     .setMinSize()
                     .build();
+            alert.initOwner(AppStage);
             alert.setContentText("Meaning cannot be empty, please try again");
             alert.showAndWait();
         } else {
@@ -107,7 +110,7 @@ public class AdditionController {
                         .setButtonStyle()
                         .setMinSize()
                         .build();
-
+                alert.initOwner(AppStage);
                 alert.setContentText("Word: " + word + " has been added successfully");
                 alert.showAndWait();
                 resetText();

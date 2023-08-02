@@ -6,11 +6,11 @@ import Dictionary.Services.StringUtils;
 import Dictionary.Services.VoiceService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
@@ -208,43 +208,58 @@ public class SearchingController implements Initializable {
         dialog.getDialogPane().getButtonTypes().addAll(okButton, cancelButton);
         dialog.initOwner(AppStage);
 
-        var result = dialog.showAndWait();
-            if (result.isPresent()) {
-            String word = nameField.getText();
-            String definition = definitionField.getText();
-            String type = typeField.getText();
-            String pronunciation = pronunciationField.getText();
-            String example = exampleField.getText();
-            String synonym = synonymField.getText();
-            String antonym = antonymField.getText();
-            English english = new English(word, definition, pronunciation, type, example, synonym, antonym);
-            try {
-                englishDAO.updateWord(english);
-                Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                AlertStyler.on(successAlert)
-                        .applyVintageStyle()
-                        .setTitle("Update Successful")
-                        .setWindowTitle("Update Success")
-                        .setButtonStyle()
-                        .setMinSize()
-                        .build();
-                successAlert.setContentText("Word information updated successfully!");
-                successAlert.showAndWait();
-                currentWord = english;
-                wordDefinition.setText(englishDAO.renderDefinition(currentWord));
-            } catch (SQLException e) {
-                e.printStackTrace();
-                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                AlertStyler.on(errorAlert)
-                        .applyVintageStyle()
-                        .setTitle("Update Failed")
-                        .setWindowTitle("Update Failed")
-                        .setButtonStyle()
-                        .setMinSize()
-                        .build();
-                errorAlert.setHeaderText("Failed to update word information.");
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == okButton) {
+                return "OK";
+            } else if (dialogButton == cancelButton) {
+                return "Cancel";
+            } else {
+                return null;
             }
-        }
+        });
+
+        dialog.showAndWait().ifPresent(response -> {
+            if (response.equals("OK")) {
+                String word = nameField.getText();
+                String definition = definitionField.getText();
+                String type = typeField.getText();
+                String pronunciation = pronunciationField.getText();
+                String example = exampleField.getText();
+                String synonym = synonymField.getText();
+                String antonym = antonymField.getText();
+                English english = new English(word, definition, pronunciation, type, example, synonym, antonym);
+                try {
+                    englishDAO.updateWord(english);
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    AlertStyler.on(successAlert)
+                            .applyVintageStyle()
+                            .setTitle("Update Successful")
+                            .setWindowTitle("Update Success")
+                            .setButtonStyle()
+                            .setMinSize()
+                            .build();
+                    successAlert.setContentText("Word information updated successfully!");
+                    successAlert.showAndWait();
+                    currentWord = english;
+                    wordDefinition.setText(englishDAO.renderDefinition(currentWord));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    AlertStyler.on(errorAlert)
+                            .applyVintageStyle()
+                            .setTitle("Update Failed")
+                            .setWindowTitle("Update Failed")
+                            .setButtonStyle()
+                            .setMinSize()
+                            .build();
+                    errorAlert.setHeaderText("Failed to update word information.");
+                }
+            }
+            else {
+                dialog.close();
+            }
+        });
+
     }
 
     public void clearSearchResultsView() {
