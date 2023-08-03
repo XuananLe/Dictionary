@@ -2,6 +2,7 @@ package Dictionary.Controllers;
 
 import Dictionary.Services.QuizFactory;
 import Dictionary.Services.VoiceService;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,10 +15,12 @@ import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
-
 public class QuizController implements Initializable {
+    ToggleGroup group = new ToggleGroup();
+
     @FXML
     private RadioButton PlanA = new RadioButton();
     @FXML
@@ -26,8 +29,6 @@ public class QuizController implements Initializable {
     private RadioButton PlanC = new RadioButton();
     @FXML
     private RadioButton PlanD = new RadioButton();
-
-    ToggleGroup group = new ToggleGroup();
 
     @FXML
     private Label Question = new Label();
@@ -58,62 +59,33 @@ public class QuizController implements Initializable {
     }
 
     public void setChoices() {
-        PlanA.setText(quiz.getChoices()[0]);
-        PlanB.setText(quiz.getChoices()[1]);
-        PlanC.setText(quiz.getChoices()[2]);
-        PlanD.setText(quiz.getChoices()[3]);
+        for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
+            button.setText(quiz.getChoices()[List.of(PlanA, PlanB, PlanC, PlanD).indexOf(button)]);
+        }
     }
 
     public void setInputAnswer() {
-        if (PlanA.isSelected()) {
-            quiz.setInputAnswer(PlanA.getText());
-        }
-        if (PlanB.isSelected()) {
-            quiz.setInputAnswer(PlanB.getText());
-        }
-        if (PlanC.isSelected()) {
-            quiz.setInputAnswer(PlanC.getText());
-        }
-        if (PlanD.isSelected()) {
-            quiz.setInputAnswer(PlanD.getText());
+        for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
+            if (button.isSelected()) {
+                quiz.setInputAnswer(button.getText());
+            }
         }
     }
 
     public void clearInputAnswer() {
-        PlanA.setSelected(false);
-        PlanB.setSelected(false);
-        PlanC.setSelected(false);
-        PlanD.setSelected(false);
+        for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
+            button.setSelected(false);
+        }
+        AnswertheBlank.clear();
     }
 
     public void handleSubmit(ActionEvent event) {
-        quiz.initQuiz();
-        setQuestion();
-        setChoices();
-        setInputAnswer();
-        if (quiz.getTypeOfQuestion() == 2) {
-            Sound.setVisible(true);
-            System.out.println("Sound button visible");
-        } else {
-            Sound.setVisible(false);
+        if (quiz.getPlayTimes() == 5) {
+            finalQuiz();
+            return;
         }
-        if (quiz.getTypeOfQuestion() == 3) {
-            AnswertheBlank.setVisible(true);
-            PlanA.setVisible(false);
-            PlanB.setVisible(false);
-            PlanC.setVisible(false);
-            PlanD.setVisible(false);
-        } else {
-            AnswertheBlank.setVisible(false);
-            PlanA.setVisible(true);
-            PlanB.setVisible(true);
-            PlanC.setVisible(true);
-            PlanD.setVisible(true);
-        }
-        // quiz.playAgain();
+        startQuiz();
         System.out.println("Submit button clicked!");
-        clearInputAnswer();
-        AnswertheBlank.clear();
 
     }
 
@@ -122,9 +94,48 @@ public class QuizController implements Initializable {
             VoiceService.playVoice(quiz.getQuestion());
         }
     }
-    public void finalQuiz() {
-        endQuiz.setVisible(true);
 
+    public void startQuiz() {
+        setAvailable();
+        quiz.initQuiz();
+        setQuestion();
+        setChoices();
+        handleVisible();
+        clearInputAnswer();
+        quiz.increasePlayTimes();
+        System.out.println("Quiz started! : " + quiz.getPlayTimes());
+    }
+
+    public void finalQuiz() {
+        // endQuiz.setVisible(true);
+    }
+
+    public void setAvailable() {
+        PlanA.setDisable(false);
+        PlanB.setDisable(false);
+        PlanC.setDisable(false);
+        PlanD.setDisable(false);
+    }
+
+    public void whenSelected(ActionEvent event) {
+        RadioButton selectedRadioButton = (RadioButton) event.getSource();
+        System.out.println(selectedRadioButton.getText() + " selected");
+
+        group.getToggles().forEach(toggle -> {
+            RadioButton radioButton = (RadioButton) toggle;
+            if (!radioButton.equals(selectedRadioButton)) {
+                radioButton.setDisable(true);
+            }
+        });
+
+        quiz.setInputAnswer(selectedRadioButton.getText());
+        if (quiz.checkAnswer()) {
+            Result.setText("Correct!");
+        } else {
+            Result.setText("Wrong, " + quiz.correctAnswer());
+        }
+
+        Result.setVisible(true);
 
     }
 
@@ -133,40 +144,40 @@ public class QuizController implements Initializable {
         endQuiz.setVisible(false);
         Result.setVisible(false);
 
-        // only once choice
-        PlanA.setToggleGroup(group);
-        PlanB.setToggleGroup(group);
-        PlanC.setToggleGroup(group);
-        PlanD.setToggleGroup(group);
+        // only once choice can be selected
+        for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
+            button.setToggleGroup(group);
+        }
 
-
-        if (quiz.getPlayTimes() == 0) {
-            quiz.initQuiz();
-            setQuestion();
-            setChoices();
-            if (quiz.getTypeOfQuestion() == 2) {
-                Sound.setVisible(true);
-            } else {
-                Sound.setVisible(false);
-            }
-            if (quiz.getTypeOfQuestion() == 3) {
-                AnswertheBlank.setVisible(true);
-                PlanA.setVisible(false);
-                PlanB.setVisible(false);
-                PlanC.setVisible(false);
-                PlanD.setVisible(false);
-            } else {
-                AnswertheBlank.setVisible(false);
-                PlanA.setVisible(true);
-                PlanB.setVisible(true);
-                PlanC.setVisible(true);
-                PlanD.setVisible(true);
-            }
+        // handleExistence();
+        startQuiz();
+        for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
+            button.setOnAction(this::whenSelected);
         }
 
         // right click submit button call handle submit
         Submit.setOnAction(this::handleSubmit);
         Sound.setOnAction(this::soundButton);
 
+    }
+
+    public void handleVisible() {
+        Result.setVisible(false);
+        if (quiz.getTypeOfQuestion() == 2) {
+            Sound.setVisible(true);
+        } else {
+            Sound.setVisible(false);
+        }
+        if (quiz.getTypeOfQuestion() == 3) {
+            AnswertheBlank.setVisible(true);
+            for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
+                button.setVisible(false);
+            }
+        } else {
+            AnswertheBlank.setVisible(false);
+            for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
+                button.setVisible(true);
+            }
+        }
     }
 }

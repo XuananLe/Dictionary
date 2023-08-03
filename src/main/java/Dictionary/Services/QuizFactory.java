@@ -33,21 +33,17 @@ public class QuizFactory {
     public QuizFactory() throws SQLException {
     }
 
-    public void playAgain() {
-        if (playTimes < 5) {
-            initQuiz();
-            playTimes++;
-            if (checkAnswer()) {
-                increaseScore();
-                System.out.println("Correct");
-            }
-        } else {
-            endQuiz();
-        }
+    public void increasePlayTimes() {
+        playTimes++;
     }
 
     public String endQuiz() {
         return "Your score: " + scores;
+    }
+
+    public String correctAnswer() {
+
+        return "Correct answer: " + trueAnswer;
     }
 
     public String generateQuestion() {
