@@ -15,6 +15,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+
 public class QuizController implements Initializable {
     @FXML
     private RadioButton PlanA = new RadioButton();
@@ -73,9 +74,6 @@ public class QuizController implements Initializable {
         PlanC.setSelected(false);
         PlanD.setSelected(false);
     }
-    public void handleSound() {
-        VoiceService.playVoice(quiz.getTrueAnswer());
-    }
 
     public void handleSubmit(ActionEvent event) {
         quiz.initQuiz();
@@ -110,7 +108,7 @@ public class QuizController implements Initializable {
 
     public void soundButton(ActionEvent event) {
         if (quiz.getTrueAnswer() != null) {
-            VoiceService.playVoice(quiz.getTrueAnswer());
+            VoiceService.playVoice(quiz.getQuestion());
         }
     }
 
@@ -122,6 +120,7 @@ public class QuizController implements Initializable {
         PlanB.setToggleGroup(group);
         PlanC.setToggleGroup(group);
         PlanD.setToggleGroup(group);
+
 
         if (quiz.getPlayTimes() == 0) {
             quiz.initQuiz();

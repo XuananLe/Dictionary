@@ -6,6 +6,7 @@ import java.util.Random;
 import static Dictionary.DatabaseConfig.englishDAO;
 import Dictionary.Models.English;
 import java.util.List;
+
 public class QuizFactory {
     long seed = System.currentTimeMillis();
     Random random = new Random(seed);
@@ -60,7 +61,7 @@ public class QuizFactory {
             case FillBlank:
                 return "Fill in the blank: " + question;
             case ListenAndChoose:
-                VoiceService.playVoice(getTrueAnswer());
+                VoiceService.playVoice(getQuestion());
                 return "Listen to the audio and choose the correct answer";
             default:
                 return "";
@@ -90,6 +91,9 @@ public class QuizFactory {
     }
 
     public boolean checkAnswer() {
+        if (QuestionType.values()[getTypeOfQuestion()] == QuestionType.FillBlank) {
+            return StringUtils.normalizeStringForSearch(inputAnswer).equals(trueAnswer);
+        }
         return inputAnswer.equals(trueAnswer);
     }
 
@@ -108,7 +112,7 @@ public class QuizFactory {
             choices[i] = getRandomWord();
         }
         int random = (int) (Math.random() * 4);
-        setQuestion(getMeaningFromWord(choices[random]));
+        setQuestion(StringUtils.normalizeStringForSearch(getMeaningFromWord(choices[random])));
         setTrueAnswer(choices[random]);
     }
 
@@ -119,17 +123,18 @@ public class QuizFactory {
         int random = (int) (Math.random() * 4);
         setQuestion(getMeaningFromWord(choices[random]));
         setTrueAnswer(choices[random]);
-        question.replace(choices[random], "______");
+        String tmp = StringUtils.normalizeStringForSearch(choices[random]);
+        question.replace(tmp, "______");
 
     }
 
     public void initListenQuiz() {
         for (int i = 0; i < 4; i++) {
-            choices[i] = getRandomWord();
+            choices[i] = getRandomMeaning();
         }
         int random = (int) (Math.random() * 4);
         setTrueAnswer(choices[random]);
-        setQuestion(getMeaningFromWord(choices[random]));
+        setQuestion(getWordFromMeaning(choices[random]));
     }
 
     public void increaseScore() {
