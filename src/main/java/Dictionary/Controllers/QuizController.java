@@ -37,14 +37,9 @@ public class QuizController implements Initializable {
     private Button Sound = new Button();
     @FXML
     private Label Result = new Label();
-    @FXML
-    private Pane endQuiz = new Pane();
-    @FXML
-    private TextField Score = new TextField();
-    @FXML
-    private Button playAgain = new Button();
-    @FXML
-    private Button backtoHome = new Button();
+
+
+
     private QuizFactory quiz;
 
     public QuizController() throws SQLException {
@@ -123,6 +118,7 @@ public class QuizController implements Initializable {
 
         quiz.setInputAnswer(selectedRadioButton.getText());
         if (quiz.checkAnswer()) {
+            quiz.increaseScore();
             Result.setText("Correct!");
         } else {
             Result.setText("Wrong, " + quiz.correctAnswer());
@@ -139,7 +135,7 @@ public class QuizController implements Initializable {
         dialog.setTitle("Quiz Score");
 
         // Set the content text
-        dialog.setContentText("Your score is: " + score);
+        dialog.setContentText(score);
 
         // Create two button types for 'Home' and 'Play Again'
         ButtonType homeButtonType = new ButtonType("Home");
@@ -158,7 +154,7 @@ public class QuizController implements Initializable {
 
             } else if (result.get() == playAgainButtonType) {
                 // The user chose 'Play Again', restart the quiz
-                quiz.initQuiz();
+
 
             }
         }
@@ -166,7 +162,6 @@ public class QuizController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        endQuiz.setVisible(false);
         Result.setVisible(false);
 
         // only once choice can be selected

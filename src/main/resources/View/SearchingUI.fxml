@@ -30,13 +30,12 @@
          <Image url="@../Images/Instagram1.jpeg" />
       </ImageView>
       <AnchorPane layoutX="192.0" layoutY="96.0" prefHeight="31.0" prefWidth="403.0">
-         <children>
-            <Label fx:id="notAvailableLabel" layoutX="50.0" prefHeight="31.0" prefWidth="326.0" styleClass="title" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-         </children>
+         <Label fx:id="notAvailableLabel" layoutX="50.0" prefHeight="31.0" prefWidth="326.0" styleClass="title"
+                textAlignment="CENTER">
+            <font>
+               <Font name="System Bold" size="15.0"/>
+            </font>
+         </Label>
       </AnchorPane>
    </AnchorPane>
    <AnchorPane layoutY="142.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">
