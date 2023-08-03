@@ -5,17 +5,14 @@ import Dictionary.Services.VoiceService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class QuizController implements Initializable {
@@ -137,6 +134,38 @@ public class QuizController implements Initializable {
 
         Result.setVisible(true);
 
+    }
+    public void showScore() {
+        String score = quiz.endQuiz();
+        Dialog<ButtonType> dialog = new Dialog<>();
+
+        // Set the title
+        dialog.setTitle("Quiz Score");
+
+        // Set the content text
+        dialog.setContentText("Your score is: " + score);
+
+        // Create two button types for 'Home' and 'Play Again'
+        ButtonType homeButtonType = new ButtonType("Home");
+        ButtonType playAgainButtonType = new ButtonType("Play Again");
+
+        // Add the button types to the dialog
+        dialog.getDialogPane().getButtonTypes().addAll(homeButtonType, playAgainButtonType);
+
+        // Show the dialog and capture the result
+        Optional<ButtonType> result = dialog.showAndWait();
+
+        // Handle the result
+        if (result.isPresent()) {
+            if (result.get() == homeButtonType) {
+                // The user chose 'Home', show Searching scene
+
+            } else if (result.get() == playAgainButtonType) {
+                // The user chose 'Play Again', restart the quiz
+                quiz.initQuiz();
+
+            }
+        }
     }
 
     @Override
