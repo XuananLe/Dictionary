@@ -3,9 +3,9 @@ package Dictionary.Services;
 import java.sql.SQLException;
 import java.util.Random;
 
+import static Dictionary.App.dbSize;
+import static Dictionary.App.englishList;
 import static Dictionary.DatabaseConfig.englishDAO;
-import Dictionary.Models.English;
-import java.util.List;
 
 public class QuizFactory {
     long seed = System.currentTimeMillis();
@@ -21,8 +21,6 @@ public class QuizFactory {
     private String question;
     private String[] choices = new String[4];
     private int scores;
-    private int dbSize = englishDAO.getAllWords().size();
-    private List<English> englishList = englishDAO.getAllWords();
     private int typeOfQuestion;
     private String inputAnswer;
     private String trueAnswer;
