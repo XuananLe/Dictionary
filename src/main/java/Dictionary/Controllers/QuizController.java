@@ -78,7 +78,7 @@ public class QuizController implements Initializable {
 
     public void handleSubmit(ActionEvent event) {
         if (quiz.getPlayTimes() == 5) {
-            finalQuiz();
+            showScore();
             return;
         }
         startQuiz();
@@ -101,10 +101,6 @@ public class QuizController implements Initializable {
         clearInputAnswer();
         quiz.increasePlayTimes();
         System.out.println("Quiz started! : " + quiz.getPlayTimes());
-    }
-
-    public void finalQuiz() {
-        // endQuiz.setVisible(true);
     }
 
     public void setAvailable() {
