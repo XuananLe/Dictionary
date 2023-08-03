@@ -10,7 +10,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.AdditionController">
    <AnchorPane prefHeight="143.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Style/Style.css">
-      <Label layoutX="180.0" layoutY="47.0" snapToPixel="false" text="All the best to you " AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="466.0" AnchorPane.topAnchor="47.0">
+      <Label layoutX="180.0" layoutY="47.0" snapToPixel="false" text="All the best to you ">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -18,7 +18,7 @@
       <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../Images/icon1.jpeg" />
       </ImageView>
-      <Label layoutX="180.0" layoutY="76.0" prefHeight="29.0" prefWidth="323.0" snapToPixel="false" text="Chúc các bạn mọi điều tốt đẹp " AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="76.0">
+      <Label layoutX="180.0" layoutY="76.0" prefHeight="29.0" prefWidth="323.0" snapToPixel="false" text="Chúc các bạn mọi điều tốt đẹp ">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

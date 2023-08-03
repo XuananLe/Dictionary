@@ -10,6 +10,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.event.ActionEvent;
+import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -36,6 +37,16 @@ public class QuizController implements Initializable {
     private TextField AnswertheBlank = new TextField();
     @FXML
     private Button Sound = new Button();
+    @FXML
+    private Label Result = new Label();
+    @FXML
+    private Pane endQuiz = new Pane();
+    @FXML
+    private TextField Score = new TextField();
+    @FXML
+    private Button playAgain = new Button();
+    @FXML
+    private Button backtoHome = new Button();
     private QuizFactory quiz;
 
     public QuizController() throws SQLException {
@@ -111,9 +122,16 @@ public class QuizController implements Initializable {
             VoiceService.playVoice(quiz.getQuestion());
         }
     }
+    public void finalQuiz() {
+        endQuiz.setVisible(true);
+
+
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        endQuiz.setVisible(false);
+        Result.setVisible(false);
 
         // only once choice
         PlanA.setToggleGroup(group);
