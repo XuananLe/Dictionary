@@ -1,23 +1,30 @@
 package Dictionary.Controllers;
 
+import Dictionary.Alerts.DialogStyler;
 import Dictionary.Services.QuizFactory;
 import Dictionary.Services.VoiceService;
 
 import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
+
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.Pane;
+
+
+
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class QuizController implements Initializable {
+    private final QuizFactory quiz;
     ToggleGroup group = new ToggleGroup();
-
     @FXML
     private RadioButton PlanA = new RadioButton();
     @FXML
@@ -26,7 +33,6 @@ public class QuizController implements Initializable {
     private RadioButton PlanC = new RadioButton();
     @FXML
     private RadioButton PlanD = new RadioButton();
-
     @FXML
     private Label Question = new Label();
     @FXML
@@ -37,10 +43,6 @@ public class QuizController implements Initializable {
     private Button Sound = new Button();
     @FXML
     private Label Result = new Label();
-
-
-
-    private QuizFactory quiz;
 
     public QuizController() throws SQLException {
         quiz = new QuizFactory();
@@ -72,8 +74,10 @@ public class QuizController implements Initializable {
     }
 
     public void handleSubmit(ActionEvent event) {
-        if (quiz.getPlayTimes() == 5) {
+        if (quiz.getPlayTimes() % 5 == 0) {
             showScore();
+            //set quiz score to 0
+            quiz.setScores(0);
             return;
         }
         startQuiz();
@@ -127,6 +131,7 @@ public class QuizController implements Initializable {
         Result.setVisible(true);
 
     }
+
     public void showScore() {
         String score = quiz.endQuiz();
         Dialog<ButtonType> dialog = new Dialog<>();
@@ -135,7 +140,7 @@ public class QuizController implements Initializable {
         dialog.setTitle("Quiz Score");
 
         // Set the content text
-        dialog.setContentText(score);
+        dialog.setContentText(score + "/5");
 
         // Create two button types for 'Home' and 'Play Again'
         ButtonType homeButtonType = new ButtonType("Home");
@@ -143,6 +148,12 @@ public class QuizController implements Initializable {
 
         // Add the button types to the dialog
         dialog.getDialogPane().getButtonTypes().addAll(homeButtonType, playAgainButtonType);
+        DialogStyler.on(dialog)
+                .applyVintageStyle()
+                .setTitle("Quiz Score")
+                .setWindowTitle("Score Dialog")
+                .setMinSize()
+                .build();
 
         // Show the dialog and capture the result
         Optional<ButtonType> result = dialog.showAndWait();
@@ -151,11 +162,11 @@ public class QuizController implements Initializable {
         if (result.isPresent()) {
             if (result.get() == homeButtonType) {
                 // The user chose 'Home', show Searching scene
+                dialog.close();
 
             } else if (result.get() == playAgainButtonType) {
                 // The user chose 'Play Again', restart the quiz
-
-
+                startQuiz();
             }
         }
     }

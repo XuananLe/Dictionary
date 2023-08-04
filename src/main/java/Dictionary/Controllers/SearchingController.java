@@ -1,6 +1,7 @@
 package Dictionary.Controllers;
 
 import Dictionary.Alerts.AlertStyler;
+import Dictionary.Alerts.DialogStyler;
 import Dictionary.Models.English;
 import Dictionary.Services.StringUtils;
 import Dictionary.Services.VoiceService;
@@ -159,7 +160,12 @@ public class SearchingController implements Initializable {
             return;
         }
         Dialog<String> dialog = new Dialog<>();
-        dialog.setTitle("Update Word Information");
+        DialogStyler.on(dialog)
+                .applyVintageStyle()
+                .setTitle("Update Word Information")
+                .setWindowTitle("Update Word Information")
+                .setMinSize()
+                .build();
         dialog.setHeaderText(null);
 
         Label nameLabel = new Label("Word:");

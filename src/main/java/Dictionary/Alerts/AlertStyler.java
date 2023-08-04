@@ -20,7 +20,7 @@ public class AlertStyler {
     }
 
     public AlertStyler applyVintageStyle() {
-        String vintageStyle = "-fx-background-color: #f9e4b7; -fx-border-color: #b3804d; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-image: url(/Images/Background.png);";
+        String vintageStyle = "-fx-background-color: #f9e4b7; -fx-border-width: 2px; -fx-border-radius: 10px; -fx-background-image: url(/Images/Background.jpg);";
         dialogPane.setStyle(vintageStyle);
         return this;
     }
