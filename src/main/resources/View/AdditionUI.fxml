@@ -23,8 +23,10 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="123.0" fitWidth="114.0" layoutX="705.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../Images/icon2.jpeg" />
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="703.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/icon2.jpeg" />
+         </image>
       </ImageView>
    </AnchorPane>
    <AnchorPane layoutY="143.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">

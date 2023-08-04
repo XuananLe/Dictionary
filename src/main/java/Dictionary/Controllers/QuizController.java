@@ -53,6 +53,8 @@ public class QuizController implements Initializable {
 
     public void setQuestion() {
         Question.setText(quiz.generateQuestion());
+        Question.setWrapText(true);
+        Question.setMaxWidth(750);
     }
 
     public void setChoices() {
