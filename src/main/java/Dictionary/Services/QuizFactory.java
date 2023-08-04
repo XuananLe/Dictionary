@@ -92,23 +92,23 @@ public class QuizFactory {
     }
 
     public boolean validChoice(String choice) {
-        return choice != null && choice.length() < 150 && choice.substring(0, 2) != "Of"
-                && choice.substring(0, 2) != "of"
-                && choice.substring(0, 3) != "Alt"
-                && choice.substring(0, 3) != " of"
-                && choice.substring(0, 3) != "alt"
-                && choice.substring(0, 4) != " alt"
-                && choice.substring(0, 4) != " Alt"
-                && choice.substring(0, 4) != " Of"
-                && choice.substring(0, 4) != " of"
-                && choice.substring(0, 1) != " ";
+        if (choice == null || choice.trim().isEmpty()) {
+            return false;
+        }
 
+        String lowerCaseChoice = choice.trim().toLowerCase();
+
+        if (lowerCaseChoice.startsWith("of") || lowerCaseChoice.startsWith("alt") || lowerCaseChoice.startsWith(" ")) {
+            return false;
+        }
+
+        return choice.length() < 150;
     }
 
     public void initChooseMeaningQuiz() {
         for (int i = 0; i < 4; i++) {
             String tmp = getRandomWord();
-            while (!validChoice(tmp) || !validChoice(getMeaningFromWord(tmp))) {
+            while (validChoice(tmp)) {
                 tmp = getRandomWord();
             }
             choices[i] = tmp;
@@ -168,7 +168,12 @@ public class QuizFactory {
     public String getRandomWord() {
         try {
             int random = (int) (Math.random() * dbSize);
-            return englishList.get(random).getWord();
+            var result = englishList.get(random).getWord();
+            while (result == null){
+                random = (int) (Math.random() * dbSize);
+                result = englishList.get(random).getWord();
+            }
+            return result;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return "";
@@ -190,8 +195,7 @@ public class QuizFactory {
         try {
             return englishDAO.queryBuilder().where().eq("meaning", meaning).queryForFirst().getWord();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return "";
+            return "Reuben";
         }
     }
 
@@ -200,8 +204,7 @@ public class QuizFactory {
         try {
             return englishDAO.queryBuilder().where().eq("word", word).queryForFirst().getMeaning();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return "";
+            return "The world is gonna burn";
         }
     }
 
