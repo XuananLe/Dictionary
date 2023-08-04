@@ -49,9 +49,9 @@ public class QuizFactory {
     public String generateQuestion() {
         switch (QuestionType.values()[typeOfQuestion]) {
             case ChooseMeaning:
-                return "What is the meaning of : " + question + "?";
+                return "What is the meaning of: " + question + "?";
             case ChooseWord:
-                return "What is the word for :" + question + "?";
+                return "What is the word for: " + question + "?";
             case FillBlank:
                 return "Fill in the blank: " + question;
             case ListenAndChoose:
@@ -91,34 +91,41 @@ public class QuizFactory {
         return inputAnswer.equals(trueAnswer);
     }
 
+    public boolean validChoice(String choice) {
+        return choice != null && choice.length() < 150 && choice.substring(0, 2) != "Of"
+                && choice.substring(0, 2) != "of"
+                && choice.substring(0, 3) != "Alt"
+                && choice.substring(0, 3) != " of"
+                && choice.substring(0, 3) != "alt"
+                && choice.substring(0, 4) != " alt"
+                && choice.substring(0, 4) != " Alt"
+                && choice.substring(0, 4) != " Of"
+                && choice.substring(0, 4) != " of"
+                && choice.substring(0, 1) != " ";
+
+    }
+
     public void initChooseMeaningQuiz() {
         for (int i = 0; i < 4; i++) {
-            String tmp = getRandomMeaning();
-
-            if (validChoice(tmp)) {
-                choices[i] = tmp;
+            String tmp = getRandomWord();
+            while (!validChoice(tmp) || !validChoice(getMeaningFromWord(tmp))) {
+                tmp = getRandomWord();
             }
+            choices[i] = tmp;
+
         }
         int random = (int) (Math.random() * 4);
         setQuestion(getWordFromMeaning(choices[random]));
         setTrueAnswer(choices[random]);
     }
 
-    public boolean validChoice(String choice) {
-        return choice != null && choice.length() < 150 && choice.substring(0, 2) != "Of"
-                && choice.substring(0, 2) != "of"
-                && choice.substring(0, 3) != "Alt"
-                && choice.substring(0, 3) != " of"
-                && choice.substring(0, 3) != "alt";
-
-    }
-
     public void initChooseWordQuiz() {
         for (int i = 0; i < 4; i++) {
             String tmp = getRandomWord();
-            if (validChoice(tmp) && validChoice(getMeaningFromWord(tmp))) {
-                choices[i] = tmp;
+            while (!validChoice(tmp) || !validChoice(getMeaningFromWord(tmp))) {
+                tmp = getRandomWord();
             }
+            choices[i] = tmp;
         }
         int random = (int) (Math.random() * 4);
         setQuestion(StringUtils.normalizeStringForSearch(getMeaningFromWord(choices[random])));
@@ -128,9 +135,10 @@ public class QuizFactory {
     public void initFillBlankQuiz() {
         for (int i = 0; i < 4; i++) {
             String tmp = getRandomWord();
-            if (validChoice(tmp) && validChoice(getMeaningFromWord(tmp))) {
-                choices[i] = tmp;
+            while (!validChoice(tmp) || !validChoice(getMeaningFromWord(tmp))) {
+                tmp = getRandomWord();
             }
+            choices[i] = tmp;
         }
         int random = (int) (Math.random() * 4);
         setQuestion(getMeaningFromWord(choices[random]));
@@ -143,10 +151,10 @@ public class QuizFactory {
     public void initListenQuiz() {
         for (int i = 0; i < 4; i++) {
             String tmp = getRandomMeaning();
-
-            if (validChoice(tmp)) {
-                choices[i] = tmp;
+            while (!validChoice(tmp) || !validChoice(getWordFromMeaning(tmp))) {
+                tmp = getRandomMeaning();
             }
+            choices[i] = tmp;
         }
         int random = (int) (Math.random() * 4);
         setTrueAnswer(choices[random]);
