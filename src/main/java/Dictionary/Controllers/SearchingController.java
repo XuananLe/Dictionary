@@ -155,9 +155,7 @@ public class SearchingController implements Initializable {
     }
 
     public void updateWord() {
-        if (searchBox.getText().isEmpty() || searchBox.getText().isBlank()
-                || currentWord.getWord().isBlank() || currentWord.getWord().isEmpty()
-        ) {
+        if (searchResultsListView.getItems().size() <=0){
             return;
         }
         Dialog<String> dialog = new Dialog<>();
