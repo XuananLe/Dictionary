@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -274,4 +275,7 @@ public class SearchingController implements Initializable {
         wordDefinition.setText("");
     }
 
+    public void initializeWithStage(Stage stage) {
+        this.initializeWithStage(stage);
+    }
 }

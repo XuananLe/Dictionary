@@ -5,16 +5,27 @@ import Dictionary.Services.QuizFactory;
 import Dictionary.Services.VoiceService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static Dictionary.App.AppStage;
+import static Dictionary.Controllers.DictionaryController.showComponent;
+
 public class QuizController implements Initializable {
+    public void initializeWithStage(Stage stage) {
+
+    }
     private final QuizFactory quiz;
     ToggleGroup group = new ToggleGroup();
     @FXML
@@ -153,8 +164,16 @@ public class QuizController implements Initializable {
         // Handle the result
         if (result.isPresent()) {
             if (result.get() == homeButtonType) {
-                // AppStage.setScene("SearchingUI"); THay thế ở đây cái scene cần l
                 dialog.close();
+                //back to searchingUI scene
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("SearchingUI.fxml"));
+
+                   showComponent("/View/SearchingUI.fxml");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 
             } else if (result.get() == playAgainButtonType) {
                 // The user chose 'Play Again', restart the quiz
