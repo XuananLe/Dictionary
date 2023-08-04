@@ -53,8 +53,8 @@ public class ImageTranslateController {
 
 
                 ImageView ClinetImageView = new ImageView(originalImage);
-                ClinetImageView.setFitWidth(ScreenWidth / 3);
-                ClinetImageView.setFitHeight(ScreenHeight / 3);
+                ClinetImageView.setFitWidth(ScreenWidth / 2);
+                ClinetImageView.setFitHeight(ScreenHeight / 2);
                 ClinetImageView.setPreserveRatio(true);
                 ClinetImageView.setSmooth(true);
 
@@ -89,8 +89,8 @@ public class ImageTranslateController {
                                 throw new RuntimeException(e);
                             }
                             ImageView ResultImageView = new ImageView(ResultImage);
-                            ResultImageView.setFitHeight(ScreenHeight / 3);
-                            ResultImageView.setFitWidth(ScreenWidth / 3);
+                            ResultImageView.setFitHeight(ScreenHeight / 2);
+                            ResultImageView.setFitWidth(ScreenWidth / 2);
                             ResultImageView.preserveRatioProperty().setValue(true);
 
                             HBox hbox = new HBox(ClinetImageView, ResultImageView);

@@ -51,7 +51,7 @@ public class App extends Application {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/View/DictionaryUI.fxml")));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-//            primaryStage.setResizable(false);
+            primaryStage.setResizable(false);
             primaryStage.show();
             AppStage = primaryStage;
         } catch (Exception e) {
