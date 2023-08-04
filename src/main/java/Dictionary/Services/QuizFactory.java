@@ -3,9 +3,7 @@ package Dictionary.Services;
 import java.sql.SQLException;
 import java.util.Random;
 
-import static Dictionary.App.dbSize;
-import static Dictionary.App.englishList;
-import static Dictionary.DatabaseConfig.englishDAO;
+import static Dictionary.App.*;
 
 public class QuizFactory {
     long seed = System.currentTimeMillis();
@@ -193,7 +191,7 @@ public class QuizFactory {
     // get word from meaning
     public static String getWordFromMeaning(String meaning) {
         try {
-            return englishDAO.queryBuilder().where().eq("meaning", meaning).queryForFirst().getWord();
+            return MeanMapWord.get(meaning);
         } catch (Exception e) {
             return "Reuben";
         }
@@ -202,7 +200,7 @@ public class QuizFactory {
     // get meaning from word
     public static String getMeaningFromWord(String word) {
         try {
-            return englishDAO.queryBuilder().where().eq("word", word).queryForFirst().getMeaning();
+            return WordMapMean.get(word);
         } catch (Exception e) {
             return "The world is gonna burn";
         }

@@ -10,7 +10,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import static Dictionary.DatabaseConfig.englishDAO;
@@ -37,6 +39,10 @@ public class App extends Application {
         }
     }
 
+
+    public static Map<String, String> WordMapMean = new HashMap<>();
+    public static Map<String, String> MeanMapWord = new HashMap<>();
+
     public App() throws SQLException {
 
     }
@@ -59,6 +65,10 @@ public class App extends Application {
                 Platform.exit();
                 System.exit(0);
             });
+            for(English english : englishList) {
+                WordMapMean.put(english.getWord(), english.getMeaning());
+                MeanMapWord.put(english.getMeaning(), english.getWord());
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
