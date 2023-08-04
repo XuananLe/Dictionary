@@ -16,13 +16,14 @@ import java.util.ResourceBundle;
 
 public class DictionaryController implements Initializable {
     @FXML
-    public static  Tooltip tooltip1, tooltip2, tooltip3, tooltip4, tooltip5, tooltip6;
+    public Tooltip tooltip1, tooltip2, tooltip3, tooltip4, tooltip5, tooltip6;
     @FXML
-    public static  Button addBtn, translateBtn, searchBtn, attachBtn, exitBtn, quizBtn;
+    public Button addBtn, translateBtn, searchBtn, attachBtn, exitBtn, quizBtn;
     @FXML
-    public static AnchorPane container;
+    public AnchorPane container;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        searchBtn.setTooltip(tooltip1);
         searchBtn.setOnAction(event -> showComponent("/View/SearchingUI.fxml"));
 
         addBtn.setOnAction(event -> showComponent("/View/AdditionUI.fxml"));
@@ -47,13 +48,13 @@ public class DictionaryController implements Initializable {
         exitBtn.setOnMouseClicked(e -> System.exit(0));
     }
 
-    public static final void setNode(Node node) {
+    public void setNode(Node node) {
         container.getChildren().clear();
         container.getChildren().add(node);
     }
 
     @FXML
-    public static final void showComponent(String path) {
+    public void showComponent(String path) {
         try {
             AnchorPane component = FXMLLoader.load(Objects.requireNonNull(DictionaryController.class.getResource(path)));
             setNode(component);

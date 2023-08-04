@@ -16,11 +16,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static Dictionary.App.AppStage;
-import static Dictionary.Controllers.DictionaryController.showComponent;
 
 public class QuizController implements Initializable {
     public void initializeWithStage(Stage stage) {
@@ -165,15 +165,16 @@ public class QuizController implements Initializable {
         if (result.isPresent()) {
             if (result.get() == homeButtonType) {
                 dialog.close();
-                //back to searchingUI scene
+                Parent root = null;
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("SearchingUI.fxml"));
-
-                   showComponent("/View/SearchingUI.fxml");
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/View/DictionaryUI.fxml")));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
-
+                Scene scene = new Scene(root);
+                AppStage.setScene(scene);
+                AppStage.setResizable(false);
+                AppStage.show();
 
             } else if (result.get() == playAgainButtonType) {
                 // The user chose 'Play Again', restart the quiz
@@ -205,11 +206,7 @@ public class QuizController implements Initializable {
 
     public void handleVisible() {
         Result.setVisible(false);
-        if (quiz.getTypeOfQuestion() == 2) {
-            Sound.setVisible(true);
-        } else {
-            Sound.setVisible(false);
-        }
+        Sound.setVisible(quiz.getTypeOfQuestion() == 2);
         if (quiz.getTypeOfQuestion() == 3) {
             AnswertheBlank.setVisible(true);
             for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
