@@ -107,9 +107,9 @@ public class QuizFactory {
 
     public void initChooseMeaningQuiz() {
         for (int i = 0; i < 4; i++) {
-            String tmp = getRandomWord();
+            String tmp = getRandomMeaning();
             while (validChoice(tmp)) {
-                tmp = getRandomWord();
+                tmp = getRandomMeaning();
             }
             choices[i] = tmp;
 
