@@ -232,7 +232,7 @@ public class SearchingController implements Initializable {
                 String example = exampleField.getText();
                 String synonym = synonymField.getText();
                 String antonym = antonymField.getText();
-                English english = new English(word, definition, pronunciation, type, example, synonym, antonym);
+                English english = new English(word, type, definition, pronunciation, example, synonym, antonym);
                 try {
                     englishDAO.updateWord(english);
                     Alert successAlert = new Alert(Alert.AlertType.INFORMATION);

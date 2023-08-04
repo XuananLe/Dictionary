@@ -2,6 +2,7 @@ package Dictionary;
 
 import Dictionary.Models.English;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -54,6 +55,10 @@ public class App extends Application {
             primaryStage.setResizable(false);
             primaryStage.show();
             AppStage = primaryStage;
+            primaryStage.setOnCloseRequest(e -> {
+                Platform.exit();
+                System.exit(0);
+            });
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
