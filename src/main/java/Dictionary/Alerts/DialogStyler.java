@@ -6,15 +6,15 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 
 public class DialogStyler {
-    private Dialog dialog;
+    private Dialog<?> dialog;
     private DialogPane dialogPane;
 
-    private DialogStyler(Dialog dialog) {
+    private DialogStyler(Dialog<?> dialog) {
         this.dialog = dialog;
         this.dialogPane = dialog.getDialogPane();
     }
 
-    public static DialogStyler on(Dialog dialog) {
+    public static DialogStyler on(Dialog<?> dialog) {
         return new DialogStyler(dialog);
     }
 
@@ -47,7 +47,7 @@ public class DialogStyler {
         return this;
     }
 
-    public Dialog build() {
+    public Dialog<?> build() {
         return dialog;
     }
 }
