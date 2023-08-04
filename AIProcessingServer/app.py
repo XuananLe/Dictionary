@@ -1,4 +1,7 @@
+import time
+
 import whisper
+from faster_whisper import WhisperModel
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import CoreImage
@@ -6,7 +9,8 @@ import requests
 import CoreWav
 
 app = Flask(__name__)
-main_model = whisper.load_model("base.en")
+model_size = "tiny.en"
+model = WhisperModel(model_size, device="cpu", compute_type="int8")
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 

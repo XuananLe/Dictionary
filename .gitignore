@@ -40,5 +40,6 @@ build/
 
 AIProcessingServer/venv
 AIProcessingServer/.venv
-
+AIProcessingServer/__pycache__/CoreWav.cpython-311.pyc
+AIProcessingServer/__pycache__/app.cpython-311.pyc
 .db

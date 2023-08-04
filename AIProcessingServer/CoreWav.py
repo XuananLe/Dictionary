@@ -1,16 +1,13 @@
 import asyncio
 import base64
 import concurrent
-import multiprocessing
+import WhisperFaster
 import time
 import app
-
+import os
 import openai
 import whisper
 import CoreTranslation
-import CoreImage
-
-openai.api_key = "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"
 
 
 def wav_to_base64(wav_path):
@@ -21,8 +18,10 @@ def wav_to_base64(wav_path):
 
 
 def wav_to_text():
+    start_time = time.time()
     audio_file = open("result.wav", "rb")
     result = openai.Audio.transcribe("whisper-1", audio_file)
+    print("It took", time.time() - start_time, "seconds to transcribe the audio.")
     return result['text']
 
 
@@ -46,17 +45,15 @@ def wav_to_text2() -> str:
     start_time = time.time()
 
     try:
-        with concurrent.futures.ProcessPoolExecutor(max_workers=multiprocessing.cpu_count()) as executor:
+        with concurrent.futures.ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
             transcribe_future = executor.submit(transcribe_wav)
-
-            concurrent.futures.wait([transcribe_future])
-
             text_result = transcribe_future.result()
 
         total_time = time.time() - start_time
         print(f"Total Time: {total_time:.4f} seconds")
         return text_result
     except whisper.WhisperException as e:
+        print(f"WhisperException: ")
         return str(e)
 
 
@@ -66,7 +63,7 @@ def OpenAI_translate(text, language):
         engine="text-davinci-003",
         prompt=prompt,
         temperature=0.3,
-        max_tokens=1500,
+        max_tokens=1000,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0,
@@ -76,7 +73,7 @@ def OpenAI_translate(text, language):
 
 async def main(base64_data: str):
     base64_to_wav(base64_data)
-    text1 = wav_to_text2()
+    text1 = WhisperFaster.wav_to_text()
     text2 = await CoreTranslation.TranslateManager.translate_word(text1, "en", "vi")
     print("Original text: ", text1)
     print("Translated text: ", text2)
@@ -85,4 +82,5 @@ async def main(base64_data: str):
 
 
 if __name__ == '__main__':
+    print("Start")
     asyncio.run(main(wav_to_base64("Client.wav")))

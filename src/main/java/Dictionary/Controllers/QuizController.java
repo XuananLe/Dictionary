@@ -3,22 +3,14 @@ package Dictionary.Controllers;
 import Dictionary.Alerts.DialogStyler;
 import Dictionary.Services.QuizFactory;
 import Dictionary.Services.VoiceService;
-
-import javafx.fxml.FXML;
-
-import javafx.fxml.Initializable;
-
-import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-
-
-
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
-
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -161,7 +153,7 @@ public class QuizController implements Initializable {
         // Handle the result
         if (result.isPresent()) {
             if (result.get() == homeButtonType) {
-                // The user chose 'Home', show Searching scene
+                // AppStage.setScene("SearchingUI"); THay thế ở đây cái scene cần l
                 dialog.close();
 
             } else if (result.get() == playAgainButtonType) {

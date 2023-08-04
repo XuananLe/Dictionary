@@ -64,9 +64,8 @@ public class TranslationController {
             try {
                 String translation = TranslateService.translateWord(textToTranslate, sourceLanguage, targetLanguage);
                 TranslationLanguage.setText(translation);
-            } catch (IOException e) {
-                // Handle exception
-                e.printStackTrace();
+            } catch (Exception e) {
+                return;
             }
         });
     }
