@@ -234,4 +234,12 @@
 .search-box .image-view {
     -fx-padding: 0 5 0 5; /* Adjust padding as needed */
 }
-/* Style for the beautiful buttons */
+.radio-container {
+   display: flex;
+   align-items: center; /* This vertically centers the radio button with the text */
+   flex-wrap: wrap;
+}
+
+.radio-container:text {
+    word-wrap: break-word;
+}

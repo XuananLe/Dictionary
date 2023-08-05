@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,9 +24,7 @@ import java.util.ResourceBundle;
 import static Dictionary.App.AppStage;
 
 public class QuizController implements Initializable {
-    public void initializeWithStage(Stage stage) {
 
-    }
     private final QuizFactory quiz;
     ToggleGroup group = new ToggleGroup();
     @FXML
@@ -41,11 +40,11 @@ public class QuizController implements Initializable {
     @FXML
     private Button Submit = new Button();
     @FXML
-    private TextField AnswertheBlank = new TextField();
-    @FXML
     private Button Sound = new Button();
     @FXML
     private Label Result = new Label();
+    @FXML
+    private VBox vbox = new VBox();
 
     public QuizController() throws SQLException {
         quiz = new QuizFactory();
@@ -54,12 +53,13 @@ public class QuizController implements Initializable {
     public void setQuestion() {
         Question.setText(quiz.generateQuestion());
         Question.setWrapText(true);
-        Question.setMaxWidth(750);
+        Question.setMaxWidth(733);
     }
 
     public void setChoices() {
         for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
             button.setText(quiz.getChoices()[List.of(PlanA, PlanB, PlanC, PlanD).indexOf(button)]);
+            button.setWrapText(true);
         }
     }
 
@@ -75,7 +75,6 @@ public class QuizController implements Initializable {
         for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
             button.setSelected(false);
         }
-        AnswertheBlank.clear();
     }
 
     public void handleSubmit(ActionEvent event) {
@@ -115,6 +114,8 @@ public class QuizController implements Initializable {
     }
 
     public void whenSelected(ActionEvent event) {
+        Result.setWrapText(true);
+        Result.setMaxWidth(642);
         RadioButton selectedRadioButton = (RadioButton) event.getSource();
         System.out.println(selectedRadioButton.getText() + " selected");
 
@@ -210,12 +211,10 @@ public class QuizController implements Initializable {
         Result.setVisible(false);
         Sound.setVisible(quiz.getTypeOfQuestion() == 2);
         if (quiz.getTypeOfQuestion() == 3) {
-            AnswertheBlank.setVisible(true);
             for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
                 button.setVisible(false);
             }
         } else {
-            AnswertheBlank.setVisible(false);
             for (RadioButton button : List.of(PlanA, PlanB, PlanC, PlanD)) {
                 button.setVisible(true);
             }

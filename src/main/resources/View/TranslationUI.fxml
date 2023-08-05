@@ -25,15 +25,13 @@
             </font>
          </Label>
       </Pane>
-      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="22.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/Instagram3.jpeg" />
-         </image>
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="22.0" layoutY="12.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../Images/Instagram3.jpeg"/>
       </ImageView>
-      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="699.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/Instagram2.jpeg" />
-         </image>
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="699.0" layoutY="11.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../Images/Instagram2.jpeg"/>
       </ImageView>
    </Pane>
    <AnchorPane layoutY="142.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">

@@ -3,56 +3,30 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.QuizController">
    <AnchorPane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Style/Style.css">
-      <children>
-         <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="13.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../Images/Instagram4.jpeg" />
-            </image>
-         </ImageView>
-         <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="696.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../Images/Instagram5.jpeg" />
-            </image>
-         </ImageView>
-      </children></AnchorPane>
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../Images/Instagram4.jpeg"/>
+      </ImageView>
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="696.0" layoutY="11.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../Images/Instagram5.jpeg"/>
+      </ImageView>
+   </AnchorPane>
    <AnchorPane layoutY="144.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">
-      <Pane layoutX="95.0" layoutY="100.0" prefHeight="275.0" prefWidth="642.0">
-         <TextField fx:id="AnswertheBlank" prefHeight="271.0" prefWidth="642.0" />
-      </Pane>
       <Label fx:id="Question" layoutX="28.0" layoutY="10.0" prefHeight="87.0" prefWidth="733.0" text="Label">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <RadioButton fx:id="PlanA" layoutX="112.0" layoutY="100.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="605.0" text="RadioButton">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="PlanB" layoutX="112.0" layoutY="170.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="605.0" text="RadioButton">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="PlanC" layoutX="112.0" layoutY="240.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="605.0" text="RadioButton">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="PlanD" layoutX="112.0" layoutY="310.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="605.0" text="RadioButton">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </RadioButton>
       <Button fx:id="Submit" layoutX="382.0" layoutY="424.0" mnemonicParsing="false" styleClass="transparent-button" text="Submit">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -65,8 +39,34 @@
             </ImageView>
          </graphic>
       </Button>
-      <Pane layoutX="95.0" layoutY="373.0" prefHeight="46.0" prefWidth="642.0">
-         <Label fx:id="Result" prefHeight="44.0" prefWidth="642.0" text="Label" />
+      <Pane layoutX="60.0" layoutY="359.0" prefHeight="62.0" prefWidth="710.0">
+         <Label fx:id="Result" prefHeight="62.0" prefWidth="710.0" text="Label" />
       </Pane>
+      <VBox fx:id="vbox" layoutX="62.0" layoutY="105.0" prefHeight="254.0" prefWidth="710.0">
+         <RadioButton fx:id="PlanB" mnemonicParsing="false" prefHeight="62.0" prefWidth="640.0"
+                      styleClass="radio-container" text="RadioButton">
+            <font>
+               <Font size="16.0"/>
+            </font>
+         </RadioButton>
+         <RadioButton fx:id="PlanA" mnemonicParsing="false" prefHeight="62.0" prefWidth="640.0"
+                      styleClass="radio-container" text="RadioButton">
+            <font>
+               <Font size="16.0"/>
+            </font>
+         </RadioButton>
+         <RadioButton fx:id="PlanC" mnemonicParsing="false" prefHeight="62.0" prefWidth="640.0"
+                      styleClass="radio-container" text="RadioButton">
+            <font>
+               <Font size="16.0"/>
+            </font>
+         </RadioButton>
+         <RadioButton fx:id="PlanD" mnemonicParsing="false" prefHeight="62.0" prefWidth="640.0"
+                      styleClass="radio-container" text="RadioButton">
+            <font>
+               <Font size="16.0"/>
+            </font>
+         </RadioButton>
+      </VBox>
    </AnchorPane>
 </AnchorPane>

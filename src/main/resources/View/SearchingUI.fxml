@@ -13,10 +13,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.SearchingController">
    <AnchorPane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Style/Style.css">
-      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/Instagram.jpeg" />
-         </image>
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../Images/Instagram.jpeg"/>
       </ImageView>
       <AnchorPane layoutX="267.0" layoutY="34.0" prefHeight="46.0" prefWidth="287.0" styleClass="search-box">
          <TextField fx:id="searchBox" layoutX="47.0" layoutY="2.0" onKeyReleased="#handleSearch" prefHeight="43.0" prefWidth="240.0" promptText="Nhập từ cần tìm kiếm " styleClass="text-field">
@@ -28,10 +27,9 @@
             <Image url="@../Images/icons8_search_24px.png" />
          </ImageView>
       </AnchorPane>
-      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="696.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Images/Instagram1.jpeg" />
-         </image>
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="696.0" layoutY="11.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@../Images/Instagram1.jpeg"/>
       </ImageView>
       <AnchorPane layoutX="192.0" layoutY="96.0" prefHeight="31.0" prefWidth="403.0">
          <Label fx:id="notAvailableLabel" layoutX="50.0" prefHeight="31.0" prefWidth="326.0" styleClass="title" textAlignment="CENTER">
