@@ -22,9 +22,15 @@ Welcome to our Dictionary Project! This is a user-friendly and feature-rich appl
 ![](SearchDemo.gif)
 
 ### Translate Image
-We use a Flask Server written in Python to handle the image recognition and translation. The server is hosted on Heroku. The following is a demo of the image recognition and translation feature.
+We use a Flask Server written in Python to handle the image recognition and translation. The server is hosted locally. The following is a demo of the image recognition and translation feature.
 This is located in AIProcessingServer.
 ![](ImageDemo.gif)
 
 ### Translate Full Text to 4 Languages
+<img src="Translation.mp4" width="48" alt="OK">
+
+### Translate Voice
+We use the Whisper Model and then fine-tuning to make it faster. We use model type Base.en.
+![]()
+
 
