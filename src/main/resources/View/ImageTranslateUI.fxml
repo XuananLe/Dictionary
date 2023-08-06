@@ -19,12 +19,12 @@
       </ImageView>
    </AnchorPane>
    <Pane layoutX="1.0" layoutY="144.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">
-      <Text layoutX="332.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a picture">
+      <Text layoutX="262.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a picture to translate">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Text>
-      <Text layoutX="251.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload a .jpg, .jpeg or .png file">
+      <Text layoutX="251.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upload a .jpg, jpeg or .png file">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
