@@ -19,7 +19,14 @@ Welcome to our Dictionary Project! This is a user-friendly and feature-rich appl
 ## Features Demo
 
 ### Search Word
+You can also click the speaker icon to hear the pronunciation of the word. The rubbish bin icon will delete the word from the dictionary.
+The pen icon will allow you to edit the word.
 ![](SearchDemo.gif)
+
+### Adding Word
+If the word is already in the dictionary, it will be updated. Otherwise, it will be added to the dictionary.
+![](AddWord.gif)
+
 
 ### Translate Image
 We use a Flask Server written in Python to handle the image recognition and translation. The server is hosted locally. The following is a demo of the image recognition and translation feature.
@@ -27,10 +34,14 @@ This is located in AIProcessingServer.
 ![](ImageDemo.gif)
 
 ### Translate Full Text to 4 Languages
-<img src="Translation.mp4" width="48" alt="OK">
+We use the Google Translate API to translate the text. The following is a demo of the text translation feature. You can translate the word back and forth between English, Spanish, French, Vietnames.
+![](Translation.gif)
 
 ### Translate Voice
 We use the Whisper Model and then fine-tuning to make it faster. We use model type Base.en.
-![]()
+![](VoiceDemo.gif)
+
+### Quizzing Your Knowledge
+![](quizz.gif)
 
 
