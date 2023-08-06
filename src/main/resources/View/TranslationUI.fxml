@@ -14,24 +14,22 @@
 <AnchorPane prefHeight="605.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dictionary.Controllers.TranslationController">
    <Pane prefHeight="144.0" prefWidth="833.0" styleClass="definition-wrapper" stylesheets="@../Style/Style.css">
       <Pane layoutX="156.0" layoutY="31.0" prefHeight="84.0" prefWidth="535.0" snapToPixel="false">
-         <Label prefHeight="40.0" prefWidth="535.0" snapToPixel="false" text="Don't stop when you're tired, stop when you're done">
+         <Label prefHeight="40.0" prefWidth="535.0" snapToPixel="false" text="Click the mic and hit enter to translate voice">
             <font>
                <Font name="System Bold" size="20.0" />
             </font>
          </Label>
-         <Label layoutX="1.0" layoutY="44.0" prefHeight="40.0" prefWidth="535.0" snapToPixel="false" text="Đừng dừng lại khi mệt mỏi, chỉ dừng lại khi đã xong " wrapText="true">
+         <Label layoutX="14.0" layoutY="40.0" prefHeight="40.0" prefWidth="510.0" snapToPixel="false" text="We do not gurantee for correct translation" wrapText="true">
             <font>
                <Font name="System Bold" size="20.0" />
             </font>
          </Label>
       </Pane>
-      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="22.0" layoutY="12.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../Images/Instagram3.jpeg"/>
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="22.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../Images/Instagram3.jpeg" />
       </ImageView>
-      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="699.0" layoutY="11.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../Images/Instagram2.jpeg"/>
+      <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="699.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../Images/Instagram2.jpeg" />
       </ImageView>
    </Pane>
    <AnchorPane layoutY="142.0" prefHeight="463.0" prefWidth="833.0" styleClass="border" stylesheets="@../Style/Style.css">

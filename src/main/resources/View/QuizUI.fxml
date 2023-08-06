@@ -27,7 +27,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="Submit" layoutX="382.0" layoutY="424.0" mnemonicParsing="false" styleClass="transparent-button" text="Submit">
+      <Button fx:id="Submit" layoutX="382.0" layoutY="424.0" mnemonicParsing="false" styleClass="transparent-button" text="Continue">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -44,25 +44,25 @@
       </Pane>
       <VBox fx:id="vbox" layoutX="62.0" layoutY="105.0" prefHeight="254.0" prefWidth="710.0">
          <RadioButton fx:id="PlanB" mnemonicParsing="false" prefHeight="62.0" prefWidth="640.0"
-                      styleClass="radio-container" text="RadioButton">
+                      styleClass="radio-container" text="RadioButton" wrapText="true">
             <font>
                <Font size="16.0"/>
             </font>
          </RadioButton>
          <RadioButton fx:id="PlanA" mnemonicParsing="false" prefHeight="62.0" prefWidth="640.0"
-                      styleClass="radio-container" text="RadioButton">
+                      styleClass="radio-container" text="RadioButton" wrapText="true">
             <font>
                <Font size="16.0"/>
             </font>
          </RadioButton>
          <RadioButton fx:id="PlanC" mnemonicParsing="false" prefHeight="62.0" prefWidth="640.0"
-                      styleClass="radio-container" text="RadioButton">
+                      styleClass="radio-container" text="RadioButton" wrapText="true">
             <font>
                <Font size="16.0"/>
             </font>
          </RadioButton>
          <RadioButton fx:id="PlanD" mnemonicParsing="false" prefHeight="62.0" prefWidth="640.0"
-                      styleClass="radio-container" text="RadioButton">
+                      styleClass="radio-container" text="RadioButton" wrapText="true">
             <font>
                <Font size="16.0"/>
             </font>
